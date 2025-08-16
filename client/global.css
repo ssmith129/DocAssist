@@ -54,6 +54,31 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Healthcare Color System */
+    --hc-blue-primary: 225 47% 36%;      /* #23408e - Trust, security, competence */
+    --hc-blue-secondary: 225 47% 42%;    /* #385399 - Supporting actions */
+    --hc-green-healing: 134 61% 41%;     /* #28a745 - Success, healthy status, healing */
+    --hc-green-mint: 162 78% 46%;        /* #20c997 - Wellness, positive outcomes */
+
+    /* Alert and Status Colors */
+    --hc-red-critical: 354 70% 54%;      /* #dc3545 - Critical alerts, emergency status */
+    --hc-yellow-warning: 45 100% 51%;    /* #ffc107 - Caution, attention needed */
+    --hc-orange-attention: 25 95% 53%;   /* #fd7e14 - Moderate alerts, review required */
+
+    /* Neutral Healthcare Palette */
+    --hc-white: 0 0% 100%;               /* #ffffff - Clean, sterile, primary background */
+    --hc-gray-50: 210 17% 98%;           /* #f8f9fa - Subtle backgrounds, table stripes */
+    --hc-gray-100: 212 14% 93%;          /* #e9ecef - Card backgrounds, dividers */
+    --hc-gray-200: 210 14% 89%;          /* #dee2e6 - Borders, disabled states */
+    --hc-gray-500: 210 11% 71%;          /* #6c757d - Secondary text, icons */
+    --hc-gray-800: 210 10% 23%;          /* #343a40 - Primary text, headings */
+    --hc-gray-900: 210 11% 15%;          /* #212529 - Critical text, high emphasis */
+
+    /* Healthcare Text Colors */
+    --hc-text-primary: 210 11% 15%;      /* Primary text color */
+    --hc-text-secondary: 210 10% 23%;    /* Secondary text color */
+    --hc-text-tertiary: 210 11% 71%;     /* Tertiary text color */
   }
 
   .dark {
