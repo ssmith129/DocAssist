@@ -57,6 +57,24 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Healthcare Color System
+        healthcare: {
+          primary: "hsl(var(--hc-blue-primary))",
+          secondary: "hsl(var(--hc-blue-secondary))",
+          success: "hsl(var(--hc-green-healing))",
+          mint: "hsl(var(--hc-green-mint))",
+          critical: "hsl(var(--hc-red-critical))",
+          warning: "hsl(var(--hc-yellow-warning))",
+          attention: "hsl(var(--hc-orange-attention))",
+          white: "hsl(var(--hc-white))",
+        },
+        hc: {
+          text: {
+            primary: "hsl(var(--hc-text-primary))",
+            secondary: "hsl(var(--hc-text-secondary))",
+            tertiary: "hsl(var(--hc-text-tertiary))",
+          }
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
