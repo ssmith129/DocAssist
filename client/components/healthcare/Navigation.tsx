@@ -1,15 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
-import { 
-  Activity, 
-  Users, 
-  Stethoscope, 
-  Calendar, 
-  BarChart3, 
-  MessageSquare, 
+import {
+  Activity,
+  Users,
+  Stethoscope,
+  Calendar,
+  BarChart3,
+  MessageSquare,
   Settings,
   Bell,
   Search,
-  User
+  User,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -56,13 +56,16 @@ export function Navigation() {
                     "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200",
                     isActive
                       ? "bg-white/20 text-white"
-                      : "text-white/80 hover:bg-white/10 hover:text-white"
+                      : "text-white/80 hover:bg-white/10 hover:text-white",
                   )}
                 >
                   <item.icon className="w-4 h-4" />
                   <span>{item.name}</span>
                   {item.badge && (
-                    <Badge variant="destructive" className="ml-1 px-1.5 py-0.5 text-xs">
+                    <Badge
+                      variant="destructive"
+                      className="ml-1 px-1.5 py-0.5 text-xs"
+                    >
                       {item.badge}
                     </Badge>
                   )}
@@ -125,7 +128,10 @@ export function Navigation() {
             </span>
             <span className="text-white/80 flex items-center space-x-1">
               <span>Messages</span>
-              <Badge variant="secondary" className="px-1.5 py-0.5 text-xs bg-white/20 text-white">
+              <Badge
+                variant="secondary"
+                className="px-1.5 py-0.5 text-xs bg-white/20 text-white"
+              >
                 7
               </Badge>
             </span>

@@ -73,8 +73,8 @@ export default {
             primary: "hsl(var(--hc-text-primary))",
             secondary: "hsl(var(--hc-text-secondary))",
             tertiary: "hsl(var(--hc-text-tertiary))",
-          }
-        }
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
