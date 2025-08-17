@@ -123,7 +123,7 @@ const quickActions = [
     borderColor: "border-red-200",
     urgent: true,
     count: 3,
-    href: "/alerts"
+    href: "/alerts",
   },
   {
     id: 2,
@@ -135,7 +135,7 @@ const quickActions = [
     borderColor: "border-blue-200",
     urgent: false,
     count: 15,
-    href: "/laboratory/results"
+    href: "/laboratory/results",
   },
   {
     id: 3,
@@ -147,7 +147,7 @@ const quickActions = [
     borderColor: "border-green-200",
     urgent: false,
     count: null,
-    href: "/schedule/rounds"
+    href: "/schedule/rounds",
   },
   {
     id: 4,
@@ -159,7 +159,7 @@ const quickActions = [
     borderColor: "border-violet-200",
     urgent: false,
     count: 5,
-    href: "/patients/discharge"
+    href: "/patients/discharge",
   },
 ];
 
@@ -224,7 +224,10 @@ export default function Dashboard() {
       critical: { color: "bg-red-100 text-red-800", dot: "bg-red-500" },
       normal: { color: "bg-green-100 text-green-800", dot: "bg-green-500" },
       completed: { color: "bg-blue-100 text-blue-800", dot: "bg-blue-500" },
-      scheduled: { color: "bg-yellow-100 text-yellow-800", dot: "bg-yellow-500" },
+      scheduled: {
+        color: "bg-yellow-100 text-yellow-800",
+        dot: "bg-yellow-500",
+      },
     };
     const config = statusConfig[status as keyof typeof statusConfig];
     return (
@@ -252,7 +255,9 @@ export default function Dashboard() {
         {/* Enhanced Stats Cards with animations */}
         <div
           className={`grid grid-cols-4 gap-6 transition-all duration-700 ${
-            animateCards ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            animateCards
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4"
           }`}
         >
           <div className="transition-all duration-300">
@@ -311,7 +316,11 @@ export default function Dashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <Tabs value={activeTab} onValueChange={setActiveTab} className="w-auto">
+                <Tabs
+                  value={activeTab}
+                  onValueChange={setActiveTab}
+                  className="w-auto"
+                >
                   <TabsList className="bg-white/80 backdrop-blur-sm">
                     <TabsTrigger
                       value="overview"
@@ -381,7 +390,10 @@ export default function Dashboard() {
                         <Zap className="w-5 h-5 mr-2 text-violet-600" />
                         Quick Actions & Priority Items
                       </CardTitle>
-                      <Badge variant="secondary" className="bg-violet-100 text-violet-700">
+                      <Badge
+                        variant="secondary"
+                        className="bg-violet-100 text-violet-700"
+                      >
                         4 Action Items
                       </Badge>
                     </div>
@@ -401,8 +413,12 @@ export default function Dashboard() {
                           }}
                         >
                           <div className="flex items-start justify-between mb-3">
-                            <div className={`p-2 rounded-full ${action.bgColor}`}>
-                              <action.icon className={`w-5 h-5 ${action.color}`} />
+                            <div
+                              className={`p-2 rounded-full ${action.bgColor}`}
+                            >
+                              <action.icon
+                                className={`w-5 h-5 ${action.color}`}
+                              />
                             </div>
                             {action.count && (
                               <Badge
@@ -516,8 +532,8 @@ export default function Dashboard() {
                                   metric.trend === "up"
                                     ? "text-green-600"
                                     : metric.trend === "down"
-                                    ? "text-red-600"
-                                    : "text-gray-600"
+                                      ? "text-red-600"
+                                      : "text-gray-600"
                                 }`}
                               >
                                 {metric.change}
@@ -536,7 +552,9 @@ export default function Dashboard() {
             </div>
 
             {/* Main Clinical Data Grid */}
-            <div className={`grid grid-cols-12 gap-6 ${compactView ? "grid-rows-2" : ""}`}>
+            <div
+              className={`grid grid-cols-12 gap-6 ${compactView ? "grid-rows-2" : ""}`}
+            >
               {/* Today's Appointments */}
               <div className={compactView ? "col-span-6" : "col-span-7"}>
                 <div className="transition-all duration-300">
@@ -545,7 +563,9 @@ export default function Dashboard() {
               </div>
 
               {/* Patient Demographics */}
-              <div className={`${compactView ? "col-span-6" : "col-span-5"} space-y-6`}>
+              <div
+                className={`${compactView ? "col-span-6" : "col-span-5"} space-y-6`}
+              >
                 <div className="transition-all duration-300">
                   <PatientTypeChart />
                 </div>
@@ -586,9 +606,21 @@ export default function Dashboard() {
                           <XAxis dataKey="month" />
                           <YAxis />
                           <Tooltip />
-                          <Bar dataKey="admissions" fill="#8B5CF6" name="Admissions" />
-                          <Bar dataKey="discharges" fill="#10B981" name="Discharges" />
-                          <Bar dataKey="transfers" fill="#F59E0B" name="Transfers" />
+                          <Bar
+                            dataKey="admissions"
+                            fill="#8B5CF6"
+                            name="Admissions"
+                          />
+                          <Bar
+                            dataKey="discharges"
+                            fill="#10B981"
+                            name="Discharges"
+                          />
+                          <Bar
+                            dataKey="transfers"
+                            fill="#F59E0B"
+                            name="Transfers"
+                          />
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
@@ -623,7 +655,9 @@ export default function Dashboard() {
                               <span className="text-sm font-medium text-gray-700">
                                 {dept.name}
                               </span>
-                              <p className="text-xs text-gray-500">{dept.change}</p>
+                              <p className="text-xs text-gray-500">
+                                {dept.change}
+                              </p>
                             </div>
                           </div>
                           <div className="text-right">
