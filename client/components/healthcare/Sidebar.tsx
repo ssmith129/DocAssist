@@ -74,12 +74,6 @@ const menuSections: MenuSection[] = [
         description: "View all patients",
       },
       {
-        name: "Add Patient",
-        href: "/patients/register",
-        icon: Plus,
-        description: "Register new patient",
-      },
-      {
         name: "Search Patients",
         href: "/patients/search",
         icon: Search,
