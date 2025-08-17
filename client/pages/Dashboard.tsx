@@ -226,7 +226,7 @@ export default function Dashboard() {
     const config = statusConfig[status as keyof typeof statusConfig];
     return (
       <div className="flex items-center space-x-2">
-        <div className={`w-2 h-2 rounded-full ${config.dot} animate-pulse`} />
+        <div className={`w-2 h-2 rounded-full ${config.dot}`} />
         <Badge className={`${config.color} border-0`}>{status}</Badge>
       </div>
     );
