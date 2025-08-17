@@ -129,20 +129,10 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
   const [filter, setFilter] = useState<"all" | "unread" | "critical" | "starred">("all");
   const [open, setOpen] = useState(false);
   const [showActions, setShowActions] = useState(false);
-  const [animateNewNotifications, setAnimateNewNotifications] = useState(false);
 
   const unreadCount = notificationList.filter(n => !n.read).length;
   const criticalCount = notificationList.filter(n => n.type === "critical" && !n.read).length;
   const starredCount = notificationList.filter(n => n.starred).length;
-
-  // Animate new notifications
-  useEffect(() => {
-    if (unreadCount > 0) {
-      setAnimateNewNotifications(true);
-      const timer = setTimeout(() => setAnimateNewNotifications(false), 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [unreadCount]);
 
   const getTypeConfig = (type: string) => {
     const configs = {
