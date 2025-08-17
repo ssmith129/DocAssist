@@ -327,18 +327,18 @@ export function Sidebar() {
               {/* Direct link sections */}
               {section.name === "Dashboard" || section.href ? (
                 <Link
-                  to="/"
+                  to={section.href || "/"}
                   className={cn(
                     "flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 group",
                     "hover:bg-violet-50 hover:text-violet-700",
-                    isItemActive("/")
+                    isItemActive(section.href || "/")
                       ? "bg-violet-100 text-violet-800 shadow-sm border-l-2 border-violet-600"
                       : "text-gray-700",
                     isCollapsed ? "justify-center" : "",
                   )}
                   onMouseEnter={() => setHoveredItem(section.name)}
                   onMouseLeave={() => setHoveredItem(null)}
-                  aria-label="Main Dashboard"
+                  aria-label={section.name}
                 >
                   <div className="flex items-center space-x-3">
                     <section.icon
