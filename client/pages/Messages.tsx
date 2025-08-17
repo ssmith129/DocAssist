@@ -4,17 +4,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { 
-  MessageSquare, 
-  Send, 
-  Search, 
-  Phone, 
+import {
+  MessageSquare,
+  Send,
+  Search,
+  Phone,
   Video,
   MoreVertical,
   Paperclip,
   Smile,
   Bell,
-  Users
+  Users,
 } from "lucide-react";
 
 // Mock messages data
@@ -23,20 +23,23 @@ const conversations = [
     id: "1",
     name: "Dr. Sarah Martinez",
     role: "Cardiologist",
-    lastMessage: "Patient's test results look good. Let's schedule a follow-up next week.",
+    lastMessage:
+      "Patient's test results look good. Let's schedule a follow-up next week.",
     timestamp: "2 min ago",
     unread: 2,
     online: true,
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/94725adbbe1b8f9e7ac623d88dc44cfe413a9fad?width=64"
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/94725adbbe1b8f9e7ac623d88dc44cfe413a9fad?width=64",
   },
   {
     id: "2",
     name: "Nursing Team",
     role: "ICU Department",
-    lastMessage: "Mr. Johnson's vitals are stable. Ready for discharge tomorrow.",
+    lastMessage:
+      "Mr. Johnson's vitals are stable. Ready for discharge tomorrow.",
     timestamp: "15 min ago",
     unread: 0,
-    online: true
+    online: true,
   },
   {
     id: "3",
@@ -45,7 +48,7 @@ const conversations = [
     lastMessage: "Need consultation on trauma patient in ER bed 3",
     timestamp: "1 hour ago",
     unread: 1,
-    online: false
+    online: false,
   },
   {
     id: "4",
@@ -54,7 +57,7 @@ const conversations = [
     lastMessage: "Drug interaction alert for patient MRN-001234",
     timestamp: "2 hours ago",
     unread: 0,
-    online: true
+    online: true,
   },
   {
     id: "5",
@@ -63,46 +66,50 @@ const conversations = [
     lastMessage: "Critical lab values for patient in room 205",
     timestamp: "3 hours ago",
     unread: 3,
-    online: false
-  }
+    online: false,
+  },
 ];
 
 const messages = [
   {
     id: "1",
     sender: "Dr. Sarah Martinez",
-    message: "Good morning! I've reviewed the latest cardiac enzyme results for Mrs. Johnson.",
+    message:
+      "Good morning! I've reviewed the latest cardiac enzyme results for Mrs. Johnson.",
     timestamp: "09:15 AM",
-    isOwn: false
+    isOwn: false,
   },
   {
     id: "2",
     sender: "You",
     message: "Thanks for the quick review. What's your assessment?",
     timestamp: "09:17 AM",
-    isOwn: true
+    isOwn: true,
   },
   {
     id: "3",
     sender: "Dr. Sarah Martinez",
-    message: "The troponin levels have normalized, which is excellent news. I recommend continuing current medication and scheduling a follow-up echo in 2 weeks.",
+    message:
+      "The troponin levels have normalized, which is excellent news. I recommend continuing current medication and scheduling a follow-up echo in 2 weeks.",
     timestamp: "09:20 AM",
-    isOwn: false
+    isOwn: false,
   },
   {
     id: "4",
     sender: "You",
-    message: "Perfect. I'll coordinate with the patient and schedule the echo. Should we adjust the beta-blocker dosage?",
+    message:
+      "Perfect. I'll coordinate with the patient and schedule the echo. Should we adjust the beta-blocker dosage?",
     timestamp: "09:22 AM",
-    isOwn: true
+    isOwn: true,
   },
   {
     id: "5",
     sender: "Dr. Sarah Martinez",
-    message: "Current dosage is working well. Let's maintain it for now and reassess after the echo.",
+    message:
+      "Current dosage is working well. Let's maintain it for now and reassess after the echo.",
     timestamp: "09:25 AM",
-    isOwn: false
-  }
+    isOwn: false,
+  },
 ];
 
 export default function Messages() {
@@ -139,7 +146,9 @@ export default function Messages() {
           <Card className="shadow-lg h-[600px] flex flex-col">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle className="text-lg font-bold text-gray-700">Conversations</CardTitle>
+                <CardTitle className="text-lg font-bold text-gray-700">
+                  Conversations
+                </CardTitle>
                 <Button size="sm" className="bg-violet-600 hover:bg-violet-700">
                   <MessageSquare className="w-4 h-4 mr-2" />
                   New
@@ -156,16 +165,18 @@ export default function Messages() {
             <CardContent className="flex-1 overflow-y-auto p-0">
               <div className="space-y-1">
                 {conversations.map((conversation, index) => (
-                  <div 
-                    key={conversation.id} 
+                  <div
+                    key={conversation.id}
                     className={`p-4 hover:bg-gray-50 cursor-pointer border-l-4 ${
-                      index === 0 ? 'border-l-violet-600 bg-violet-50' : 'border-l-transparent'
+                      index === 0
+                        ? "border-l-violet-600 bg-violet-50"
+                        : "border-l-transparent"
                     }`}
                   >
                     <div className="flex items-start space-x-3">
                       <div className="relative">
                         {conversation.avatar ? (
-                          <img 
+                          <img
                             src={conversation.avatar}
                             alt={conversation.name}
                             className="w-12 h-12 rounded-full object-cover"
@@ -173,7 +184,10 @@ export default function Messages() {
                         ) : (
                           <div className="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center">
                             <span className="text-violet-600 font-medium text-sm">
-                              {conversation.name.split(' ').map(n => n[0]).join('')}
+                              {conversation.name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
                             </span>
                           </div>
                         )}
@@ -181,14 +195,22 @@ export default function Messages() {
                           <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
                         )}
                       </div>
-                      
+
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
-                          <h3 className="font-medium text-gray-900 truncate">{conversation.name}</h3>
-                          <span className="text-xs text-gray-500">{conversation.timestamp}</span>
+                          <h3 className="font-medium text-gray-900 truncate">
+                            {conversation.name}
+                          </h3>
+                          <span className="text-xs text-gray-500">
+                            {conversation.timestamp}
+                          </span>
                         </div>
-                        <p className="text-xs text-gray-600 mb-1">{conversation.role}</p>
-                        <p className="text-sm text-gray-600 line-clamp-2">{conversation.lastMessage}</p>
+                        <p className="text-xs text-gray-600 mb-1">
+                          {conversation.role}
+                        </p>
+                        <p className="text-sm text-gray-600 line-clamp-2">
+                          {conversation.lastMessage}
+                        </p>
                         {conversation.unread > 0 && (
                           <div className="mt-2">
                             <Badge className="bg-red-500 text-white text-xs">
@@ -212,14 +234,18 @@ export default function Messages() {
             <CardHeader className="border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <img 
+                  <img
                     src="https://api.builder.io/api/v1/image/assets/TEMP/94725adbbe1b8f9e7ac623d88dc44cfe413a9fad?width=64"
                     alt="Dr. Sarah Martinez"
                     className="w-10 h-10 rounded-full object-cover"
                   />
                   <div>
-                    <h3 className="font-medium text-gray-900">Dr. Sarah Martinez</h3>
-                    <p className="text-sm text-gray-600">Cardiologist • Online</p>
+                    <h3 className="font-medium text-gray-900">
+                      Dr. Sarah Martinez
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      Cardiologist • Online
+                    </p>
                   </div>
                 </div>
                 <div className="flex space-x-2">
@@ -239,19 +265,23 @@ export default function Messages() {
             {/* Messages Area */}
             <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.map((message) => (
-                <div 
-                  key={message.id} 
-                  className={`flex ${message.isOwn ? 'justify-end' : 'justify-start'}`}
+                <div
+                  key={message.id}
+                  className={`flex ${message.isOwn ? "justify-end" : "justify-start"}`}
                 >
-                  <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                    message.isOwn 
-                      ? 'bg-violet-600 text-white' 
-                      : 'bg-gray-100 text-gray-900'
-                  }`}>
+                  <div
+                    className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                      message.isOwn
+                        ? "bg-violet-600 text-white"
+                        : "bg-gray-100 text-gray-900"
+                    }`}
+                  >
                     <p className="text-sm">{message.message}</p>
-                    <p className={`text-xs mt-1 ${
-                      message.isOwn ? 'text-violet-200' : 'text-gray-500'
-                    }`}>
+                    <p
+                      className={`text-xs mt-1 ${
+                        message.isOwn ? "text-violet-200" : "text-gray-500"
+                      }`}
+                    >
                       {message.timestamp}
                     </p>
                   </div>
@@ -265,10 +295,7 @@ export default function Messages() {
                 <Button size="sm" variant="ghost">
                   <Paperclip className="w-4 h-4" />
                 </Button>
-                <Input
-                  placeholder="Type your message..."
-                  className="flex-1"
-                />
+                <Input placeholder="Type your message..." className="flex-1" />
                 <Button size="sm" variant="ghost">
                   <Smile className="w-4 h-4" />
                 </Button>
