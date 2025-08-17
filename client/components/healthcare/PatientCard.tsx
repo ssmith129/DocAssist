@@ -102,9 +102,9 @@ export function PatientCard({ patient, size = 'standard', showVitalSigns = true 
                   {patient.status}
                 </Badge>
               </div>
-              <div className="flex items-center space-x-4 text-sm text-hc-text-secondary mt-1">
-                <span>MRN: {patient.mrn}</span>
-                <span>Age: {patient.age}</span>
+              <div className="flex items-center space-x-4 hc-text-medical-data mt-1">
+                <span className="font-medium">MRN: {patient.mrn}</span>
+                <span className="font-medium">Age: {patient.age}</span>
               </div>
               {!isCompact && (
                 <p className="text-sm text-hc-text-tertiary mt-1">{patient.primaryCondition}</p>
