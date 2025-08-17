@@ -64,22 +64,10 @@ const menuSections: MenuSection[] = [
   {
     name: "Patient Care",
     icon: Users,
-    defaultOpen: true,
+    defaultOpen: false,
     priority: "high",
-    items: [
-      {
-        name: "Patient List",
-        href: "/patients",
-        icon: Users,
-        description: "View all patients",
-      },
-      {
-        name: "Search Patients",
-        href: "/patients/search",
-        icon: Search,
-        description: "Find specific patients",
-      },
-    ],
+    items: [],
+    href: "/patients",
   },
   {
     name: "Clinical",
