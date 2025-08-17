@@ -149,8 +149,7 @@ export function StatsCard({
             {/* Value */}
             <p className={cn(
               "text-3xl font-bold mt-2 transition-all duration-500",
-              variant === "primary" ? "text-white" : "text-gray-900",
-              isHovered && "scale-110 transform-origin-left"
+              variant === "primary" ? "text-white" : "text-gray-900"
             )}>
               {animatedValue}
             </p>
