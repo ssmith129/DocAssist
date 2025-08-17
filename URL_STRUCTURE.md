@@ -9,8 +9,13 @@
 ### 🏠 **Dashboard & Overview**
 
 - `/dashboard-home` - Main Dashboard (Home Page)
+<<<<<<< HEAD
 - `/` - Redirects to `/dashboard-home` (handled automatically)
 - `/Dashboard` - Legacy redirect (removed)
+=======
+- `/` - Redirects to `/dashboard-home` (backward compatibility)
+- `/Dashboard` - Redirects to `/dashboard-home` (handled automatically)
+>>>>>>> refs/remotes/origin/main
 
 ### 👥 **Patient Management**
 

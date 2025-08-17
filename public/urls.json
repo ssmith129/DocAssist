@@ -20,7 +20,10 @@
   },
   "routes": {
     "public": [
+<<<<<<< HEAD
       "/",
+=======
+>>>>>>> refs/remotes/origin/main
       "/dashboard-home",
       "/patients",
       "/clinical",

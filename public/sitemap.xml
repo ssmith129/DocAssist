@@ -10,10 +10,22 @@
 
   <!-- Main Dashboard -->
   <url>
+<<<<<<< HEAD
     <loc>https://yourapp.example.com/dashboard-home</loc>
+=======
+    <loc>https://yourapp.vercel.app/dashboard-home</loc>
+>>>>>>> refs/remotes/origin/main
     <lastmod>2024-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Root redirect -->
+  <url>
+    <loc>https://yourapp.vercel.app/</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   
   <!-- Patient Management -->

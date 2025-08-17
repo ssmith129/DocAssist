@@ -1,0 +1,38 @@
+{
+  "buildCommand": "npm run build:client",
+  "outputDirectory": "dist/spa",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "functions": {
+    "app/api/[...route].js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index"
+    }
+  ],
+  "routes": [
+    {
+      "src": "^/dashboard-home/?$",
+      "dest": "/index.html",
+      "headers": {
+        "cache-control": "public, max-age=300"
+      }
+    },
+    {
+      "src": "^/$",
+      "dest": "/index.html",
+      "headers": {
+        "cache-control": "public, max-age=86400"
+      }
+    },
+    {
+      "src": "^/(?!api/).*",
+      "dest": "/index.html"
+    }
+  ]
+}

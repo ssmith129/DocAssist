@@ -43,11 +43,25 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+<<<<<<< HEAD
           {/* Redirect root to dashboard-home */}
           <Route path="/" element={<Navigate to="/dashboard-home" replace />} />
 
           {/* Main Dashboard - Unified Overview and Analytics */}
           <Route path="/dashboard-home" element={<Dashboard />} />
+=======
+          {/* Redirect root to dashboard-home for backward compatibility */}
+          <Route path="/" element={<Navigate to="/dashboard-home" replace />} />
+
+          {/* Main Dashboard - Unified Overview and Analytics */}
+          <Route path="/dashboard-home" element={<Dashboard />} />
+
+          {/* Dashboard redirect - handle /Dashboard route */}
+          <Route
+            path="/Dashboard"
+            element={<Navigate to="/dashboard-home" replace />}
+          />
+>>>>>>> refs/remotes/origin/main
 
           {/* Legacy Analytics Route - Redirect to main dashboard with analytics tab */}
           <Route path="/analytics" element={<Analytics />} />
