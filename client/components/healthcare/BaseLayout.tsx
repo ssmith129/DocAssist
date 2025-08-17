@@ -126,7 +126,7 @@ export function BaseLayout({ children, title }: BaseLayoutProps) {
               </Button>
 
               <h1
-                className="text-2xl font-bold text-gray-900 truncate"
+                className="hc-heading-1 truncate"
                 role="heading"
                 aria-level={1}
               >
