@@ -17,6 +17,10 @@ import {
   Archive,
   Star,
   StarOff,
+  BellDot,
+  ArrowUpRight,
+  CheckCheck,
+  Sparkles,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -125,44 +129,58 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
   const [filter, setFilter] = useState<"all" | "unread" | "critical" | "starred">("all");
   const [open, setOpen] = useState(false);
   const [showActions, setShowActions] = useState(false);
+  const [animateNewNotifications, setAnimateNewNotifications] = useState(false);
 
   const unreadCount = notificationList.filter(n => !n.read).length;
   const criticalCount = notificationList.filter(n => n.type === "critical" && !n.read).length;
   const starredCount = notificationList.filter(n => n.starred).length;
+
+  // Animate new notifications
+  useEffect(() => {
+    if (unreadCount > 0) {
+      setAnimateNewNotifications(true);
+      const timer = setTimeout(() => setAnimateNewNotifications(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [unreadCount]);
 
   const getTypeConfig = (type: string) => {
     const configs = {
       critical: {
         icon: AlertTriangle,
         color: "text-red-600",
-        bgColor: "bg-red-50",
+        bgColor: "bg-red-50/80",
         borderColor: "border-red-200",
         badgeColor: "bg-red-500",
-        pulse: true
+        pulse: true,
+        gradient: "from-red-50 to-red-100"
       },
       warning: {
         icon: Clock,
-        color: "text-yellow-600",
-        bgColor: "bg-yellow-50",
-        borderColor: "border-yellow-200",
-        badgeColor: "bg-yellow-500",
-        pulse: false
+        color: "text-amber-600",
+        bgColor: "bg-amber-50/80",
+        borderColor: "border-amber-200",
+        badgeColor: "bg-amber-500",
+        pulse: false,
+        gradient: "from-amber-50 to-amber-100"
       },
       success: {
         icon: CheckCircle,
-        color: "text-green-600",
-        bgColor: "bg-green-50",
-        borderColor: "border-green-200",
-        badgeColor: "bg-green-500",
-        pulse: false
+        color: "text-emerald-600",
+        bgColor: "bg-emerald-50/80",
+        borderColor: "border-emerald-200",
+        badgeColor: "bg-emerald-500",
+        pulse: false,
+        gradient: "from-emerald-50 to-emerald-100"
       },
       info: {
-        icon: Bell,
+        icon: BellDot,
         color: "text-blue-600",
-        bgColor: "bg-blue-50",
+        bgColor: "bg-blue-50/80",
         borderColor: "border-blue-200",
         badgeColor: "bg-blue-500",
-        pulse: false
+        pulse: false,
+        gradient: "from-blue-50 to-blue-100"
       }
     };
     return configs[type as keyof typeof configs];
@@ -209,6 +227,19 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
     }
   });
 
+  const getPriorityIcon = (priority?: string) => {
+    switch (priority) {
+      case "high":
+        return <AlertTriangle className="w-3 h-3 text-red-500" />;
+      case "medium":
+        return <Clock className="w-3 h-3 text-amber-500" />;
+      case "low":
+        return <CheckCircle className="w-3 h-3 text-green-500" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
@@ -216,7 +247,8 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
           variant="ghost"
           size="sm"
           className={cn(
-            "relative hover:bg-gray-100 focus:ring-2 focus:ring-violet-200 transition-all duration-200",
+            "relative hover:bg-gray-100/80 focus:ring-2 focus:ring-violet-200 transition-all duration-200 rounded-lg",
+            animateNewNotifications && "animate-bounce",
             className
           )}
           aria-label={`Notifications - ${unreadCount} unread`}
@@ -224,8 +256,9 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
         >
           <Bell 
             className={cn(
-              "w-5 h-5 text-gray-700 transition-transform duration-200",
-              criticalCount > 0 && "animate-pulse"
+              "w-5 h-5 text-gray-700 transition-all duration-200",
+              criticalCount > 0 && "animate-pulse text-red-600",
+              unreadCount > 0 && "text-blue-600"
             )} 
             aria-hidden="true" 
           />
@@ -233,49 +266,85 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
             <span
               id="notification-count"
               className={cn(
-                "absolute -top-1 -right-1 min-w-5 h-5 px-1 text-white text-xs rounded-full flex items-center justify-center font-medium transition-all duration-200",
-                criticalCount > 0 ? "bg-red-500 animate-pulse" : "bg-blue-500"
+                "absolute -top-1 -right-1 min-w-5 h-5 px-1 text-white text-xs rounded-full flex items-center justify-center font-medium transition-all duration-300 shadow-sm",
+                criticalCount > 0 
+                  ? "bg-red-500 animate-pulse ring-2 ring-red-200" 
+                  : "bg-blue-500",
+                unreadCount > 99 && "px-0.5"
               )}
               aria-live="polite"
             >
               {unreadCount > 99 ? "99+" : unreadCount}
             </span>
           )}
+          {criticalCount > 0 && (
+            <span className="absolute -top-1 -left-1 w-3 h-3 bg-red-500 rounded-full animate-ping" />
+          )}
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent 
         align="end" 
-        className="w-96 max-h-96 overflow-hidden shadow-xl border-0 bg-white rounded-lg"
+        className="w-[420px] max-h-[500px] overflow-hidden shadow-2xl border-0 bg-white rounded-xl p-0"
         side="bottom"
-        sideOffset={8}
+        sideOffset={12}
       >
         {/* Header */}
-        <div className="p-4 border-b bg-gradient-to-r from-violet-50 to-blue-50">
+        <div className="sticky top-0 z-10 p-5 border-b bg-gradient-to-r from-violet-50 via-blue-50 to-indigo-50 backdrop-blur-sm">
           <div className="flex items-center justify-between">
-            <div>
-              <h3 className="font-semibold text-gray-900 flex items-center">
-                <Bell className="w-4 h-4 mr-2 text-violet-600" />
-                Notifications
-              </h3>
-              <p className="text-sm text-gray-600">
-                {unreadCount > 0 ? `${unreadCount} unread` : "All caught up!"}
-                {criticalCount > 0 && (
-                  <span className="ml-2 text-red-600 font-medium">
-                    • {criticalCount} critical
-                  </span>
-                )}
-              </p>
+            <div className="flex items-center space-x-3">
+              <div className="p-2 bg-white rounded-lg shadow-sm">
+                <Bell className="w-5 h-5 text-violet-600" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900 text-lg">
+                  Notifications
+                </h3>
+                <p className="text-sm text-gray-600 flex items-center space-x-2">
+                  {unreadCount > 0 ? (
+                    <span className="flex items-center space-x-1">
+                      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span>{unreadCount} unread</span>
+                    </span>
+                  ) : (
+                    <span className="flex items-center space-x-1">
+                      <CheckCheck className="w-4 h-4 text-green-500" />
+                      <span>All caught up!</span>
+                    </span>
+                  )}
+                  {criticalCount > 0 && (
+                    <span className="flex items-center space-x-1 text-red-600 font-medium">
+                      <AlertTriangle className="w-3 h-3" />
+                      <span>{criticalCount} critical</span>
+                    </span>
+                  )}
+                </p>
+              </div>
             </div>
             <div className="flex items-center space-x-2">
+              {/* Quick actions */}
+              {unreadCount > 0 && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={markAllAsRead}
+                  className="h-8 px-3 text-xs hover:bg-white/80 rounded-lg"
+                  title="Mark all as read"
+                >
+                  <CheckCheck className="w-4 h-4 mr-1" />
+                  Mark all read
+                </Button>
+              )}
+              
               {/* Actions Menu */}
               <DropdownMenu open={showActions} onOpenChange={setShowActions}>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="h-8 px-2">
+                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-white/80 rounded-lg">
                     <MoreVertical className="w-4 h-4" />
+                    <span className="sr-only">More actions</span>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent align="end" className="w-48">
                   <DropdownMenuLabel>Actions</DropdownMenuLabel>
                   <DropdownMenuItem onClick={markAllAsRead}>
                     <Eye className="w-4 h-4 mr-2" />
@@ -296,7 +365,8 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
           </div>
 
           {/* Filter Pills */}
-          <div className="flex items-center space-x-2 mt-3">
+          <div className="flex items-center space-x-2 mt-4">
+            <Filter className="w-4 h-4 text-gray-500 mr-1" />
             {[
               { key: "all", label: "All", count: notificationList.length },
               { key: "unread", label: "Unread", count: unreadCount },
@@ -307,19 +377,19 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                 key={filterOption.key}
                 onClick={() => setFilter(filterOption.key as any)}
                 className={cn(
-                  "px-3 py-1 text-xs rounded-full transition-all duration-200 flex items-center space-x-1",
+                  "px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 flex items-center space-x-1.5 border",
                   filter === filterOption.key
-                    ? "bg-violet-600 text-white shadow-sm"
-                    : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                    ? "bg-violet-600 text-white shadow-md border-violet-600 ring-2 ring-violet-200"
+                    : "bg-white text-gray-600 hover:bg-gray-50 border-gray-200 hover:border-gray-300"
                 )}
               >
                 <span>{filterOption.label}</span>
                 {filterOption.count > 0 && (
                   <span className={cn(
-                    "text-xs px-1.5 py-0.5 rounded-full",
+                    "text-xs px-1.5 py-0.5 rounded-full font-medium",
                     filter === filterOption.key
                       ? "bg-white/20 text-white"
-                      : "bg-gray-200 text-gray-600"
+                      : "bg-gray-100 text-gray-600"
                   )}>
                     {filterOption.count}
                   </span>
@@ -332,14 +402,19 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
         {/* Notifications List */}
         <div className="max-h-80 overflow-y-auto custom-scrollbar">
           {filteredNotifications.length === 0 ? (
-            <div className="p-8 text-center text-gray-500">
-              <Bell className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-              <p className="text-sm">
+            <div className="p-12 text-center text-gray-500">
+              <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                <Bell className="w-8 h-8 text-gray-300" />
+              </div>
+              <p className="text-sm font-medium text-gray-600 mb-1">
                 {filter === "all" ? "No notifications" : `No ${filter} notifications`}
+              </p>
+              <p className="text-xs text-gray-400">
+                You're all caught up! New notifications will appear here.
               </p>
             </div>
           ) : (
-            <div className="space-y-1 p-2">
+            <div className="space-y-1 p-3">
               {filteredNotifications.map((notification, index) => {
                 const config = getTypeConfig(notification.type);
                 const IconComponent = config.icon;
@@ -348,11 +423,12 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                   <div
                     key={notification.id}
                     className={cn(
-                      "relative p-3 rounded-lg border transition-all duration-200 cursor-pointer group",
+                      "relative p-4 rounded-xl border transition-all duration-200 cursor-pointer group hover:shadow-md",
                       config.bgColor,
                       config.borderColor,
-                      !notification.read && "ring-1 ring-violet-200 bg-opacity-80",
-                      notification.type === "critical" && !notification.read && "ring-2 ring-red-200"
+                      !notification.read && "ring-1 ring-violet-200/50 shadow-sm",
+                      notification.type === "critical" && !notification.read && "ring-2 ring-red-200 shadow-red-100",
+                      "hover:border-opacity-60"
                     )}
                     onClick={() => !notification.read && markAsRead(notification.id)}
                   >
@@ -363,9 +439,10 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                     
                     <div className="flex items-start space-x-3">
                       <div className={cn(
-                        "p-1.5 rounded-full transition-all duration-200",
-                        config.bgColor,
-                        ""
+                        "p-2 rounded-lg transition-all duration-200 shadow-sm",
+                        `bg-gradient-to-br ${config.gradient}`,
+                        config.borderColor,
+                        "border"
                       )}>
                         <IconComponent className={cn("w-4 h-4", config.color)} />
                       </div>
@@ -373,35 +450,38 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between">
                           <div className="flex-1 min-w-0">
-                            <h4 className={cn(
-                              "font-medium text-gray-900 truncate transition-all duration-200",
-                              !notification.read && "font-semibold"
-                            )}>
-                              {notification.title}
-                            </h4>
+                            <div className="flex items-center space-x-2">
+                              <h4 className={cn(
+                                "font-medium text-gray-900 truncate transition-all duration-200",
+                                !notification.read && "font-semibold"
+                              )}>
+                                {notification.title}
+                              </h4>
+                              {getPriorityIcon(notification.priority)}
+                            </div>
                             
                             {/* Patient and Department badges */}
                             {(notification.patient || notification.department) && (
-                              <div className="flex items-center space-x-2 mt-1">
+                              <div className="flex items-center space-x-2 mt-2">
                                 {notification.patient && (
-                                  <Badge variant="outline" className="text-xs px-1.5 py-0.5">
-                                    {notification.patient}
+                                  <Badge variant="outline" className="text-xs px-2 py-0.5 font-medium">
+                                    👤 {notification.patient}
                                   </Badge>
                                 )}
                                 {notification.department && (
-                                  <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
-                                    {notification.department}
+                                  <Badge variant="secondary" className="text-xs px-2 py-0.5 font-medium bg-gray-100 text-gray-700">
+                                    🏥 {notification.department}
                                   </Badge>
                                 )}
                               </div>
                             )}
                             
-                            <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                            <p className="text-sm text-gray-600 mt-2 line-clamp-2 leading-relaxed">
                               {notification.message}
                             </p>
                             
-                            <div className="flex items-center justify-between mt-2">
-                              <span className="text-xs text-gray-500">
+                            <div className="flex items-center justify-between mt-3">
+                              <span className="text-xs text-gray-500 font-medium">
                                 {notification.timestamp}
                               </span>
                               
@@ -409,39 +489,42 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                                 <Button
                                   size="sm"
                                   variant="outline"
-                                  className="h-6 text-xs px-2 hover:bg-violet-50 transition-all duration-200"
+                                  className="h-7 text-xs px-3 hover:bg-violet-50 transition-all duration-200 font-medium"
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     notification.action?.onClick();
                                   }}
                                 >
                                   {notification.action.label}
-                                  <ChevronRight className="w-3 h-3 ml-1" />
+                                  <ArrowUpRight className="w-3 h-3 ml-1" />
                                 </Button>
                               )}
                             </div>
                           </div>
                           
-                          <div className="ml-2 flex items-start space-x-1">
+                          <div className="ml-3 flex items-start space-x-2">
                             {/* Star toggle */}
                             <button
                               onClick={(e) => {
                                 e.stopPropagation();
                                 toggleStar(notification.id);
                               }}
-                              className="p-1 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/80 rounded"
+                              className="p-1.5 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:bg-white/80 rounded-lg"
                               aria-label={`${notification.starred ? 'Remove star' : 'Add star'}`}
                             >
                               {notification.starred ? (
-                                <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                                <Star className="w-4 h-4 text-yellow-500 fill-current" />
                               ) : (
-                                <StarOff className="w-3 h-3 text-gray-400" />
+                                <StarOff className="w-4 h-4 text-gray-400 hover:text-yellow-500" />
                               )}
                             </button>
 
                             {/* Unread indicator */}
                             {!notification.read && (
-                              <div className={cn("w-2 h-2 rounded-full mt-1", config.badgeColor)} />
+                              <div className={cn(
+                                "w-2.5 h-2.5 rounded-full mt-1.5 shadow-sm",
+                                config.badgeColor
+                              )} />
                             )}
                             
                             {/* Delete button */}
@@ -450,10 +533,10 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                                 e.stopPropagation();
                                 deleteNotification(notification.id);
                               }}
-                              className="p-1 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/80 rounded text-red-500"
+                              className="p-1.5 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:bg-red-50 rounded-lg text-red-500 hover:text-red-600"
                               aria-label="Delete notification"
                             >
-                              <X className="w-3 h-3" />
+                              <X className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
@@ -467,15 +550,16 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
         </div>
 
         {/* Footer */}
-        <div className="border-t bg-gray-50 p-3">
+        <div className="sticky bottom-0 border-t bg-gray-50/80 backdrop-blur-sm p-4">
           <Button 
             variant="outline" 
             size="sm" 
-            className="w-full hover:bg-violet-50 transition-all duration-200"
+            className="w-full hover:bg-violet-50 transition-all duration-200 font-medium border-gray-200 hover:border-violet-200"
             onClick={() => setOpen(false)}
           >
             <Archive className="w-4 h-4 mr-2" />
             View All Notifications
+            <ArrowUpRight className="w-4 h-4 ml-auto" />
           </Button>
         </div>
       </DropdownMenuContent>
