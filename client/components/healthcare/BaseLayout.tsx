@@ -172,76 +172,7 @@ export function BaseLayout({ children, title }: BaseLayoutProps) {
               </div>
 
               {/* Notifications */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="relative hover:bg-gray-100 focus:ring-2 focus:ring-violet-200"
-                    aria-label="Notifications - 3 unread"
-                    aria-describedby="notification-count"
-                  >
-                    <Bell
-                      className="w-5 h-5 text-gray-700"
-                      aria-hidden="true"
-                    />
-                    <span
-                      id="notification-count"
-                      className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-medium"
-                      aria-live="polite"
-                    >
-                      3
-                    </span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-80">
-                  <div className="p-3 border-b">
-                    <h3 className="font-semibold text-gray-900">
-                      Notifications
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      You have 3 unread notifications
-                    </p>
-                  </div>
-                  <DropdownMenuItem className="p-3 focus:bg-red-50">
-                    <div>
-                      <p className="font-medium text-red-800">
-                        Critical Lab Result
-                      </p>
-                      <p className="text-sm text-red-600">
-                        Patient John Doe - Immediate attention required
-                      </p>
-                      <p className="text-xs text-gray-500 mt-1">
-                        2 minutes ago
-                      </p>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="p-3 focus:bg-yellow-50">
-                    <div>
-                      <p className="font-medium text-yellow-800">
-                        Medication Reminder
-                      </p>
-                      <p className="text-sm text-yellow-600">
-                        Patient Sarah Johnson - Due at 3:00 PM
-                      </p>
-                      <p className="text-xs text-gray-500 mt-1">
-                        15 minutes ago
-                      </p>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="p-3 focus:bg-blue-50">
-                    <div>
-                      <p className="font-medium text-blue-800">
-                        Appointment Reminder
-                      </p>
-                      <p className="text-sm text-blue-600">
-                        Dr. Smith consultation in 30 minutes
-                      </p>
-                      <p className="text-xs text-gray-500 mt-1">1 hour ago</p>
-                    </div>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <NotificationDropdown />
 
               {/* User Profile */}
               <DropdownMenu>
