@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link as RouterLink, LinkProps as RouterLinkProps } from "react-router-dom";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ExternalLink as ExternalLinkIcon, ArrowRight } from "lucide-react";
 
 const linkVariants = cva(
   "inline-flex items-center transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-blue-200",
@@ -98,7 +98,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
         >
           {children}
           {showExternalIcon && isExternal && (
-            <ExternalLink className="ml-1 h-4 w-4" aria-hidden="true" />
+            <ExternalLinkIcon className="ml-1 h-4 w-4" aria-hidden="true" />
           )}
           {showArrow && !isExternal && (
             <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
