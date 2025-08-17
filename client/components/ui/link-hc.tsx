@@ -1,5 +1,8 @@
 import * as React from "react";
-import { Link as RouterLink, LinkProps as RouterLinkProps } from "react-router-dom";
+import {
+  Link as RouterLink,
+  LinkProps as RouterLinkProps,
+} from "react-router-dom";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { ExternalLink as ExternalLinkIcon, ArrowRight } from "lucide-react";
@@ -9,12 +12,16 @@ const linkVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-hc-primary hover:text-hc-blue-secondary underline-offset-4 hover:underline",
-        button: "bg-hc-primary text-white px-4 py-2 rounded-md hover:opacity-90 font-medium",
+        default:
+          "text-hc-primary hover:text-hc-blue-secondary underline-offset-4 hover:underline",
+        button:
+          "bg-hc-primary text-white px-4 py-2 rounded-md hover:opacity-90 font-medium",
         nav: "text-gray-700 hover:text-hc-primary hover:bg-gray-100 px-3 py-2 rounded-md font-medium",
         breadcrumb: "text-gray-500 hover:text-hc-primary text-sm",
-        sidebar: "text-gray-600 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-lg font-medium",
-        emergency: "text-hc-emergency hover:text-white hover:bg-hc-emergency px-3 py-2 rounded-md font-bold border-2 border-hc-emergency",
+        sidebar:
+          "text-gray-600 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-lg font-medium",
+        emergency:
+          "text-hc-emergency hover:text-white hover:bg-hc-emergency px-3 py-2 rounded-md font-bold border-2 border-hc-emergency",
       },
       size: {
         sm: "text-sm",
@@ -24,27 +31,27 @@ const linkVariants = cva(
       external: {
         true: "after:content-['_↗'] after:text-xs after:ml-1",
         false: "",
-      }
+      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
       external: false,
     },
-  }
+  },
 );
 
-export interface LinkProps extends Omit<RouterLinkProps, 'to'> {
+export interface LinkProps extends Omit<RouterLinkProps, "to"> {
   to?: string;
   href?: string;
-  variant?: VariantProps<typeof linkVariants>['variant'];
-  size?: VariantProps<typeof linkVariants>['size'];
+  variant?: VariantProps<typeof linkVariants>["variant"];
+  size?: VariantProps<typeof linkVariants>["size"];
   external?: boolean;
   openInNewTab?: boolean;
   showExternalIcon?: boolean;
   showArrow?: boolean;
-  'aria-label'?: string;
-  'aria-describedby'?: string;
+  "aria-label"?: string;
+  "aria-describedby"?: string;
   children: React.ReactNode;
 }
 
@@ -61,29 +68,36 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       showArrow = false,
       className,
       children,
-      'aria-label': ariaLabel,
-      'aria-describedby': ariaDescribedBy,
+      "aria-label": ariaLabel,
+      "aria-describedby": ariaDescribedBy,
       ...props
     },
-    ref
+    ref,
   ) => {
     const linkUrl = to || href;
-    const isExternal = external || (linkUrl && (linkUrl.startsWith('http') || linkUrl.startsWith('mailto:') || linkUrl.startsWith('tel:')));
+    const isExternal =
+      external ||
+      (linkUrl &&
+        (linkUrl.startsWith("http") ||
+          linkUrl.startsWith("mailto:") ||
+          linkUrl.startsWith("tel:")));
     const shouldOpenInNewTab = openInNewTab || isExternal;
 
     // Enhanced accessibility attributes
     const accessibilityProps = {
-      'aria-label': ariaLabel,
-      'aria-describedby': ariaDescribedBy,
+      "aria-label": ariaLabel,
+      "aria-describedby": ariaDescribedBy,
       ...(shouldOpenInNewTab && {
-        target: '_blank',
-        rel: 'noopener noreferrer',
-        'aria-label': ariaLabel ? `${ariaLabel} (opens in new tab)` : `${children} (opens in new tab)`,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        "aria-label": ariaLabel
+          ? `${ariaLabel} (opens in new tab)`
+          : `${children} (opens in new tab)`,
       }),
     };
 
     const linkClassName = cn(
-      linkVariants({ variant, size, external: isExternal, className })
+      linkVariants({ variant, size, external: isExternal, className }),
     );
 
     // External links or mailto/tel links
@@ -105,9 +119,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
           )}
           {/* Screen reader announcement for external links */}
           {isExternal && !ariaLabel && (
-            <span className="sr-only">
-              (opens in new window)
-            </span>
+            <span className="sr-only">(opens in new window)</span>
           )}
         </a>
       );
@@ -128,7 +140,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
         )}
       </RouterLink>
     );
-  }
+  },
 );
 
 Link.displayName = "Link";
@@ -136,38 +148,26 @@ Link.displayName = "Link";
 // Specialized healthcare link variants
 export const NavigationLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => (
-    <Link
-      ref={ref}
-      variant="nav"
-      {...props}
-    >
+    <Link ref={ref} variant="nav" {...props}>
       {children}
     </Link>
-  )
+  ),
 );
 
 export const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => (
-    <Link
-      ref={ref}
-      variant="breadcrumb"
-      {...props}
-    >
+    <Link ref={ref} variant="breadcrumb" {...props}>
       {children}
     </Link>
-  )
+  ),
 );
 
 export const SidebarLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => (
-    <Link
-      ref={ref}
-      variant="sidebar"
-      {...props}
-    >
+    <Link ref={ref} variant="sidebar" {...props}>
       {children}
     </Link>
-  )
+  ),
 );
 
 export const EmergencyLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
@@ -180,20 +180,15 @@ export const EmergencyLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
     >
       {children}
     </Link>
-  )
+  ),
 );
 
 export const ExternalLink = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ children, ...props }, ref) => (
-    <Link
-      ref={ref}
-      external={true}
-      showExternalIcon={true}
-      {...props}
-    >
+    <Link ref={ref} external={true} showExternalIcon={true} {...props}>
       {children}
     </Link>
-  )
+  ),
 );
 
 NavigationLink.displayName = "NavigationLink";
