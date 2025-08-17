@@ -12,28 +12,30 @@ interface Appointment {
 
 const appointments: Appointment[] = [
   {
-    id: '1',
-    name: 'Rosa Charles',
-    reason: 'Consultation',
-    diagnosis: 'Headache',
-    time: '09.50 AM',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/94725adbbe1b8f9e7ac623d88dc44cfe413a9fad?width=64'
+    id: "1",
+    name: "Rosa Charles",
+    reason: "Consultation",
+    diagnosis: "Headache",
+    time: "09.50 AM",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/94725adbbe1b8f9e7ac623d88dc44cfe413a9fad?width=64",
   },
   {
-    id: '2',
-    name: 'Keenan Waller',
-    reason: 'Re visit',
-    diagnosis: 'Food Allergy',
-    time: '10.30 AM'
+    id: "2",
+    name: "Keenan Waller",
+    reason: "Re visit",
+    diagnosis: "Food Allergy",
+    time: "10.30 AM",
   },
   {
-    id: '3',
-    name: 'Alexander Wells',
-    reason: 'Scheduled visit',
-    diagnosis: 'Hypertension',
-    time: '11.50 AM',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/989b6d028e8c0fe9641a68d350118eed89ecc59f?width=64'
-  }
+    id: "3",
+    name: "Alexander Wells",
+    reason: "Scheduled visit",
+    diagnosis: "Hypertension",
+    time: "11.50 AM",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/989b6d028e8c0fe9641a68d350118eed89ecc59f?width=64",
+  },
 ];
 
 export function AppointmentsTable() {
@@ -69,10 +71,13 @@ export function AppointmentsTable() {
           {/* Table Rows */}
           <div className="space-y-3">
             {appointments.map((appointment, index) => (
-              <div key={appointment.id} className="grid grid-cols-4 gap-4 items-center py-2">
+              <div
+                key={appointment.id}
+                className="grid grid-cols-4 gap-4 items-center py-2"
+              >
                 <div className="flex items-center space-x-3">
                   {appointment.avatar ? (
-                    <img 
+                    <img
                       src={appointment.avatar}
                       alt={appointment.name}
                       className="w-8 h-8 rounded-full object-cover"
@@ -84,10 +89,16 @@ export function AppointmentsTable() {
                       </span>
                     </div>
                   )}
-                  <span className="text-sm text-gray-900">{appointment.name}</span>
+                  <span className="text-sm text-gray-900">
+                    {appointment.name}
+                  </span>
                 </div>
-                <div className="text-sm text-gray-600">{appointment.reason}</div>
-                <div className="text-sm text-gray-600">{appointment.diagnosis}</div>
+                <div className="text-sm text-gray-600">
+                  {appointment.reason}
+                </div>
+                <div className="text-sm text-gray-600">
+                  {appointment.diagnosis}
+                </div>
                 <div className="text-sm text-gray-600">{appointment.time}</div>
               </div>
             ))}
