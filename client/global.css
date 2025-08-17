@@ -575,6 +575,62 @@
     line-height: 1.4;
   }
 
+  /* Enhanced Contrast Utilities for Critical Healthcare Information */
+  .hc-critical-text {
+    color: var(--hc-red-error);
+    font-weight: 700;
+    @apply text-base leading-relaxed;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+
+  .hc-high-contrast {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    font-weight: 600;
+  }
+
+  .hc-alert-high-contrast {
+    background: var(--hc-red-error);
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    font-weight: 700;
+    @apply text-base px-3 py-2;
+    box-shadow: 0 0 0 3px var(--hc-red-error);
+  }
+
+  .hc-status-high-contrast {
+    background: var(--hc-green-success);
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    font-weight: 700;
+    @apply text-base px-3 py-2;
+  }
+
+  /* Medical Emergency High Contrast Mode */
+  .hc-emergency-mode {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 3px solid #ff0000 !important;
+    font-size: 1.25rem !important;
+    font-weight: 900 !important;
+    line-height: 1.4 !important;
+    text-shadow: 2px 2px 0 #000000;
+  }
+
+  /* Enhanced Focus States for Healthcare */
+  .hc-focus-enhanced:focus {
+    outline: 4px solid var(--hc-blue-primary) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 6px rgba(26, 54, 93, 0.3) !important;
+  }
+
+  .hc-focus-critical:focus {
+    outline: 4px solid var(--hc-red-error) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 6px rgba(155, 44, 44, 0.4) !important;
+  }
+
   /* Error and Success Messages */
   .error-message {
     color: var(--hc-red-error);
