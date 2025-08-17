@@ -13,10 +13,12 @@
     {
       "source": "/api/(.*)",
       "destination": "/api/index"
-    },
+    }
+  ],
+  "routes": [
     {
-      "source": "/((?!api/).*)",
-      "destination": "/index.html"
+      "src": "^/(?!api/).*",
+      "dest": "/index.html"
     }
   ]
 }
