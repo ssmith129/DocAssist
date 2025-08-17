@@ -1,7 +1,0 @@
-node_modules
-.env.local
-.env
-dist/server
-netlify
-*.log
-.DS_Store
