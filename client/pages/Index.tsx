@@ -1,331 +1,119 @@
-import { Navigation } from "@/components/healthcare/Navigation";
-import { PatientCard } from "@/components/healthcare/PatientCard";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { 
-  Calendar,
-  Clock,
-  AlertTriangle,
-  TrendingUp,
-  Users,
-  Activity,
-  MessageSquare,
-  Stethoscope
-} from "lucide-react";
-
-// Mock data for the dashboard
-const mockPatients = [
-  {
-    id: "1",
-    name: "Sarah Johnson",
-    mrn: "MRN-001234",
-    age: 45,
-    primaryCondition: "Hypertension, Type 2 Diabetes",
-    status: "stable" as const,
-    location: "Room 302-A",
-    attendingPhysician: "Dr. Smith",
-    admissionDate: "2024-01-15",
-    vitalSigns: {
-      heartRate: 72,
-      bloodPressure: "120/80",
-      temperature: 98.6,
-      oxygenSaturation: 98,
-      trends: {
-        heartRate: "stable" as const,
-        bloodPressure: "down" as const,
-        temperature: "stable" as const,
-        oxygenSaturation: "stable" as const,
-      }
-    },
-    alerts: [],
-    allergies: ["Penicillin", "Shellfish"],
-    nextAppointment: "Jan 25, 2024 at 2:00 PM"
-  },
-  {
-    id: "2",
-    name: "Michael Chen",
-    mrn: "MRN-001235",
-    age: 62,
-    primaryCondition: "Post-operative care",
-    status: "caution" as const,
-    location: "Room 201-B",
-    attendingPhysician: "Dr. Rodriguez",
-    admissionDate: "2024-01-18",
-    vitalSigns: {
-      heartRate: 85,
-      bloodPressure: "140/90",
-      temperature: 99.2,
-      oxygenSaturation: 95,
-      trends: {
-        heartRate: "up" as const,
-        bloodPressure: "up" as const,
-        temperature: "up" as const,
-        oxygenSaturation: "down" as const,
-      }
-    },
-    alerts: ["High BP", "Elevated temp"],
-    allergies: ["Latex"],
-    nextAppointment: "Jan 22, 2024 at 10:00 AM"
-  },
-  {
-    id: "3",
-    name: "Emma Davis",
-    mrn: "MRN-001236",
-    age: 28,
-    primaryCondition: "Pregnancy - 32 weeks",
-    status: "stable" as const,
-    location: "Room 405-C",
-    attendingPhysician: "Dr. Wilson",
-    admissionDate: "2024-01-20",
-    vitalSigns: {
-      heartRate: 78,
-      bloodPressure: "110/70",
-      temperature: 98.4,
-      oxygenSaturation: 99,
-      trends: {
-        heartRate: "stable" as const,
-        bloodPressure: "stable" as const,
-        temperature: "stable" as const,
-        oxygenSaturation: "stable" as const,
-      }
-    },
-    alerts: [],
-    allergies: [],
-    nextAppointment: "Jan 24, 2024 at 11:30 AM"
-  }
-];
-
-const mockSchedule = [
-  { time: "9:00 AM", patient: "John Smith", type: "Consultation", room: "Exam 1" },
-  { time: "10:30 AM", patient: "Lisa Wong", type: "Follow-up", room: "Exam 2" },
-  { time: "2:00 PM", patient: "Sarah Johnson", type: "Diabetes Review", room: "Exam 1" },
-  { time: "3:30 PM", patient: "David Brown", type: "Physical", room: "Exam 3" },
-];
-
-const mockAlerts = [
-  { patient: "Michael Chen", alert: "Blood pressure elevated", severity: "medium", time: "10 min ago" },
-  { patient: "Robert Taylor", alert: "Lab results critical", severity: "high", time: "25 min ago" },
-  { patient: "Anna White", alert: "Medication due", severity: "low", time: "1 hour ago" },
-];
+import { Sidebar } from "@/components/healthcare/Sidebar";
+import { TopNav } from "@/components/healthcare/TopNav";
+import { StatsCard } from "@/components/healthcare/StatsCard";
+import { NotificationPanel } from "@/components/healthcare/NotificationPanel";
+import { AppointmentsTable } from "@/components/healthcare/AppointmentsTable";
+import { PatientsTable } from "@/components/healthcare/PatientsTable";
+import { PatientChart, PatientTypeChart } from "@/components/healthcare/PatientChart";
+import { UserPlus, Users, Building2, UserCheck } from "lucide-react";
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
+    <div className="min-h-screen bg-gray-50 flex">
+      {/* Sidebar */}
+      <Sidebar />
       
-      {/* Main Dashboard Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Dashboard Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-hc-text-primary">Dashboard</h1>
-          <p className="text-hc-text-secondary mt-1">Welcome back, Dr. Anderson</p>
-        </div>
-
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-hc-text-secondary">Total Patients</p>
-                  <p className="text-3xl font-bold text-hc-text-primary">24</p>
-                </div>
-                <Users className="w-8 h-8 text-healthcare-primary" />
-              </div>
-              <div className="flex items-center mt-4 text-sm">
-                <TrendingUp className="w-4 h-4 text-green-600 mr-1" />
-                <span className="text-green-600">+2 from yesterday</span>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-hc-text-secondary">Active Alerts</p>
-                  <p className="text-3xl font-bold text-hc-text-primary">3</p>
-                </div>
-                <AlertTriangle className="w-8 h-8 text-healthcare-critical" />
-              </div>
-              <div className="flex items-center mt-4 text-sm">
-                <span className="text-healthcare-critical">2 critical, 1 moderate</span>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-hc-text-secondary">Today's Appointments</p>
-                  <p className="text-3xl font-bold text-hc-text-primary">8</p>
-                </div>
-                <Calendar className="w-8 h-8 text-healthcare-primary" />
-              </div>
-              <div className="flex items-center mt-4 text-sm">
-                <Clock className="w-4 h-4 text-hc-text-secondary mr-1" />
-                <span className="text-hc-text-secondary">Next: 2:00 PM</span>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-hc-text-secondary">Pending Reviews</p>
-                  <p className="text-3xl font-bold text-hc-text-primary">5</p>
-                </div>
-                <Stethoscope className="w-8 h-8 text-healthcare-primary" />
-              </div>
-              <div className="flex items-center mt-4 text-sm">
-                <span className="text-hc-text-secondary">Lab results & reports</span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Main Dashboard Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Recent Patients - Left Column */}
-          <div className="lg:col-span-1">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold">Recent Patients</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {mockPatients.map((patient) => (
-                  <PatientCard
-                    key={patient.id}
-                    patient={patient}
-                    size="compact"
-                    showVitalSigns={false}
-                  />
-                ))}
-                <Button variant="outline" className="w-full">
-                  View All Patients
-                </Button>
-              </CardContent>
-            </Card>
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        {/* Top Navigation */}
+        <TopNav />
+        
+        {/* Dashboard Content */}
+        <div className="flex-1 p-8">
+          {/* Stats Cards */}
+          <div className="grid grid-cols-4 gap-4 mb-8">
+            <StatsCard
+              title="New patients"
+              value="15"
+              variant="primary"
+              icon={
+                <svg width="72" height="60" viewBox="0 0 72 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clipPath="url(#clip0_1_1300)">
+                    <path d="M47 39.3334C44.8326 41.8212 42.0932 43.7126 39.0314 44.8351C35.9697 45.9576 32.683 46.2755 29.4709 45.7599C26.2588 45.2443 23.2236 43.9115 20.6417 41.883C18.0598 39.8545 16.0135 37.1949 14.6893 34.1465C13.365 31.0981 12.8049 27.7579 13.0601 24.4304C13.3152 21.1028 14.3775 17.8938 16.1501 15.0957C17.9226 12.2976 20.3491 9.99945 23.2083 8.41074C26.0675 6.82204 29.2686 5.9933 32.5197 6.00004C35.2538 6.00572 37.9562 6.60227 40.451 7.75087C42.9458 8.89947 45.1772 10.5744 47 12.6667" stroke="#7C3AED" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M19.5248 42.0661C15.4856 43.9398 12.0716 46.8939 9.67809 50.5864C7.28454 54.279 6.99375 55.6281 6 60M60.0992 60C59.1182 55.6168 58.8335 54.2536 56.4392 50.5483C54.0449 46.8429 50.624 43.8785 46.5744 42" stroke="#7C3AED" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M66 26H52M59 33V19" stroke="#7C3AED" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_1300">
+                      <rect width="72" height="60" fill="white"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              }
+            />
+            <StatsCard
+              title="Total patients"
+              value="47"
+              icon={
+                <svg width="72" height="60" viewBox="0 0 72 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clipPath="url(#clip0_1_1309)">
+                    <circle cx="36" cy="26" r="20" stroke="#6EE7B7" strokeWidth="6"/>
+                    <path d="M22.5248 42.0661C18.4856 43.9398 15.0716 46.8939 12.6781 50.5864C10.2845 54.279 9.99375 55.6281 9 60M63.0992 60C62.1182 55.6168 61.8335 54.2536 59.4392 50.5483C57.0449 46.8429 53.624 43.8785 49.5744 42" stroke="#6EE7B7" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_1309">
+                      <rect width="72" height="60" fill="white"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              }
+            />
+            <StatsCard
+              title="Rooms"
+              value="76"
+              icon={
+                <svg width="72" height="60" viewBox="0 0 72 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clipPath="url(#clip0_1_1317)">
+                    <path d="M36 31.8889V19.4444M42.3333 25.6667H29.6667M13 63H59V10.1111C59 9.28599 58.6664 8.49467 58.0725 7.91122C57.4786 7.32778 56.6732 7 55.8333 7H16.1667C15.3268 7 14.5214 7.32778 13.9275 7.91122C13.3336 8.49467 13 9.28599 13 10.1111V63ZM29.6667 63H42.3333V44.3333H29.6667V63Z" stroke="#6EE7B7" strokeWidth="5.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_1317">
+                      <rect width="72" height="60" fill="white" transform="matrix(-1 0 0 1 72 0)"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              }
+            />
+            <StatsCard
+              title="Staff members"
+              value="31"
+              icon={
+                <svg width="72" height="60" viewBox="0 0 72 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clipPath="url(#clip0_1_1323)">
+                    <path d="M22.0034 40.5V58C22.0034 61.7131 23.4784 65.274 26.1039 67.8995C28.7294 70.525 32.2904 72 36.0034 72H43.0034C46.7165 72 50.2774 70.525 52.903 67.8995C55.5285 65.274 57.0035 61.7131 57.0035 58V37" stroke="#6EE7B7" strokeWidth="5.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M32.5 9H36V26.5C36 30.213 34.525 33.774 31.8995 36.3995C29.274 39.025 25.7131 40.5 22 40.5C18.287 40.5 14.726 39.025 12.1005 36.3995C9.475 33.774 8 30.213 8 26.5V9H11.5M57.0001 37C55.6156 37 54.2622 36.5895 53.1111 35.8203C51.9599 35.0511 51.0627 33.9579 50.5329 32.6788C50.0031 31.3997 49.8645 29.9923 50.1346 28.6344C50.4047 27.2765 51.0713 26.0292 52.0503 25.0503C53.0293 24.0713 54.2766 23.4046 55.6344 23.1345C56.9923 22.8644 58.3998 23.003 59.6789 23.5329C60.9579 24.0627 62.0512 24.9599 62.8204 26.111C63.5895 27.2622 64.0001 28.6155 64.0001 30C64.0001 31.8565 63.2626 33.637 61.9498 34.9498C60.6371 36.2625 58.8566 37 57.0001 37Z" stroke="#6EE7B7" strokeWidth="5.33333" strokeLinecap="round" strokeLinejoin="round"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_1323">
+                      <rect width="72" height="60" fill="white"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              }
+            />
           </div>
 
-          {/* Center Column - Selected Patient & Schedule */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Featured Patient */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold">Patient Focus</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <PatientCard
-                  patient={mockPatients[1]}
-                  size="detailed"
-                  showVitalSigns={true}
-                />
-              </CardContent>
-            </Card>
-
-            {/* Today's Schedule */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold">Today's Schedule</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {mockSchedule.map((appointment, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <div>
-                        <p className="font-medium text-hc-text-primary">{appointment.time}</p>
-                        <p className="text-sm text-hc-text-secondary">{appointment.patient}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm font-medium text-hc-text-primary">{appointment.type}</p>
-                        <p className="text-xs text-hc-text-secondary">{appointment.room}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <Button variant="outline" className="w-full mt-4">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  View Full Schedule
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Right Column - Alerts & Quick Actions */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Active Alerts */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold flex items-center">
-                  <AlertTriangle className="w-5 h-5 mr-2 text-healthcare-critical" />
-                  Active Alerts
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {mockAlerts.map((alert, index) => (
-                    <div key={index} className="border-l-4 border-healthcare-critical pl-4 py-2">
-                      <div className="flex items-center justify-between">
-                        <p className="font-medium text-hc-text-primary">{alert.patient}</p>
-                        <Badge variant={alert.severity === 'high' ? 'destructive' : alert.severity === 'medium' ? 'default' : 'secondary'}>
-                          {alert.severity}
-                        </Badge>
-                      </div>
-                      <p className="text-sm text-hc-text-secondary">{alert.alert}</p>
-                      <p className="text-xs text-hc-text-tertiary mt-1">{alert.time}</p>
-                    </div>
-                  ))}
-                </div>
-                <Button variant="outline" className="w-full mt-4">
-                  View All Alerts
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold">Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Button className="w-full justify-start" variant="outline">
-                  <Users className="w-4 h-4 mr-2" />
-                  Add New Patient
-                </Button>
-                <Button className="w-full justify-start" variant="outline">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Schedule Appointment
-                </Button>
-                <Button className="w-full justify-start" variant="outline">
-                  <MessageSquare className="w-4 h-4 mr-2" />
-                  Send Message
-                </Button>
-                <Button className="w-full justify-start" variant="outline">
-                  <Activity className="w-4 h-4 mr-2" />
-                  Clinical Notes
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-
-      {/* Status Bar */}
-      <div className="bg-healthcare-primary text-white py-3">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center space-x-6">
-              <span>24 patients</span>
-              <span>3 critical alerts</span>
-              <span>Next appointment: 2:00 PM</span>
+          {/* Main Grid */}
+          <div className="grid grid-cols-12 gap-6">
+            {/* Today's Appointments - Left Side */}
+            <div className="col-span-7">
+              <AppointmentsTable />
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span>System Online</span>
+
+            {/* Notifications - Top Right */}
+            <div className="col-span-5 flex flex-col space-y-6">
+              <NotificationPanel />
+              <PatientTypeChart />
+            </div>
+
+            {/* Patients List - Bottom Left */}
+            <div className="col-span-5">
+              <PatientsTable />
+            </div>
+
+            {/* Patient Chart - Bottom Right */}
+            <div className="col-span-7">
+              <PatientChart />
             </div>
           </div>
         </div>
