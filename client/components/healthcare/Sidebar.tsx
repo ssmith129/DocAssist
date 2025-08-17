@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   LayoutDashboard,
   Calendar,
@@ -9,7 +9,6 @@ import {
   MessageSquare,
   FileText,
   Shield,
-  Wrench,
   Settings,
   ChevronDown,
   ChevronRight,
@@ -31,6 +30,10 @@ import {
   Clock,
   Archive,
   Database,
+  Search,
+  Plus,
+  Bookmark,
+  Bell,
 } from "lucide-react";
 
 interface MenuItem {
@@ -38,6 +41,7 @@ interface MenuItem {
   href: string;
   icon: React.ElementType;
   badge?: string;
+  description?: string;
 }
 
 interface MenuSection {
@@ -45,139 +49,216 @@ interface MenuSection {
   icon: React.ElementType;
   items: MenuItem[];
   defaultOpen?: boolean;
+  priority?: 'high' | 'medium' | 'low';
 }
 
+// Reorganized and simplified menu structure
 const menuSections: MenuSection[] = [
   {
     name: "Dashboard",
     icon: LayoutDashboard,
     defaultOpen: true,
+    priority: 'high',
     items: [
-      { name: "Overview", href: "/", icon: LayoutDashboard },
-      { name: "Analytics", href: "/analytics", icon: BarChart3 },
+      { 
+        name: "Overview", 
+        href: "/", 
+        icon: LayoutDashboard,
+        description: "Main dashboard and overview"
+      },
     ],
   },
   {
-    name: "Patient Management",
+    name: "Patient Care",
     icon: Users,
     defaultOpen: true,
+    priority: 'high',
     items: [
-      { name: "Patient List", href: "/patients", icon: Users },
-      {
-        name: "Patient Registration",
-        href: "/patients/register",
-        icon: UserCog,
+      { 
+        name: "Patient List", 
+        href: "/patients", 
+        icon: Users,
+        description: "View all patients"
       },
-      { name: "Patient Search", href: "/patients/search", icon: FileText },
-      { name: "Medical Records", href: "/patients/records", icon: Archive },
+      {
+        name: "Add Patient",
+        href: "/patients/register",
+        icon: Plus,
+        description: "Register new patient"
+      },
+      { 
+        name: "Search Patients", 
+        href: "/patients/search", 
+        icon: Search,
+        description: "Find specific patients"
+      },
     ],
   },
   {
-    name: "Clinical Care",
+    name: "Clinical",
     icon: Stethoscope,
     defaultOpen: false,
+    priority: 'high',
     items: [
-      { name: "Clinical Notes", href: "/clinical", icon: Stethoscope },
       {
         name: "Progress Notes",
         href: "/clinical/progress",
         icon: FileSignature,
+        description: "Patient documentation"
       },
       {
         name: "Assessments",
         href: "/clinical/assessments",
         icon: ClipboardList,
+        description: "Clinical evaluations"
       },
-      { name: "Care Plans", href: "/clinical/care-plans", icon: Heart },
-      { name: "Procedures", href: "/clinical/procedures", icon: Activity },
-      { name: "Vital Signs", href: "/clinical/vitals", icon: Thermometer },
+      { 
+        name: "Care Plans", 
+        href: "/clinical/care-plans", 
+        icon: Heart,
+        description: "Treatment planning"
+      },
+      { 
+        name: "Vital Signs", 
+        href: "/clinical/vitals", 
+        icon: Thermometer,
+        description: "Monitor vitals"
+      },
     ],
   },
   {
-    name: "Laboratory",
+    name: "Diagnostics",
     icon: TestTube,
     defaultOpen: false,
+    priority: 'medium',
     items: [
-      { name: "Lab Orders", href: "/laboratory/orders", icon: TestTube },
-      { name: "Lab Results", href: "/laboratory/results", icon: Activity },
-      { name: "Microbiology", href: "/laboratory/microbiology", icon: Eye },
-      { name: "Pathology", href: "/laboratory/pathology", icon: Brain },
-      { name: "Blood Bank", href: "/laboratory/blood", icon: Thermometer },
+      { 
+        name: "Lab Orders", 
+        href: "/laboratory/orders", 
+        icon: TestTube,
+        description: "Laboratory tests"
+      },
+      { 
+        name: "Lab Results", 
+        href: "/laboratory/results", 
+        icon: Activity,
+        description: "Test results"
+      },
+      { 
+        name: "Imaging", 
+        href: "/imaging/orders", 
+        icon: Scan,
+        description: "Radiology and imaging"
+      },
+      { 
+        name: "Pathology", 
+        href: "/laboratory/pathology", 
+        icon: Brain,
+        description: "Pathology reports"
+      },
     ],
   },
   {
     name: "Pharmacy",
     icon: Pill,
     defaultOpen: false,
+    priority: 'medium',
     items: [
-      { name: "Medications", href: "/pharmacy/medications", icon: Pill },
+      { 
+        name: "Medications", 
+        href: "/pharmacy/medications", 
+        icon: Pill,
+        description: "Patient medications"
+      },
       {
         name: "Prescriptions",
         href: "/pharmacy/prescriptions",
         icon: FileSignature,
+        description: "Write prescriptions"
       },
       {
         name: "Drug Interactions",
         href: "/pharmacy/interactions",
         icon: AlertTriangle,
+        description: "Check interactions"
       },
-      { name: "Inventory", href: "/pharmacy/inventory", icon: Database },
-    ],
-  },
-  {
-    name: "Imaging & Diagnostics",
-    icon: Scan,
-    defaultOpen: false,
-    items: [
-      { name: "Radiology Orders", href: "/imaging/orders", icon: Scan },
-      { name: "Imaging Results", href: "/imaging/results", icon: FileText },
-      { name: "PACS Viewer", href: "/imaging/viewer", icon: Eye },
-      { name: "Reports", href: "/imaging/reports", icon: Archive },
     ],
   },
   {
     name: "Scheduling",
     icon: Calendar,
     defaultOpen: false,
+    priority: 'medium',
     items: [
-      { name: "Appointments", href: "/schedule", icon: Calendar },
-      { name: "Calendar View", href: "/schedule/calendar", icon: Calendar },
-      {
-        name: "Resource Booking",
-        href: "/schedule/resources",
-        icon: Building2,
+      { 
+        name: "Appointments", 
+        href: "/schedule", 
+        icon: Calendar,
+        description: "Manage appointments"
       },
-      { name: "Waitlist", href: "/schedule/waitlist", icon: Clock },
-    ],
-  },
-  {
-    name: "Communication",
-    icon: MessageSquare,
-    defaultOpen: false,
-    items: [
-      { name: "Messages", href: "/messages", icon: MessageSquare },
-      {
-        name: "Consultations",
-        href: "/messages/consultations",
-        icon: Stethoscope,
+      { 
+        name: "Calendar View", 
+        href: "/schedule/calendar", 
+        icon: Calendar,
+        description: "Calendar interface"
       },
-      { name: "Patient Portal", href: "/messages/portal", icon: Users },
+      {
+        name: "Waitlist",
+        href: "/schedule/waitlist",
+        icon: Clock,
+        description: "Patient waitlist"
+      },
     ],
   },
 ];
 
+// Simplified system items
 const systemItems: MenuItem[] = [
-  { name: "Reports", href: "/reports", icon: BarChart3 },
-  { name: "Administration", href: "/admin", icon: UserCog },
-  { name: "Billing", href: "/billing", icon: CreditCard },
-  { name: "Files & Documents", href: "/files", icon: FileText },
-  { name: "Rooms", href: "/rooms", icon: Building2 },
+  { 
+    name: "Analytics", 
+    href: "/analytics", 
+    icon: BarChart3,
+    description: "Reports and metrics"
+  },
+  { 
+    name: "Messages", 
+    href: "/messages", 
+    icon: MessageSquare,
+    description: "Communication hub"
+  },
+  { 
+    name: "Reports", 
+    href: "/reports", 
+    icon: FileText,
+    description: "Generate reports"
+  },
 ];
 
 const bottomItems: MenuItem[] = [
-  { name: "Security", href: "/security", icon: Shield },
-  { name: "System Tools", href: "/tools", icon: Wrench },
-  { name: "Settings", href: "/settings", icon: Settings },
+  { 
+    name: "Settings", 
+    href: "/settings", 
+    icon: Settings,
+    description: "System configuration"
+  },
+];
+
+// Quick access items for frequent actions
+const quickAccessItems: MenuItem[] = [
+  { 
+    name: "Emergency", 
+    href: "/emergency", 
+    icon: AlertTriangle, 
+    badge: "2",
+    description: "Emergency alerts"
+  },
+  { 
+    name: "Notifications", 
+    href: "/notifications", 
+    icon: Bell, 
+    badge: "5",
+    description: "System notifications"
+  },
 ];
 
 export function Sidebar() {
@@ -190,6 +271,21 @@ export function Sidebar() {
       ]),
     ),
   );
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  // Auto-expand section when navigating to its items
+  useEffect(() => {
+    menuSections.forEach((section) => {
+      const hasActiveItem = section.items.some((item) => 
+        location.pathname === item.href || 
+        (item.href !== "/" && location.pathname.startsWith(item.href))
+      );
+      if (hasActiveItem && !openSections[section.name]) {
+        setOpenSections(prev => ({ ...prev, [section.name]: true }));
+      }
+    });
+  }, [location.pathname]);
 
   const toggleSection = (sectionName: string) => {
     setOpenSections((prev) => ({
@@ -205,66 +301,158 @@ export function Sidebar() {
     return location.pathname.startsWith(href);
   };
 
+  const getPriorityColor = (priority?: string) => {
+    switch (priority) {
+      case 'high':
+        return 'text-violet-600';
+      case 'medium':
+        return 'text-blue-600';
+      case 'low':
+        return 'text-gray-600';
+      default:
+        return 'text-violet-600';
+    }
+  };
+
   return (
-    <div className="flex flex-col w-[280px] h-screen bg-white shadow-lg border-r border-gray-200">
-      {/* Logo */}
-      <div className="px-6 py-6 border-b border-gray-100">
-        <svg
-          width="56"
-          height="32"
-          viewBox="0 0 56 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M22.4267 5.29697C22.3643 5.41114 22.3329 5.5397 22.3357 5.6698V10.5149H19.9561V0H22.3357V3.77815C22.4649 3.57594 22.6229 3.39362 22.8047 3.23694C23.1569 2.93627 23.6431 2.78336 24.2514 2.78336C25.0451 2.78336 25.6585 3.07715 26.064 3.59946C26.4694 4.12177 26.6773 4.87087 26.6773 5.82099V10.5149H24.2977V5.98593C24.2977 5.55468 24.2221 5.22996 24.107 5.04956C23.9919 4.86915 23.7823 4.78325 23.4662 4.78325C23.3202 4.78296 23.1749 4.8038 23.0349 4.8451C22.9002 4.8777 22.773 4.93604 22.6604 5.01691C22.5633 5.09246 22.4837 5.18797 22.4267 5.29697ZM46.8961 13.0955H51.1794L46.5525 18.4612L51.6089 26.8405H47.0112L43.9667 21.126L42.2434 23.0589V26.8405H38.3794V3.3847H42.2434V19.0093H42.3998L46.8961 13.0955ZM52.468 23.1586V7.5941H56.3286L56.3029 23.9162V26.9195C54.965 26.9195 53.9914 26.5977 53.3821 25.9539C52.7727 25.3102 52.468 24.3784 52.468 23.1586ZM35.3573 13.3567C34.9702 13.5048 34.6155 13.7266 34.3127 14.0096C34.0298 14.2895 33.7973 14.6162 33.6254 14.9751C33.4524 15.3221 33.3292 15.6917 33.2595 16.073H33.1289V13.0921H29.2734V26.837H33.1375V18.7894C33.1375 17.9876 33.4072 17.4389 33.9467 17.1434C34.5057 16.8479 35.3504 16.7001 36.481 16.7001H37.4551V13.0921H36.7679C36.2845 13.0827 35.8044 13.1727 35.3573 13.3567ZM20.7653 13.4804C21.4606 12.9925 22.2921 12.7364 23.1414 12.7485C24.8824 12.7485 26.1968 13.3572 27.0845 14.5748C27.9711 15.7935 28.4149 17.5689 28.416 19.901C28.4172 22.2331 27.9733 24.0176 27.0845 25.2547C26.1957 26.4734 24.8813 27.0827 23.1414 27.0827C22.706 27.0854 22.2732 27.0145 21.8614 26.8731C21.4717 26.7587 21.102 26.5848 20.7653 26.3577C20.4566 26.1193 20.1835 25.8382 19.9543 25.5227C19.734 25.2035 19.5669 24.8507 19.4595 24.4781H19.3289V31.9914C18.3044 31.9919 17.3216 31.5854 16.5967 30.8615C15.8718 30.1375 15.464 29.1553 15.4631 28.1308V13.0921H19.3289V15.36H19.4595C19.6491 14.5943 20.1139 13.9253 20.7653 13.4804ZM23.6672 23.1981C24.154 22.6758 24.3974 21.9793 24.3974 21.1088V18.7378C24.3985 17.8685 24.1551 17.1812 23.6672 16.6761C23.4426 16.4213 23.1647 16.2191 22.8532 16.0837C22.5418 15.9483 22.2043 15.8831 21.8649 15.8926C21.2117 15.8684 20.5689 16.0611 20.0368 16.4407C19.808 16.6075 19.6239 16.8283 19.501 17.0833C19.3781 17.3384 19.3202 17.6199 19.3323 17.9028V21.9507C19.3214 22.2373 19.3798 22.5224 19.5024 22.7817C19.625 23.041 19.8083 23.2669 20.0368 23.4403C20.5764 23.8008 21.2164 23.9812 21.8649 23.9558C22.202 23.966 22.5374 23.9036 22.8484 23.7729C23.1594 23.6422 23.4386 23.4461 23.6672 23.1981ZM12.666 17.3874C11.7611 16.5146 10.3683 15.9304 8.48752 15.6349L6.68521 15.3463C5.91893 15.226 5.36168 15.0261 5.01348 14.7466C4.6836 14.4683 4.51866 14.0153 4.51866 13.3876C4.50904 13.1326 4.56382 12.8793 4.67793 12.6511C4.79203 12.4229 4.9618 12.2271 5.17154 12.0818C5.6068 11.7691 6.26828 11.6128 7.15597 11.6128C8.09521 11.6128 8.87009 11.7783 9.48059 12.1093C10.0879 12.4081 10.6294 12.8251 11.0733 13.3361L13.7106 10.673C12.9695 9.84194 12.0496 9.18986 11.02 8.76585C9.86468 8.30889 8.63013 8.0858 7.38792 8.10953C6.40524 8.09516 5.42646 8.23606 4.48773 8.52703C3.70881 8.7611 2.98287 9.1445 2.35039 9.65584C1.78352 10.1333 1.32889 10.7299 1.01885 11.4032C0.69916 12.1081 0.538441 12.8748 0.548081 13.6488C0.548081 15.1813 0.991928 16.4092 1.87962 17.3324C2.78565 18.2545 4.20481 18.8375 6.13713 19.0815L7.93944 19.3168C8.79162 19.4382 9.35746 19.6731 9.63694 20.0213C9.92255 20.3755 10.0708 20.8208 10.0544 21.2755C10.0653 21.577 10.0076 21.877 9.88557 22.1529C9.76354 22.4288 9.58041 22.6734 9.35001 22.8682C8.87925 23.2679 8.15649 23.4684 7.18175 23.4695C5.37085 23.4695 3.84745 22.7731 2.61154 21.3803L0 24.0176C0.805446 24.9044 1.77141 25.6308 2.84693 26.1584C3.96027 26.6979 5.31816 26.9676 6.92059 26.9676C7.94559 26.9827 8.96694 26.8419 9.94964 26.5501C10.7649 26.2955 11.5201 25.8782 12.1695 25.3234C12.7707 24.8121 13.2448 24.1681 13.5543 23.442C13.8734 22.6807 14.033 21.8621 14.0233 21.0367C14.0233 19.4549 13.5709 18.2384 12.666 17.3874ZM29.6186 10.4067C30.1075 10.5972 30.6283 10.6923 31.1529 10.6867C31.7767 10.6972 32.3965 10.5857 32.9776 10.3586C33.4892 10.1611 33.9454 9.84275 34.3074 9.43077L34.4002 9.32253L33.1717 7.79512L33.036 7.93601C32.8221 8.1587 32.5841 8.35693 32.3264 8.52704C32.0398 8.68678 31.7144 8.76353 31.3866 8.74868C30.89 8.74868 30.5275 8.62841 30.3042 8.39303C30.0763 8.12417 29.9542 7.78153 29.9605 7.42916H34.5995V6.6457C34.6013 6.16115 34.5348 5.67876 34.4019 5.21279C34.2845 4.75895 34.0726 4.33505 33.7799 3.96887C33.4841 3.59921 33.1049 3.30483 32.6735 3.10981C32.1701 2.88289 31.6224 2.77135 31.0705 2.78336C30.5526 2.77509 30.0385 2.87334 29.5602 3.07201C29.125 3.24855 28.7364 3.52312 28.4245 3.87437C28.115 4.2423 27.884 4.66973 27.7459 5.13032C27.5867 5.65008 27.5096 6.1915 27.5174 6.73504C27.5114 7.2841 27.5884 7.83091 27.7459 8.35695C27.8961 8.8202 28.138 9.24849 28.4572 9.61633C28.7843 9.95841 29.1785 10.2292 29.6152 10.4118L29.6186 10.4067ZM29.9623 5.88285C29.9537 5.55729 30.0602 5.23913 30.2629 4.98428C30.3691 4.86728 30.5001 4.77565 30.6464 4.71616C30.7928 4.65668 30.9506 4.63087 31.1083 4.64065C31.2547 4.62756 31.4021 4.65228 31.5362 4.71244C31.6704 4.77261 31.7869 4.86621 31.8745 4.98428C32.0578 5.24514 32.154 5.55721 32.1494 5.87598L29.9623 5.88285ZM17.5644 10.5132C16.8153 10.5132 16.2346 10.3156 15.836 9.92902C15.4477 9.53901 15.2501 8.96859 15.2432 8.24011V4.87947H14.2261V2.95517H14.9133C14.9905 2.96641 15.0692 2.96104 15.1442 2.93941C15.2192 2.91778 15.2887 2.88039 15.348 2.82975C15.4338 2.68774 15.474 2.52283 15.4631 2.35727V1.00339H17.628V2.95517H19.0574V4.87947H17.628V8.59061H18.9389V10.5132H17.5644Z"
-            fill="#111827"
-          />
-        </svg>
+    <div className={`flex flex-col h-screen bg-white shadow-xl border-r border-gray-200 transition-all duration-300 ${
+      isCollapsed ? 'w-16' : 'w-[280px]'
+    }`}>
+      {/* Enhanced Logo Section */}
+      <div className={`px-6 py-6 border-b border-gray-100 relative ${isCollapsed ? 'px-4' : ''}`}>
+        <div className="flex items-center justify-between">
+          {!isCollapsed && (
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-blue-600 rounded-lg flex items-center justify-center">
+                <Stethoscope className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-lg font-bold text-gray-800">HealthCare</h1>
+                <p className="text-xs text-gray-500">EHR System</p>
+              </div>
+            </div>
+          )}
+          {isCollapsed && (
+            <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-blue-600 rounded-lg flex items-center justify-center mx-auto">
+              <Stethoscope className="w-5 h-5 text-white" />
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Quick Access Bar */}
+      {!isCollapsed && (
+        <div className="px-4 py-3 bg-gray-50 border-b border-gray-100">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              Quick Access
+            </h3>
+          </div>
+          <div className="flex space-x-2 mt-2">
+            {quickAccessItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                className={cn(
+                  "relative flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 hover:scale-110 group",
+                  isItemActive(item.href)
+                    ? "bg-violet-600 text-white shadow-lg"
+                    : "bg-white text-gray-600 hover:bg-violet-50 hover:text-violet-600 shadow-sm"
+                )}
+                onMouseEnter={() => setHoveredItem(item.href)}
+                onMouseLeave={() => setHoveredItem(null)}
+              >
+                <item.icon className="w-5 h-5" />
+                {item.badge && (
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse">
+                    {item.badge}
+                  </span>
+                )}
+                {hoveredItem === item.href && (
+                  <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap z-50">
+                    {item.description}
+                  </div>
+                )}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Navigation Menu */}
       <div className="flex-1 overflow-y-auto px-4 py-4">
-        <div className="space-y-1">
-          {/* Collapsible Sections */}
+        <div className="space-y-2">
+          {/* Main Menu Sections */}
           {menuSections.map((section) => (
-            <div key={section.name}>
+            <div key={section.name} className="mb-1">
               <button
-                onClick={() => toggleSection(section.name)}
-                className="flex items-center justify-between w-full px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                onClick={() => !isCollapsed && toggleSection(section.name)}
+                className={cn(
+                  "flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 group",
+                  "hover:bg-violet-50 hover:text-violet-700",
+                  openSections[section.name] && !isCollapsed ? "bg-violet-50 text-violet-700" : "text-gray-700",
+                  isCollapsed ? "justify-center" : ""
+                )}
+                onMouseEnter={() => setHoveredItem(section.name)}
+                onMouseLeave={() => setHoveredItem(null)}
               >
-                <div className="flex items-center space-x-2">
-                  <section.icon className="w-4 h-4 text-violet-600" />
-                  <span>{section.name}</span>
+                <div className="flex items-center space-x-3">
+                  <section.icon className={cn("w-5 h-5 transition-colors", getPriorityColor(section.priority))} />
+                  {!isCollapsed && <span className="font-medium">{section.name}</span>}
                 </div>
-                {openSections[section.name] ? (
-                  <ChevronDown className="w-4 h-4" />
-                ) : (
-                  <ChevronRight className="w-4 h-4" />
+                {!isCollapsed && (
+                  <div className="flex items-center space-x-1">
+                    {section.priority === 'high' && (
+                      <div className="w-2 h-2 bg-violet-500 rounded-full" />
+                    )}
+                    {openSections[section.name] ? (
+                      <ChevronDown className="w-4 h-4 transition-transform duration-300" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4 transition-transform duration-300" />
+                    )}
+                  </div>
+                )}
+                {isCollapsed && hoveredItem === section.name && (
+                  <div className="absolute left-full ml-2 px-3 py-2 bg-gray-800 text-white text-sm rounded whitespace-nowrap z-50">
+                    {section.name}
+                  </div>
                 )}
               </button>
 
-              {openSections[section.name] && (
-                <div className="ml-6 mt-1 space-y-1">
+              {/* Section Items */}
+              {openSections[section.name] && !isCollapsed && (
+                <div className="ml-8 mt-1 space-y-1 animate-in slide-in-from-top-2 duration-300">
                   {section.items.map((item) => (
                     <Link
                       key={item.href}
                       to={item.href}
                       className={cn(
-                        "flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors",
+                        "flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-all duration-300 group",
                         isItemActive(item.href)
-                          ? "bg-violet-50 text-violet-700 font-medium"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                          ? "bg-violet-100 text-violet-800 font-medium shadow-sm border-l-2 border-violet-600"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-1"
                       )}
+                      onMouseEnter={() => setHoveredItem(item.href)}
+                      onMouseLeave={() => setHoveredItem(null)}
                     >
-                      <item.icon className="w-4 h-4" />
-                      <span>{item.name}</span>
-                      {item.badge && (
-                        <span className="ml-auto text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full">
-                          {item.badge}
-                        </span>
+                      <div className="flex items-center space-x-3">
+                        <item.icon className="w-4 h-4" />
+                        <span>{item.name}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        {item.badge && (
+                          <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full animate-pulse">
+                            {item.badge}
+                          </span>
+                        )}
+                        {isItemActive(item.href) && (
+                          <div className="w-2 h-2 bg-violet-600 rounded-full animate-pulse" />
+                        )}
+                      </div>
+                      {hoveredItem === item.href && (
+                        <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap z-50">
+                          {item.description}
+                        </div>
                       )}
                     </Link>
                   ))}
@@ -278,26 +466,36 @@ export function Sidebar() {
 
           {/* System Items */}
           <div className="space-y-1">
-            <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              System
-            </div>
+            {!isCollapsed && (
+              <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                System
+              </div>
+            )}
             {systemItems.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  "flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors",
+                  "flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-300 group",
                   isItemActive(item.href)
-                    ? "bg-violet-50 text-violet-700 font-medium"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                    ? "bg-violet-100 text-violet-800 font-medium shadow-sm"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-1",
+                  isCollapsed ? "justify-center" : ""
                 )}
+                onMouseEnter={() => setHoveredItem(item.href)}
+                onMouseLeave={() => setHoveredItem(null)}
               >
-                <item.icon className="w-4 h-4" />
-                <span>{item.name}</span>
-                {item.badge && (
-                  <span className="ml-auto text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full">
+                <item.icon className="w-5 h-5" />
+                {!isCollapsed && <span>{item.name}</span>}
+                {item.badge && !isCollapsed && (
+                  <span className="ml-auto text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">
                     {item.badge}
                   </span>
+                )}
+                {isCollapsed && hoveredItem === item.href && (
+                  <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap z-50">
+                    {item.description}
+                  </div>
                 )}
               </Link>
             ))}
@@ -305,29 +503,47 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Bottom Items */}
-      <div className="border-t border-gray-200 p-4">
+      {/* Enhanced Bottom Section */}
+      <div className="border-t border-gray-200 p-4 bg-gray-50">
         <div className="space-y-1">
           {bottomItems.map((item) => (
             <Link
               key={item.href}
               to={item.href}
               className={cn(
-                "flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors",
+                "flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-300 group",
                 isItemActive(item.href)
-                  ? "bg-violet-50 text-violet-700 font-medium"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                  ? "bg-violet-100 text-violet-800 font-medium"
+                  : "text-gray-600 hover:bg-white hover:text-gray-900 hover:shadow-sm",
+                isCollapsed ? "justify-center" : ""
               )}
+              onMouseEnter={() => setHoveredItem(item.href)}
+              onMouseLeave={() => setHoveredItem(null)}
             >
-              <item.icon className="w-4 h-4" />
-              <span>{item.name}</span>
-              {item.badge && (
-                <span className="ml-auto text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full">
-                  {item.badge}
-                </span>
+              <item.icon className="w-5 h-5" />
+              {!isCollapsed && <span>{item.name}</span>}
+              {isCollapsed && hoveredItem === item.href && (
+                <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap z-50">
+                  {item.description}
+                </div>
               )}
             </Link>
           ))}
+          
+          {/* User Profile Section */}
+          {!isCollapsed && (
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <div className="flex items-center space-x-3 px-3 py-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-blue-600 rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-medium">DR</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 truncate">Dr. Sarah Johnson</p>
+                  <p className="text-xs text-gray-500 truncate">Attending Physician</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
