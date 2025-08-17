@@ -22,7 +22,7 @@ Disallow: /emergency/
 Disallow: /billing/
 
 # Sitemap location
-Sitemap: https://yourapp.vercel.app/sitemap.xml
+Sitemap: https://yourapp.example.com/sitemap.xml
 
 # Crawl delay for healthcare data protection
 Crawl-delay: 10
