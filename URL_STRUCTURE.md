@@ -8,8 +8,9 @@
 
 ### 🏠 **Dashboard & Overview**
 
-- `/` - Main Dashboard (Home Page)
-- `/Dashboard` - Redirects to `/` (handled automatically)
+- `/dashboard-home` - Main Dashboard (Home Page)
+- `/` - Redirects to `/dashboard-home` (handled automatically)
+- `/Dashboard` - Legacy redirect (removed)
 
 ### 👥 **Patient Management**
 
