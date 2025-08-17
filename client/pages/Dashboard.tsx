@@ -412,7 +412,7 @@ export default function Dashboard() {
                               <Badge
                                 className={`${
                                   action.urgent
-                                    ? "bg-red-500 text-white animate-pulse"
+                                    ? "bg-red-500 text-white"
                                     : "bg-gray-600 text-white"
                                 }`}
                               >
