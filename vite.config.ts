@@ -18,11 +18,11 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom']
-        }
-      }
-    }
+          vendor: ["react", "react-dom"],
+          router: ["react-router-dom"],
+        },
+      },
+    },
   },
   plugins: [react(), expressPlugin()],
   resolve: {
