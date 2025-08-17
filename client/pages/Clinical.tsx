@@ -274,14 +274,14 @@ export default function Clinical() {
                         className="border-b border-gray-100 hover:bg-gray-50"
                       >
                         <td className="py-3 px-4">
-                          <p className="font-medium text-gray-900">
+                          <p className="hc-text-patient-id">
                             {result.patient}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="hc-text-secondary">
                             {result.physician}
                           </p>
                         </td>
-                        <td className="py-3 px-4 text-sm text-gray-900">
+                        <td className="py-3 px-4 hc-text-medical-data">
                           {result.test}
                         </td>
                         <td className="py-3 px-4">
