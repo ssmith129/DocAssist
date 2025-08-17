@@ -374,7 +374,7 @@ export default function Dashboard() {
             {/* Quick Actions Section */}
             <div className="grid grid-cols-12 gap-6">
               <div className="col-span-12">
-                <Card className="shadow-lg hover:shadow-xl transition-all duration-300">
+                <Card className="shadow-lg transition-all duration-300">
                   <CardHeader className="pb-4">
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-lg font-bold text-gray-700 flex items-center">
@@ -437,7 +437,7 @@ export default function Dashboard() {
             <div className="grid grid-cols-12 gap-6">
               {/* Recent Activity */}
               <div className="col-span-5">
-                <Card className="shadow-lg hover:shadow-xl transition-all duration-300">
+                <Card className="shadow-lg transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-lg font-bold text-gray-700 flex items-center">
                       <Activity className="w-5 h-5 mr-2 text-violet-600" />
@@ -480,7 +480,7 @@ export default function Dashboard() {
 
               {/* Quality Metrics Overview */}
               <div className="col-span-7">
-                <Card className="shadow-lg hover:shadow-xl transition-all duration-300">
+                <Card className="shadow-lg transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-lg font-bold text-gray-700 flex items-center">
                       <Target className="w-5 h-5 mr-2 text-violet-600" />
@@ -539,28 +539,28 @@ export default function Dashboard() {
             <div className={`grid grid-cols-12 gap-6 ${compactView ? "grid-rows-2" : ""}`}>
               {/* Today's Appointments */}
               <div className={compactView ? "col-span-6" : "col-span-7"}>
-                <div className="transform hover:scale-102 transition-all duration-300">
+                <div className="transition-all duration-300">
                   <AppointmentsTable />
                 </div>
               </div>
 
               {/* Patient Demographics */}
               <div className={`${compactView ? "col-span-6" : "col-span-5"} space-y-6`}>
-                <div className="transform hover:scale-102 transition-all duration-300">
+                <div className="transition-all duration-300">
                   <PatientTypeChart />
                 </div>
               </div>
 
               {/* Patients List */}
               <div className={compactView ? "col-span-6" : "col-span-5"}>
-                <div className="transform hover:scale-102 transition-all duration-300">
+                <div className="transition-all duration-300">
                   <PatientsTable />
                 </div>
               </div>
 
               {/* Patient Chart */}
               <div className={compactView ? "col-span-6" : "col-span-7"}>
-                <div className="transform hover:scale-102 transition-all duration-300">
+                <div className="transition-all duration-300">
                   <PatientChart />
                 </div>
               </div>
@@ -572,7 +572,7 @@ export default function Dashboard() {
             <div className="grid grid-cols-12 gap-6">
               {/* Patient Flow Chart */}
               <div className="col-span-8">
-                <Card className="shadow-lg hover:shadow-xl transition-all duration-300">
+                <Card className="shadow-lg transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-lg font-bold text-gray-700">
                       Patient Flow Trends
@@ -598,7 +598,7 @@ export default function Dashboard() {
 
               {/* Department Utilization */}
               <div className="col-span-4">
-                <Card className="shadow-lg hover:shadow-xl transition-all duration-300">
+                <Card className="shadow-lg transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-lg font-bold text-gray-700">
                       Department Utilization
