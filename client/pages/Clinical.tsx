@@ -183,7 +183,7 @@ export default function Clinical() {
                 {recentNotes.map((note) => (
                   <div
                     key={note.id}
-                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                    className="border border-gray-200 rounded-lg p-4 transition-shadow"
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">

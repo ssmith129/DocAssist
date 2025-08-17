@@ -219,7 +219,7 @@ export default function Schedule() {
                 {appointments.map((appointment, index) => (
                   <div
                     key={appointment.id}
-                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                    className="border border-gray-200 rounded-lg p-4 transition-shadow"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">

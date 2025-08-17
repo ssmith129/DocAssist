@@ -189,7 +189,7 @@ export default function Reports() {
                 {availableReports.map((report) => (
                   <div
                     key={report.id}
-                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                    className="border border-gray-200 rounded-lg p-4 transition-shadow"
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
