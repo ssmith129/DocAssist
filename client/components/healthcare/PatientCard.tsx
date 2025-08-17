@@ -69,7 +69,7 @@ export function PatientCard({ patient, size = 'standard', showVitalSigns = true 
   const isDetailed = size === 'detailed';
 
   return (
-    <Card className="hover:shadow-lg transition-all duration-200 hover:-translate-y-1 border-gray-200">
+    <Card className="transition-all duration-200 border-gray-200">
       <CardHeader className={cn("pb-3", isCompact && "pb-2")}>
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
