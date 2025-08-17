@@ -1,6 +1,7 @@
 import { Sidebar } from "./Sidebar";
+import { NotificationDropdown } from "./NotificationDropdown";
 import { useState, useEffect, useRef } from "react";
-import { Search, Bell, User, Menu, X } from "lucide-react";
+import { Search, User, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
