@@ -2,7 +2,7 @@
 
 ## Production URLs
 
-**Base URL**: `https://yourapp.vercel.app` (replace with actual Vercel deployment URL)
+**Base URL**: `https://yourapp.example.com` (replace with actual deployment URL)
 
 ## Main Application Routes
 
@@ -158,13 +158,13 @@
 - Client-side routing (React Router)
 - Code splitting by route
 - Lazy loading for non-critical pages
-- Static asset optimization via Vercel CDN
+- Static asset optimization via CDN
 
 ## Deployment Notes
 
-### 🚀 **Vercel Configuration**
+### 🚀 **Deployment Configuration**
 
-- SPA routing handled by `vercel.json`
+- SPA routing for client-side navigation
 - API routes as serverless functions
 - Automatic HTTPS for all URLs
 - Global CDN distribution
@@ -185,15 +185,15 @@ Admin Login → Dashboard (/dashboard-home) → Reports (/reports) → Analytics
 
 ```bash
 # Patient lookup
-https://yourapp.vercel.app/patients/search?q=smith
+https://yourapp.example.com/patients/search?q=smith
 
 # Specific clinical workflow
-https://yourapp.vercel.app/clinical/progress
+https://yourapp.example.com/clinical/progress
 
 # Emergency access
-https://yourapp.vercel.app/emergency
+https://yourapp.example.com/emergency
 ```
 
 ---
 
-**Note**: Replace `yourapp.vercel.app` with your actual Vercel deployment URL after deployment.
+**Note**: Replace `yourapp.example.com` with your actual deployment URL after deployment.
