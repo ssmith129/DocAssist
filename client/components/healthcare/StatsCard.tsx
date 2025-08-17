@@ -161,14 +161,14 @@ export function StatsCard({
               )}>
                 {getTrendIcon()}
                 <span className={cn(
-                  "text-sm font-medium",
+                  "text-base font-semibold",
                   variant === "primary" ? "text-white/90" : getTrendColor()
                 )}>
                   {change.value}
                 </span>
                 {change.period && (
                   <span className={cn(
-                    "text-xs",
+                    "text-sm",
                     variant === "primary" ? "text-white/70" : "text-gray-500"
                   )}>
                     {change.period}
