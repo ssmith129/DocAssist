@@ -324,8 +324,8 @@ export function Sidebar() {
           {/* Main Menu Sections */}
           {menuSections.map((section) => (
             <div key={section.name} className="mb-1">
-              {/* Dashboard as direct link, others as expandable sections */}
-              {section.name === "Dashboard" ? (
+              {/* Direct link sections */}
+              {section.name === "Dashboard" || section.href ? (
                 <Link
                   to="/"
                   className={cn(
