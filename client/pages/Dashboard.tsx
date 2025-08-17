@@ -332,7 +332,7 @@ export default function Dashboard() {
                 <div className="h-6 w-px bg-gray-300" />
                 <Button
                   variant="outline"
-                  className="hover:bg-white/80 transition-all duration-300 hover:scale-105"
+                  className="hover:bg-white/80 transition-all duration-300"
                   onClick={() => setCompactView(!compactView)}
                 >
                   {compactView ? (
@@ -359,7 +359,7 @@ export default function Dashboard() {
                   />
                   {refreshing ? "Refreshing..." : "Refresh"}
                 </Button>
-                <Button className="bg-violet-600 hover:bg-violet-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <Button className="bg-violet-600 hover:bg-violet-700 transition-all duration-300">
                   <Download className="w-4 h-4 mr-2" />
                   Export Report
                 </Button>
@@ -391,7 +391,7 @@ export default function Dashboard() {
                       {quickActions.map((action, index) => (
                         <div
                           key={action.id}
-                          className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-105 ${
+                          className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
                             action.urgent
                               ? `${action.borderColor} ${action.bgColor} ring-2 ring-red-200 animate-pulse`
                               : `${action.borderColor} ${action.bgColor} hover:shadow-lg`
@@ -449,7 +449,7 @@ export default function Dashboard() {
                       {recentActivities.map((activity, index) => (
                         <div
                           key={activity.id}
-                          className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 hover:scale-102 cursor-pointer"
+                          className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 cursor-pointer"
                           style={{
                             animationDelay: `${index * 150}ms`,
                           }}
@@ -492,7 +492,7 @@ export default function Dashboard() {
                       {qualityMetrics.map((metric, index) => (
                         <div
                           key={index}
-                          className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105"
+                          className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300"
                           style={{
                             animationDelay: `${index * 200}ms`,
                           }}
