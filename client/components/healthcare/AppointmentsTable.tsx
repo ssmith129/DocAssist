@@ -47,9 +47,9 @@ export function AppointmentsTable() {
             <div className="w-8 h-8 bg-emerald-100 rounded-md flex items-center justify-center">
               <CalendarDays className="w-5 h-5 text-emerald-600" />
             </div>
-            <CardTitle className="text-lg font-bold">
-              <span className="text-gray-700">Today's Appointments </span>
-              <span className="text-gray-400">(15)</span>
+            <CardTitle className="hc-card-title">
+              <span className="text-healthcare-primary">Today's Appointments </span>
+              <span className="text-gray-500">(15)</span>
             </CardTitle>
           </div>
           <div className="flex items-center space-x-1 text-gray-500">
