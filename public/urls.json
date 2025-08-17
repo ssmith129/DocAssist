@@ -2,7 +2,7 @@
   "production": {
     "base": "https://yourapp.vercel.app",
     "pages": {
-      "dashboard": "/",
+      "dashboard": "/dashboard-home",
       "patients": "/patients",
       "clinical": "/clinical",
       "schedule": "/schedule",
@@ -21,6 +21,7 @@
   "routes": {
     "public": [
       "/",
+      "/dashboard-home",
       "/patients",
       "/clinical",
       "/schedule",
@@ -39,6 +40,7 @@
     "api": ["/api/ping", "/api/demo"]
   },
   "redirects": {
-    "/Dashboard": "/"
+    "/": "/dashboard-home",
+    "/Dashboard": "/dashboard-home"
   }
 }
