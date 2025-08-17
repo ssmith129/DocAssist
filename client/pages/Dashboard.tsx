@@ -393,7 +393,7 @@ export default function Dashboard() {
                           key={action.id}
                           className={`mb-[7px] px-4 pt-4 pb-0 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
                             action.urgent
-                              ? `${action.borderColor} ${action.bgColor} ring-2 ring-red-200 animate-pulse`
+                              ? `${action.borderColor} ${action.bgColor} ring-2 ring-red-200`
                               : `${action.borderColor} ${action.bgColor} hover:shadow-lg`
                           }`}
                           style={{
