@@ -4,20 +4,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Pill, 
-  Plus, 
-  Search, 
-  Filter, 
-  AlertTriangle, 
-  Clock, 
+import {
+  Pill,
+  Plus,
+  Search,
+  Filter,
+  AlertTriangle,
+  Clock,
   CheckCircle,
   Calendar,
   User,
   FileText,
   Eye,
   ShoppingCart,
-  Package
+  Package,
 } from "lucide-react";
 
 // Mock medications data
@@ -35,7 +35,7 @@ const medications = [
     status: "active",
     refillsRemaining: 3,
     lastFilled: "2024-01-15",
-    nextRefill: "2024-02-15"
+    nextRefill: "2024-02-15",
   },
   {
     id: "MED-002",
@@ -50,7 +50,7 @@ const medications = [
     status: "active",
     refillsRemaining: 0,
     lastFilled: "2024-01-10",
-    nextRefill: "2024-02-10"
+    nextRefill: "2024-02-10",
   },
   {
     id: "MED-003",
@@ -65,7 +65,7 @@ const medications = [
     status: "active",
     refillsRemaining: 5,
     lastFilled: "2024-01-01",
-    nextRefill: "2024-02-01"
+    nextRefill: "2024-02-01",
   },
   {
     id: "MED-004",
@@ -80,15 +80,15 @@ const medications = [
     status: "hold",
     refillsRemaining: 2,
     lastFilled: "2024-01-18",
-    nextRefill: "2024-02-18"
-  }
+    nextRefill: "2024-02-18",
+  },
 ];
 
 const statusColors = {
-  active: 'bg-green-100 text-green-800',
-  discontinued: 'bg-gray-100 text-gray-800',
-  hold: 'bg-yellow-100 text-yellow-800',
-  expired: 'bg-red-100 text-red-800'
+  active: "bg-green-100 text-green-800",
+  discontinued: "bg-gray-100 text-gray-800",
+  hold: "bg-yellow-100 text-yellow-800",
+  expired: "bg-red-100 text-red-800",
 };
 
 export default function Medications() {
@@ -156,12 +156,21 @@ export default function Medications() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-lg font-bold text-gray-700">
-                  Current Medications <span className="text-gray-400 font-normal">({medications.length} prescriptions)</span>
+                  Current Medications{" "}
+                  <span className="text-gray-400 font-normal">
+                    ({medications.length} prescriptions)
+                  </span>
                 </CardTitle>
                 <div className="flex space-x-2">
-                  <Button size="sm" className="bg-violet-600 text-white">Active</Button>
-                  <Button size="sm" variant="outline">All</Button>
-                  <Button size="sm" variant="outline">Discontinued</Button>
+                  <Button size="sm" className="bg-violet-600 text-white">
+                    Active
+                  </Button>
+                  <Button size="sm" variant="outline">
+                    All
+                  </Button>
+                  <Button size="sm" variant="outline">
+                    Discontinued
+                  </Button>
                 </div>
               </div>
             </CardHeader>
@@ -170,56 +179,107 @@ export default function Medications() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-gray-200">
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">Medication</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">Patient</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">Dosage</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">Status</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">Refills</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">Next Refill</th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">Actions</th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                        Medication
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                        Patient
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                        Dosage
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                        Status
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                        Refills
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                        Next Refill
+                      </th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                        Actions
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {medications.map((medication) => (
-                      <tr key={medication.id} className="border-b border-gray-100 hover:bg-gray-50">
+                      <tr
+                        key={medication.id}
+                        className="border-b border-gray-100 hover:bg-gray-50"
+                      >
                         <td className="py-4 px-4">
                           <div>
-                            <p className="font-medium text-gray-900">{medication.name}</p>
-                            <p className="text-sm text-gray-500">{medication.frequency}</p>
+                            <p className="font-medium text-gray-900">
+                              {medication.name}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              {medication.frequency}
+                            </p>
                           </div>
                         </td>
                         <td className="py-4 px-4">
                           <div>
-                            <p className="font-medium text-gray-900">{medication.patient}</p>
-                            <p className="text-sm text-gray-500">{medication.mrn}</p>
+                            <p className="font-medium text-gray-900">
+                              {medication.patient}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              {medication.mrn}
+                            </p>
                           </div>
                         </td>
                         <td className="py-4 px-4">
-                          <p className="text-sm text-gray-900">{medication.dosage}</p>
+                          <p className="text-sm text-gray-900">
+                            {medication.dosage}
+                          </p>
                         </td>
                         <td className="py-4 px-4">
-                          <Badge className={statusColors[medication.status as keyof typeof statusColors]}>
+                          <Badge
+                            className={
+                              statusColors[
+                                medication.status as keyof typeof statusColors
+                              ]
+                            }
+                          >
                             {medication.status}
                           </Badge>
                         </td>
                         <td className="py-4 px-4">
                           <div>
-                            <p className="text-sm text-gray-900">{medication.refillsRemaining} remaining</p>
-                            <p className="text-xs text-gray-500">Last: {medication.lastFilled}</p>
+                            <p className="text-sm text-gray-900">
+                              {medication.refillsRemaining} remaining
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              Last: {medication.lastFilled}
+                            </p>
                           </div>
                         </td>
                         <td className="py-4 px-4">
-                          <p className="text-sm text-gray-900">{medication.nextRefill}</p>
+                          <p className="text-sm text-gray-900">
+                            {medication.nextRefill}
+                          </p>
                         </td>
                         <td className="py-4 px-4">
                           <div className="flex items-center space-x-2">
-                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              className="h-8 w-8 p-0"
+                            >
                               <Eye className="w-4 h-4" />
                             </Button>
-                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              className="h-8 w-8 p-0"
+                            >
                               <FileText className="w-4 h-4" />
                             </Button>
-                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              className="h-8 w-8 p-0"
+                            >
                               <Package className="w-4 h-4" />
                             </Button>
                           </div>
@@ -236,11 +296,21 @@ export default function Medications() {
                   Showing 1 to {medications.length} of 247 medications
                 </p>
                 <div className="flex space-x-2">
-                  <Button variant="outline" size="sm">Previous</Button>
-                  <Button size="sm" className="bg-violet-600 text-white">1</Button>
-                  <Button variant="outline" size="sm">2</Button>
-                  <Button variant="outline" size="sm">3</Button>
-                  <Button variant="outline" size="sm">Next</Button>
+                  <Button variant="outline" size="sm">
+                    Previous
+                  </Button>
+                  <Button size="sm" className="bg-violet-600 text-white">
+                    1
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    2
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    3
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    Next
+                  </Button>
                 </div>
               </div>
             </CardContent>
@@ -259,15 +329,27 @@ export default function Medications() {
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm font-medium text-red-800">Critical Interaction</p>
-                <p className="text-sm text-red-600">Warfarin + Aspirin for Robert Taylor</p>
-                <Button size="sm" variant="outline" className="mt-2">Review</Button>
+                <p className="text-sm font-medium text-red-800">
+                  Critical Interaction
+                </p>
+                <p className="text-sm text-red-600">
+                  Warfarin + Aspirin for Robert Taylor
+                </p>
+                <Button size="sm" variant="outline" className="mt-2">
+                  Review
+                </Button>
               </div>
-              
+
               <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p className="text-sm font-medium text-yellow-800">Moderate Interaction</p>
-                <p className="text-sm text-yellow-600">Lisinopril + Ibuprofen for Sarah Johnson</p>
-                <Button size="sm" variant="outline" className="mt-2">Review</Button>
+                <p className="text-sm font-medium text-yellow-800">
+                  Moderate Interaction
+                </p>
+                <p className="text-sm text-yellow-600">
+                  Lisinopril + Ibuprofen for Sarah Johnson
+                </p>
+                <Button size="sm" variant="outline" className="mt-2">
+                  Review
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -283,18 +365,26 @@ export default function Medications() {
             <CardContent className="space-y-3">
               <div className="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">Michael Chen</p>
-                  <p className="text-sm text-gray-600">Metformin - 0 refills left</p>
+                  <p className="text-sm font-medium text-gray-900">
+                    Michael Chen
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Metformin - 0 refills left
+                  </p>
                 </div>
                 <Button size="sm" className="bg-violet-600 hover:bg-violet-700">
                   Refill
                 </Button>
               </div>
-              
+
               <div className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">Emma Davis</p>
-                  <p className="text-sm text-gray-600">Prenatal Vitamins - Due tomorrow</p>
+                  <p className="text-sm font-medium text-gray-900">
+                    Emma Davis
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Prenatal Vitamins - Due tomorrow
+                  </p>
                 </div>
                 <Button size="sm" variant="outline">
                   Schedule
@@ -306,24 +396,26 @@ export default function Medications() {
           {/* Quick Actions */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">Quick Actions</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                Quick Actions
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <Button variant="outline" className="w-full justify-start">
                 <Pill className="w-4 h-4 mr-2" />
                 Drug Formulary Lookup
               </Button>
-              
+
               <Button variant="outline" className="w-full justify-start">
                 <AlertTriangle className="w-4 h-4 mr-2" />
                 Interaction Checker
               </Button>
-              
+
               <Button variant="outline" className="w-full justify-start">
                 <ShoppingCart className="w-4 h-4 mr-2" />
                 Inventory Management
               </Button>
-              
+
               <Button variant="outline" className="w-full justify-start">
                 <FileText className="w-4 h-4 mr-2" />
                 Prescription Reports
@@ -334,12 +426,16 @@ export default function Medications() {
           {/* Recent Activity */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">Recent Activity</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                Recent Activity
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3 text-sm">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-600">New prescription dispensed</span>
+                  <span className="text-gray-600">
+                    New prescription dispensed
+                  </span>
                   <span className="text-gray-400">2 min ago</span>
                 </div>
                 <div className="flex items-center justify-between">
@@ -347,7 +443,9 @@ export default function Medications() {
                   <span className="text-gray-400">15 min ago</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-600">Drug interaction alert resolved</span>
+                  <span className="text-gray-600">
+                    Drug interaction alert resolved
+                  </span>
                   <span className="text-gray-400">1 hour ago</span>
                 </div>
               </div>

@@ -4,19 +4,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { 
-  BarChart3, 
-  FileText, 
-  Download, 
-  Calendar, 
-  TrendingUp, 
-  Users, 
+import {
+  BarChart3,
+  FileText,
+  Download,
+  Calendar,
+  TrendingUp,
+  Users,
   Activity,
   DollarSign,
   Clock,
   Filter,
   Search,
-  Plus
+  Plus,
 } from "lucide-react";
 
 // Mock reports data
@@ -28,7 +28,7 @@ const availableReports = [
     description: "Daily patient census by department and unit",
     lastGenerated: "2024-01-21 08:00",
     frequency: "Daily",
-    status: "automated"
+    status: "automated",
   },
   {
     id: "RPT-002",
@@ -37,7 +37,7 @@ const availableReports = [
     description: "Patient safety indicators and quality measures",
     lastGenerated: "2024-01-21 06:00",
     frequency: "Daily",
-    status: "automated"
+    status: "automated",
   },
   {
     id: "RPT-003",
@@ -46,7 +46,7 @@ const availableReports = [
     description: "Revenue, expenses, and billing statistics",
     lastGenerated: "2024-01-20 23:59",
     frequency: "Monthly",
-    status: "manual"
+    status: "manual",
   },
   {
     id: "RPT-004",
@@ -55,7 +55,7 @@ const availableReports = [
     description: "Drug usage patterns and cost analysis",
     lastGenerated: "2024-01-21 07:30",
     frequency: "Weekly",
-    status: "automated"
+    status: "automated",
   },
   {
     id: "RPT-005",
@@ -64,7 +64,7 @@ const availableReports = [
     description: "Lab test processing and reporting metrics",
     lastGenerated: "2024-01-21 09:00",
     frequency: "Daily",
-    status: "automated"
+    status: "automated",
   },
   {
     id: "RPT-006",
@@ -73,8 +73,8 @@ const availableReports = [
     description: "30-day readmission rates and trends",
     lastGenerated: "2024-01-20 12:00",
     frequency: "Weekly",
-    status: "manual"
-  }
+    status: "manual",
+  },
 ];
 
 const recentReports = [
@@ -83,36 +83,36 @@ const recentReports = [
     generatedBy: "System",
     timestamp: "2024-01-21 08:00 AM",
     size: "2.3 MB",
-    downloads: 12
+    downloads: 12,
   },
   {
     name: "Quality Metrics Q4 2023",
     generatedBy: "Dr. Anderson",
     timestamp: "2024-01-20 4:30 PM",
     size: "5.7 MB",
-    downloads: 28
+    downloads: 28,
   },
   {
     name: "Pharmacy Utilization Weekly",
     generatedBy: "System",
     timestamp: "2024-01-20 7:30 AM",
     size: "1.2 MB",
-    downloads: 8
-  }
+    downloads: 8,
+  },
 ];
 
 const categoryColors = {
-  Operations: 'bg-blue-100 text-blue-800',
-  Quality: 'bg-green-100 text-green-800',
-  Finance: 'bg-yellow-100 text-yellow-800',
-  Pharmacy: 'bg-purple-100 text-purple-800',
-  Laboratory: 'bg-orange-100 text-orange-800'
+  Operations: "bg-blue-100 text-blue-800",
+  Quality: "bg-green-100 text-green-800",
+  Finance: "bg-yellow-100 text-yellow-800",
+  Pharmacy: "bg-purple-100 text-purple-800",
+  Laboratory: "bg-orange-100 text-orange-800",
 };
 
 const statusColors = {
-  automated: 'bg-green-100 text-green-800',
-  manual: 'bg-gray-100 text-gray-800',
-  error: 'bg-red-100 text-red-800'
+  automated: "bg-green-100 text-green-800",
+  manual: "bg-gray-100 text-gray-800",
+  error: "bg-red-100 text-red-800",
 };
 
 export default function Reports() {
@@ -178,25 +178,47 @@ export default function Reports() {
           <Card className="shadow-lg">
             <CardHeader>
               <CardTitle className="text-lg font-bold text-gray-700">
-                Available Reports <span className="text-gray-400 font-normal">({availableReports.length} reports)</span>
+                Available Reports{" "}
+                <span className="text-gray-400 font-normal">
+                  ({availableReports.length} reports)
+                </span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 gap-4">
                 {availableReports.map((report) => (
-                  <div key={report.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div
+                    key={report.id}
+                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                  >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center space-x-2 mb-2">
-                          <h3 className="font-medium text-gray-900">{report.name}</h3>
-                          <Badge className={categoryColors[report.category as keyof typeof categoryColors]}>
+                          <h3 className="font-medium text-gray-900">
+                            {report.name}
+                          </h3>
+                          <Badge
+                            className={
+                              categoryColors[
+                                report.category as keyof typeof categoryColors
+                              ]
+                            }
+                          >
                             {report.category}
                           </Badge>
-                          <Badge className={statusColors[report.status as keyof typeof statusColors]}>
+                          <Badge
+                            className={
+                              statusColors[
+                                report.status as keyof typeof statusColors
+                              ]
+                            }
+                          >
                             {report.status}
                           </Badge>
                         </div>
-                        <p className="text-sm text-gray-600 mb-2">{report.description}</p>
+                        <p className="text-sm text-gray-600 mb-2">
+                          {report.description}
+                        </p>
                         <div className="flex items-center space-x-4 text-xs text-gray-500">
                           <span className="flex items-center">
                             <Clock className="w-3 h-3 mr-1" />
@@ -208,13 +230,16 @@ export default function Reports() {
                           </span>
                         </div>
                       </div>
-                      
+
                       <div className="flex space-x-2">
                         <Button size="sm" variant="outline">
                           <BarChart3 className="w-4 h-4 mr-2" />
                           View
                         </Button>
-                        <Button size="sm" className="bg-violet-600 hover:bg-violet-700">
+                        <Button
+                          size="sm"
+                          className="bg-violet-600 hover:bg-violet-700"
+                        >
                           <Download className="w-4 h-4 mr-2" />
                           Generate
                         </Button>
@@ -230,11 +255,21 @@ export default function Reports() {
                   Showing 1 to {availableReports.length} of 24 reports
                 </p>
                 <div className="flex space-x-2">
-                  <Button variant="outline" size="sm">Previous</Button>
-                  <Button size="sm" className="bg-violet-600 text-white">1</Button>
-                  <Button variant="outline" size="sm">2</Button>
-                  <Button variant="outline" size="sm">3</Button>
-                  <Button variant="outline" size="sm">Next</Button>
+                  <Button variant="outline" size="sm">
+                    Previous
+                  </Button>
+                  <Button size="sm" className="bg-violet-600 text-white">
+                    1
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    2
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    3
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    Next
+                  </Button>
                 </div>
               </div>
             </CardContent>
@@ -246,13 +281,20 @@ export default function Reports() {
           {/* Recent Reports */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">Recent Reports</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                Recent Reports
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {recentReports.map((report, index) => (
-                <div key={index} className="p-3 border border-gray-200 rounded-lg">
+                <div
+                  key={index}
+                  className="p-3 border border-gray-200 rounded-lg"
+                >
                   <div className="flex items-start justify-between mb-2">
-                    <h4 className="font-medium text-gray-900 text-sm">{report.name}</h4>
+                    <h4 className="font-medium text-gray-900 text-sm">
+                      {report.name}
+                    </h4>
                     <Button size="sm" variant="ghost" className="h-6 w-6 p-0">
                       <Download className="w-3 h-3" />
                     </Button>
@@ -273,19 +315,27 @@ export default function Reports() {
           {/* Quick Stats */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">Quick Stats</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                Quick Stats
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Reports this month</span>
+                <span className="text-sm text-gray-600">
+                  Reports this month
+                </span>
                 <span className="font-medium text-gray-900">342</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Average generation time</span>
+                <span className="text-sm text-gray-600">
+                  Average generation time
+                </span>
                 <span className="font-medium text-gray-900">2.3 min</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Most popular report</span>
+                <span className="text-sm text-gray-600">
+                  Most popular report
+                </span>
                 <span className="font-medium text-gray-900">Daily Census</span>
               </div>
               <div className="flex items-center justify-between">
@@ -298,7 +348,9 @@ export default function Reports() {
           {/* Report Categories */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">Categories</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                Categories
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="flex items-center justify-between p-2 rounded hover:bg-gray-50 cursor-pointer">
@@ -327,7 +379,9 @@ export default function Reports() {
           {/* Quick Actions */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">Quick Actions</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                Quick Actions
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
               <Button variant="outline" className="w-full justify-start">
