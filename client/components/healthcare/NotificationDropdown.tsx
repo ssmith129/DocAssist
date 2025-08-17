@@ -266,9 +266,6 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
               {unreadCount > 99 ? "99+" : unreadCount}
             </span>
           )}
-          {criticalCount > 0 && (
-            <span className="absolute -top-1 -left-1 w-3 h-3 bg-red-500 rounded-full" />
-          )}
         </Button>
       </DropdownMenuTrigger>
 
