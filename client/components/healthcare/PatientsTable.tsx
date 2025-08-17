@@ -42,9 +42,9 @@ export function PatientsTable() {
           <div className="w-8 h-8 bg-sky-100 rounded-md flex items-center justify-center">
             <Users className="w-5 h-5 text-sky-600" />
           </div>
-          <CardTitle className="text-lg font-bold">
-            <span className="text-gray-700">Patients list </span>
-            <span className="text-gray-400">(120)</span>
+          <CardTitle className="hc-card-title">
+            <span className="text-healthcare-primary">Patients list </span>
+            <span className="text-gray-500">(120)</span>
           </CardTitle>
         </div>
       </CardHeader>
