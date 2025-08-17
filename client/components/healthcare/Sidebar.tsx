@@ -352,7 +352,7 @@ export function Sidebar() {
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  "relative flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 hover:scale-110 group",
+                  "relative flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 group",
                   isItemActive(item.href)
                     ? "bg-violet-600 text-white shadow-lg"
                     : "bg-white text-gray-600 hover:bg-violet-50 hover:text-violet-600 shadow-sm",
@@ -580,7 +580,7 @@ export function Sidebar() {
                 "flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-300 group",
                 isItemActive(item.href)
                   ? "bg-violet-100 text-violet-800 font-medium"
-                  : "text-gray-600 hover:bg-white hover:text-gray-900 hover:shadow-sm",
+                  : "text-gray-600 hover:bg-white hover:text-gray-900",
                 isCollapsed ? "justify-center" : "",
               )}
               onMouseEnter={() => setHoveredItem(item.href)}
