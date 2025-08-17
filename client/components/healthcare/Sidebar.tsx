@@ -74,32 +74,8 @@ const menuSections: MenuSection[] = [
     icon: Stethoscope,
     defaultOpen: false,
     priority: "high",
-    items: [
-      {
-        name: "Progress Notes",
-        href: "/clinical/progress",
-        icon: FileSignature,
-        description: "Patient documentation",
-      },
-      {
-        name: "Assessments",
-        href: "/clinical/assessments",
-        icon: ClipboardList,
-        description: "Clinical evaluations",
-      },
-      {
-        name: "Care Plans",
-        href: "/clinical/care-plans",
-        icon: Heart,
-        description: "Treatment planning",
-      },
-      {
-        name: "Vital Signs",
-        href: "/clinical/vitals",
-        icon: Thermometer,
-        description: "Monitor vitals",
-      },
-    ],
+    items: [],
+    href: "/clinical",
   },
   {
     name: "Diagnostics",
