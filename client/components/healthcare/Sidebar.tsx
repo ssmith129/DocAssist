@@ -49,7 +49,7 @@ interface MenuSection {
   icon: React.ElementType;
   items: MenuItem[];
   defaultOpen?: boolean;
-  priority?: 'high' | 'medium' | 'low';
+  priority?: "high" | "medium" | "low";
 }
 
 // Reorganized and simplified menu structure
@@ -58,32 +58,32 @@ const menuSections: MenuSection[] = [
     name: "Dashboard",
     icon: LayoutDashboard,
     defaultOpen: false,
-    priority: 'high',
+    priority: "high",
     items: [],
   },
   {
     name: "Patient Care",
     icon: Users,
     defaultOpen: true,
-    priority: 'high',
+    priority: "high",
     items: [
-      { 
-        name: "Patient List", 
-        href: "/patients", 
+      {
+        name: "Patient List",
+        href: "/patients",
         icon: Users,
-        description: "View all patients"
+        description: "View all patients",
       },
       {
         name: "Add Patient",
         href: "/patients/register",
         icon: Plus,
-        description: "Register new patient"
+        description: "Register new patient",
       },
-      { 
-        name: "Search Patients", 
-        href: "/patients/search", 
+      {
+        name: "Search Patients",
+        href: "/patients/search",
         icon: Search,
-        description: "Find specific patients"
+        description: "Find specific patients",
       },
     ],
   },
@@ -91,31 +91,31 @@ const menuSections: MenuSection[] = [
     name: "Clinical",
     icon: Stethoscope,
     defaultOpen: false,
-    priority: 'high',
+    priority: "high",
     items: [
       {
         name: "Progress Notes",
         href: "/clinical/progress",
         icon: FileSignature,
-        description: "Patient documentation"
+        description: "Patient documentation",
       },
       {
         name: "Assessments",
         href: "/clinical/assessments",
         icon: ClipboardList,
-        description: "Clinical evaluations"
+        description: "Clinical evaluations",
       },
-      { 
-        name: "Care Plans", 
-        href: "/clinical/care-plans", 
+      {
+        name: "Care Plans",
+        href: "/clinical/care-plans",
         icon: Heart,
-        description: "Treatment planning"
+        description: "Treatment planning",
       },
-      { 
-        name: "Vital Signs", 
-        href: "/clinical/vitals", 
+      {
+        name: "Vital Signs",
+        href: "/clinical/vitals",
         icon: Thermometer,
-        description: "Monitor vitals"
+        description: "Monitor vitals",
       },
     ],
   },
@@ -123,31 +123,31 @@ const menuSections: MenuSection[] = [
     name: "Diagnostics",
     icon: TestTube,
     defaultOpen: false,
-    priority: 'medium',
+    priority: "medium",
     items: [
-      { 
-        name: "Lab Orders", 
-        href: "/laboratory/orders", 
+      {
+        name: "Lab Orders",
+        href: "/laboratory/orders",
         icon: TestTube,
-        description: "Laboratory tests"
+        description: "Laboratory tests",
       },
-      { 
-        name: "Lab Results", 
-        href: "/laboratory/results", 
+      {
+        name: "Lab Results",
+        href: "/laboratory/results",
         icon: Activity,
-        description: "Test results"
+        description: "Test results",
       },
-      { 
-        name: "Imaging", 
-        href: "/imaging/orders", 
+      {
+        name: "Imaging",
+        href: "/imaging/orders",
         icon: Scan,
-        description: "Radiology and imaging"
+        description: "Radiology and imaging",
       },
-      { 
-        name: "Pathology", 
-        href: "/laboratory/pathology", 
+      {
+        name: "Pathology",
+        href: "/laboratory/pathology",
         icon: Brain,
-        description: "Pathology reports"
+        description: "Pathology reports",
       },
     ],
   },
@@ -155,25 +155,25 @@ const menuSections: MenuSection[] = [
     name: "Pharmacy",
     icon: Pill,
     defaultOpen: false,
-    priority: 'medium',
+    priority: "medium",
     items: [
-      { 
-        name: "Medications", 
-        href: "/pharmacy/medications", 
+      {
+        name: "Medications",
+        href: "/pharmacy/medications",
         icon: Pill,
-        description: "Patient medications"
+        description: "Patient medications",
       },
       {
         name: "Prescriptions",
         href: "/pharmacy/prescriptions",
         icon: FileSignature,
-        description: "Write prescriptions"
+        description: "Write prescriptions",
       },
       {
         name: "Drug Interactions",
         href: "/pharmacy/interactions",
         icon: AlertTriangle,
-        description: "Check interactions"
+        description: "Check interactions",
       },
     ],
   },
@@ -181,25 +181,25 @@ const menuSections: MenuSection[] = [
     name: "Scheduling",
     icon: Calendar,
     defaultOpen: false,
-    priority: 'medium',
+    priority: "medium",
     items: [
-      { 
-        name: "Appointments", 
-        href: "/schedule", 
+      {
+        name: "Appointments",
+        href: "/schedule",
         icon: Calendar,
-        description: "Manage appointments"
+        description: "Manage appointments",
       },
-      { 
-        name: "Calendar View", 
-        href: "/schedule/calendar", 
+      {
+        name: "Calendar View",
+        href: "/schedule/calendar",
         icon: Calendar,
-        description: "Calendar interface"
+        description: "Calendar interface",
       },
       {
         name: "Waitlist",
         href: "/schedule/waitlist",
         icon: Clock,
-        description: "Patient waitlist"
+        description: "Patient waitlist",
       },
     ],
   },
@@ -207,50 +207,50 @@ const menuSections: MenuSection[] = [
 
 // Simplified system items
 const systemItems: MenuItem[] = [
-  { 
-    name: "Analytics", 
-    href: "/analytics", 
+  {
+    name: "Analytics",
+    href: "/analytics",
     icon: BarChart3,
-    description: "Reports and metrics"
+    description: "Reports and metrics",
   },
-  { 
-    name: "Messages", 
-    href: "/messages", 
+  {
+    name: "Messages",
+    href: "/messages",
     icon: MessageSquare,
-    description: "Communication hub"
+    description: "Communication hub",
   },
-  { 
-    name: "Reports", 
-    href: "/reports", 
+  {
+    name: "Reports",
+    href: "/reports",
     icon: FileText,
-    description: "Generate reports"
+    description: "Generate reports",
   },
 ];
 
 const bottomItems: MenuItem[] = [
-  { 
-    name: "Settings", 
-    href: "/settings", 
+  {
+    name: "Settings",
+    href: "/settings",
     icon: Settings,
-    description: "System configuration"
+    description: "System configuration",
   },
 ];
 
 // Quick access items for frequent actions
 const quickAccessItems: MenuItem[] = [
-  { 
-    name: "Emergency", 
-    href: "/emergency", 
-    icon: AlertTriangle, 
+  {
+    name: "Emergency",
+    href: "/emergency",
+    icon: AlertTriangle,
     badge: "2",
-    description: "Emergency alerts"
+    description: "Emergency alerts",
   },
-  { 
-    name: "Notifications", 
-    href: "/notifications", 
-    icon: Bell, 
+  {
+    name: "Notifications",
+    href: "/notifications",
+    icon: Bell,
     badge: "5",
-    description: "System notifications"
+    description: "System notifications",
   },
 ];
 
@@ -270,12 +270,13 @@ export function Sidebar() {
   // Auto-expand section when navigating to its items
   useEffect(() => {
     menuSections.forEach((section) => {
-      const hasActiveItem = section.items.some((item) => 
-        location.pathname === item.href || 
-        (item.href !== "/" && location.pathname.startsWith(item.href))
+      const hasActiveItem = section.items.some(
+        (item) =>
+          location.pathname === item.href ||
+          (item.href !== "/" && location.pathname.startsWith(item.href)),
       );
       if (hasActiveItem && !openSections[section.name]) {
-        setOpenSections(prev => ({ ...prev, [section.name]: true }));
+        setOpenSections((prev) => ({ ...prev, [section.name]: true }));
       }
     });
   }, [location.pathname]);
@@ -296,23 +297,27 @@ export function Sidebar() {
 
   const getPriorityColor = (priority?: string) => {
     switch (priority) {
-      case 'high':
-        return 'text-violet-600';
-      case 'medium':
-        return 'text-blue-600';
-      case 'low':
-        return 'text-gray-600';
+      case "high":
+        return "text-violet-600";
+      case "medium":
+        return "text-blue-600";
+      case "low":
+        return "text-gray-600";
       default:
-        return 'text-violet-600';
+        return "text-violet-600";
     }
   };
 
   return (
-    <div className={`flex flex-col h-screen bg-white shadow-xl border-r border-gray-200 transition-all duration-300 ${
-      isCollapsed ? 'w-16' : 'w-[280px]'
-    }`}>
+    <div
+      className={`flex flex-col h-screen bg-white shadow-xl border-r border-gray-200 transition-all duration-300 ${
+        isCollapsed ? "w-16" : "w-[280px]"
+      }`}
+    >
       {/* Enhanced Logo Section */}
-      <div className={`px-6 py-6 border-b border-gray-100 relative ${isCollapsed ? 'px-4' : ''}`}>
+      <div
+        className={`px-6 py-6 border-b border-gray-100 relative ${isCollapsed ? "px-4" : ""}`}
+      >
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex items-center space-x-3">
@@ -350,7 +355,7 @@ export function Sidebar() {
                   "relative flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 hover:scale-110 group",
                   isItemActive(item.href)
                     ? "bg-violet-600 text-white shadow-lg"
-                    : "bg-white text-gray-600 hover:bg-violet-50 hover:text-violet-600 shadow-sm"
+                    : "bg-white text-gray-600 hover:bg-violet-50 hover:text-violet-600 shadow-sm",
                 )}
                 onMouseEnter={() => setHoveredItem(item.href)}
                 onMouseLeave={() => setHoveredItem(null)}
@@ -385,20 +390,29 @@ export function Sidebar() {
                   className={cn(
                     "flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 group",
                     "hover:bg-violet-50 hover:text-violet-700",
-                    isItemActive("/") ? "bg-violet-100 text-violet-800 shadow-sm border-l-2 border-violet-600" : "text-gray-700",
-                    isCollapsed ? "justify-center" : ""
+                    isItemActive("/")
+                      ? "bg-violet-100 text-violet-800 shadow-sm border-l-2 border-violet-600"
+                      : "text-gray-700",
+                    isCollapsed ? "justify-center" : "",
                   )}
                   onMouseEnter={() => setHoveredItem(section.name)}
                   onMouseLeave={() => setHoveredItem(null)}
                   aria-label="Main Dashboard"
                 >
                   <div className="flex items-center space-x-3">
-                    <section.icon className={cn("w-5 h-5 transition-colors", getPriorityColor(section.priority))} />
-                    {!isCollapsed && <span className="font-medium">{section.name}</span>}
+                    <section.icon
+                      className={cn(
+                        "w-5 h-5 transition-colors",
+                        getPriorityColor(section.priority),
+                      )}
+                    />
+                    {!isCollapsed && (
+                      <span className="font-medium">{section.name}</span>
+                    )}
                   </div>
                   {!isCollapsed && (
                     <div className="flex items-center space-x-1">
-                      {section.priority === 'high' && (
+                      {section.priority === "high" && (
                         <div className="w-2 h-2 bg-violet-500 rounded-full" />
                       )}
                       {isItemActive("/") && (
@@ -419,8 +433,10 @@ export function Sidebar() {
                     className={cn(
                       "flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 group",
                       "hover:bg-violet-50 hover:text-violet-700",
-                      openSections[section.name] && !isCollapsed ? "bg-violet-50 text-violet-700" : "text-gray-700",
-                      isCollapsed ? "justify-center" : ""
+                      openSections[section.name] && !isCollapsed
+                        ? "bg-violet-50 text-violet-700"
+                        : "text-gray-700",
+                      isCollapsed ? "justify-center" : "",
                     )}
                     onMouseEnter={() => setHoveredItem(section.name)}
                     onMouseLeave={() => setHoveredItem(null)}
@@ -428,12 +444,19 @@ export function Sidebar() {
                     aria-label={`${section.name} section`}
                   >
                     <div className="flex items-center space-x-3">
-                      <section.icon className={cn("w-5 h-5 transition-colors", getPriorityColor(section.priority))} />
-                      {!isCollapsed && <span className="font-medium">{section.name}</span>}
+                      <section.icon
+                        className={cn(
+                          "w-5 h-5 transition-colors",
+                          getPriorityColor(section.priority),
+                        )}
+                      />
+                      {!isCollapsed && (
+                        <span className="font-medium">{section.name}</span>
+                      )}
                     </div>
                     {!isCollapsed && (
                       <div className="flex items-center space-x-1">
-                        {section.priority === 'high' && (
+                        {section.priority === "high" && (
                           <div className="w-2 h-2 bg-violet-500 rounded-full" />
                         )}
                         {openSections[section.name] ? (
@@ -461,7 +484,7 @@ export function Sidebar() {
                             "flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-all duration-300 group",
                             isItemActive(item.href)
                               ? "bg-violet-100 text-violet-800 font-medium shadow-sm border-l-2 border-violet-600"
-                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-1"
+                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-1",
                           )}
                           onMouseEnter={() => setHoveredItem(item.href)}
                           onMouseLeave={() => setHoveredItem(null)}
@@ -473,16 +496,25 @@ export function Sidebar() {
                           </div>
                           <div className="flex items-center space-x-2">
                             {item.badge && (
-                              <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full animate-pulse" aria-label={`${item.badge} notifications`}>
+                              <span
+                                className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full animate-pulse"
+                                aria-label={`${item.badge} notifications`}
+                              >
                                 {item.badge}
                               </span>
                             )}
                             {isItemActive(item.href) && (
-                              <div className="w-2 h-2 bg-violet-600 rounded-full animate-pulse" aria-hidden="true" />
+                              <div
+                                className="w-2 h-2 bg-violet-600 rounded-full animate-pulse"
+                                aria-hidden="true"
+                              />
                             )}
                           </div>
                           {hoveredItem === item.href && (
-                            <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap z-50" role="tooltip">
+                            <div
+                              className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap z-50"
+                              role="tooltip"
+                            >
                               {item.description}
                             </div>
                           )}
@@ -514,7 +546,7 @@ export function Sidebar() {
                   isItemActive(item.href)
                     ? "bg-violet-100 text-violet-800 font-medium shadow-sm"
                     : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-1",
-                  isCollapsed ? "justify-center" : ""
+                  isCollapsed ? "justify-center" : "",
                 )}
                 onMouseEnter={() => setHoveredItem(item.href)}
                 onMouseLeave={() => setHoveredItem(null)}
@@ -549,7 +581,7 @@ export function Sidebar() {
                 isItemActive(item.href)
                   ? "bg-violet-100 text-violet-800 font-medium"
                   : "text-gray-600 hover:bg-white hover:text-gray-900 hover:shadow-sm",
-                isCollapsed ? "justify-center" : ""
+                isCollapsed ? "justify-center" : "",
               )}
               onMouseEnter={() => setHoveredItem(item.href)}
               onMouseLeave={() => setHoveredItem(null)}
@@ -563,7 +595,7 @@ export function Sidebar() {
               )}
             </Link>
           ))}
-          
+
           {/* User Profile Section */}
           {!isCollapsed && (
             <div className="mt-4 pt-4 border-t border-gray-200">
@@ -572,8 +604,12 @@ export function Sidebar() {
                   <span className="text-white text-sm font-medium">DR</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">Dr. Sarah Johnson</p>
-                  <p className="text-xs text-gray-500 truncate">Attending Physician</p>
+                  <p className="text-sm font-medium text-gray-900 truncate">
+                    Dr. Sarah Johnson
+                  </p>
+                  <p className="text-xs text-gray-500 truncate">
+                    Attending Physician
+                  </p>
                 </div>
               </div>
             </div>

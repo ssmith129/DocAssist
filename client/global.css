@@ -60,7 +60,8 @@
   }
 
   @keyframes pulse-critical {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
       transform: scale(1);
     }
@@ -92,7 +93,7 @@
   }
 
   .status-dot::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -116,7 +117,8 @@
   }
 
   @keyframes status-ping {
-    75%, 100% {
+    75%,
+    100% {
       transform: scale(2);
       opacity: 0;
     }
@@ -137,11 +139,21 @@
   }
 
   /* Staggered animation delays */
-  .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
-  .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
-  .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
-  .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
-  .fade-in-up:nth-child(5) { animation-delay: 0.5s; }
+  .fade-in-up:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .fade-in-up:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .fade-in-up:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .fade-in-up:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .fade-in-up:nth-child(5) {
+    animation-delay: 0.5s;
+  }
 
   /* Glass morphism effect for modern cards */
   .glass-card {
@@ -185,13 +197,18 @@
   }
 
   .btn-enhanced::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: left 0.5s;
   }
 

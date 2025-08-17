@@ -171,7 +171,7 @@ export default function Dashboard() {
   const handleRefresh = async () => {
     setRefreshing(true);
     // Simulate refresh
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     setRefreshing(false);
   };
 
@@ -180,7 +180,10 @@ export default function Dashboard() {
       critical: { color: "bg-red-100 text-red-800", dot: "bg-red-500" },
       normal: { color: "bg-green-100 text-green-800", dot: "bg-green-500" },
       completed: { color: "bg-blue-100 text-blue-800", dot: "bg-blue-500" },
-      scheduled: { color: "bg-yellow-100 text-yellow-800", dot: "bg-yellow-500" },
+      scheduled: {
+        color: "bg-yellow-100 text-yellow-800",
+        dot: "bg-yellow-500",
+      },
     };
     const config = statusConfig[status as keyof typeof statusConfig];
     return (
@@ -195,7 +198,9 @@ export default function Dashboard() {
     <BaseLayout title="Dashboard">
       <div className="space-y-6">
         {/* Enhanced Stats Cards with animations */}
-        <div className={`grid grid-cols-4 gap-4 transition-all duration-700 ${animateCards ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div
+          className={`grid grid-cols-4 gap-4 transition-all duration-700 ${animateCards ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+        >
           <div className="transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
             <StatsCard
               title="New patients"
@@ -248,16 +253,20 @@ export default function Dashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <Tabs value={activeTab} onValueChange={setActiveTab} className="w-auto">
+                <Tabs
+                  value={activeTab}
+                  onValueChange={setActiveTab}
+                  className="w-auto"
+                >
                   <TabsList className="bg-white/80 backdrop-blur-sm">
-                    <TabsTrigger 
-                      value="overview" 
+                    <TabsTrigger
+                      value="overview"
                       className="data-[state=active]:bg-violet-600 data-[state=active]:text-white transition-all duration-300"
                     >
                       <Stethoscope className="w-4 h-4 mr-2" />
                       Overview
                     </TabsTrigger>
-                    <TabsTrigger 
+                    <TabsTrigger
                       value="analytics"
                       className="data-[state=active]:bg-violet-600 data-[state=active]:text-white transition-all duration-300"
                     >
@@ -267,24 +276,30 @@ export default function Dashboard() {
                   </TabsList>
                 </Tabs>
                 <div className="h-6 w-px bg-gray-300" />
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="hover:bg-white/80 transition-all duration-300 hover:scale-105"
                   onClick={() => setCompactView(!compactView)}
                 >
-                  {compactView ? <Eye className="w-4 h-4 mr-2" /> : <EyeOff className="w-4 h-4 mr-2" />}
+                  {compactView ? (
+                    <Eye className="w-4 h-4 mr-2" />
+                  ) : (
+                    <EyeOff className="w-4 h-4 mr-2" />
+                  )}
                   {compactView ? "Expanded" : "Compact"}
                 </Button>
               </div>
               <div className="flex items-center space-x-3">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="hover:bg-white/80 transition-all duration-300"
                   onClick={handleRefresh}
                   disabled={refreshing}
                 >
-                  <RefreshCw className={`w-4 h-4 mr-2 ${refreshing ? 'animate-spin' : ''}`} />
-                  {refreshing ? 'Refreshing...' : 'Refresh'}
+                  <RefreshCw
+                    className={`w-4 h-4 mr-2 ${refreshing ? "animate-spin" : ""}`}
+                  />
+                  {refreshing ? "Refreshing..." : "Refresh"}
                 </Button>
                 <Button className="bg-violet-600 hover:bg-violet-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">
                   <Download className="w-4 h-4 mr-2" />
@@ -314,22 +329,30 @@ export default function Dashboard() {
                       <div
                         key={action.id}
                         className={`p-4 rounded-lg border-l-4 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-102 ${
-                          action.urgent 
-                            ? 'border-red-500 bg-red-50 hover:bg-red-100' 
-                            : 'border-gray-200 bg-gray-50 hover:bg-gray-100'
-                        } ${index === 0 ? 'animate-pulse' : ''}`}
+                          action.urgent
+                            ? "border-red-500 bg-red-50 hover:bg-red-100"
+                            : "border-gray-200 bg-gray-50 hover:bg-gray-100"
+                        } ${index === 0 ? "animate-pulse" : ""}`}
                         style={{
-                          animationDelay: `${index * 100}ms`
+                          animationDelay: `${index * 100}ms`,
                         }}
                       >
                         <div className="flex items-start justify-between">
                           <div className="flex items-start space-x-3">
-                            <div className={`p-2 rounded-full ${action.bgColor}`}>
-                              <action.icon className={`w-4 h-4 ${action.color}`} />
+                            <div
+                              className={`p-2 rounded-full ${action.bgColor}`}
+                            >
+                              <action.icon
+                                className={`w-4 h-4 ${action.color}`}
+                              />
                             </div>
                             <div>
-                              <h4 className="font-medium text-gray-900">{action.title}</h4>
-                              <p className="text-sm text-gray-600">{action.description}</p>
+                              <h4 className="font-medium text-gray-900">
+                                {action.title}
+                              </h4>
+                              <p className="text-sm text-gray-600">
+                                {action.description}
+                              </p>
                             </div>
                           </div>
                           <ChevronRight className="w-4 h-4 text-gray-400" />
@@ -356,7 +379,7 @@ export default function Dashboard() {
                           key={activity.id}
                           className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 hover:scale-102 cursor-pointer"
                           style={{
-                            animationDelay: `${index * 150}ms`
+                            animationDelay: `${index * 150}ms`,
                           }}
                         >
                           <div className="flex items-center space-x-4">
@@ -364,7 +387,9 @@ export default function Dashboard() {
                               <Thermometer className="w-5 h-5 text-violet-600" />
                             </div>
                             <div>
-                              <h4 className="font-medium text-gray-900">{activity.type}</h4>
+                              <h4 className="font-medium text-gray-900">
+                                {activity.type}
+                              </h4>
                               <p className="text-sm text-gray-600">
                                 {activity.patient} • {activity.department}
                               </p>
@@ -372,7 +397,9 @@ export default function Dashboard() {
                           </div>
                           <div className="text-right">
                             {getStatusBadge(activity.status)}
-                            <p className="text-xs text-gray-500 mt-1">{activity.time}</p>
+                            <p className="text-xs text-gray-500 mt-1">
+                              {activity.time}
+                            </p>
                           </div>
                         </div>
                       ))}
@@ -383,7 +410,9 @@ export default function Dashboard() {
             </div>
 
             {/* Main Overview Grid */}
-            <div className={`grid grid-cols-12 gap-6 ${compactView ? 'grid-rows-2' : ''}`}>
+            <div
+              className={`grid grid-cols-12 gap-6 ${compactView ? "grid-rows-2" : ""}`}
+            >
               {/* Today's Appointments */}
               <div className={compactView ? "col-span-6" : "col-span-7"}>
                 <div className="transform hover:scale-102 transition-all duration-300">
@@ -392,7 +421,9 @@ export default function Dashboard() {
               </div>
 
               {/* Notifications & Charts */}
-              <div className={`${compactView ? "col-span-6" : "col-span-5"} flex flex-col space-y-6`}>
+              <div
+                className={`${compactView ? "col-span-6" : "col-span-5"} flex flex-col space-y-6`}
+              >
                 <div className="transform hover:scale-102 transition-all duration-300">
                   <NotificationPanel />
                 </div>
@@ -438,9 +469,21 @@ export default function Dashboard() {
                           <XAxis dataKey="month" />
                           <YAxis />
                           <Tooltip />
-                          <Bar dataKey="admissions" fill="#8B5CF6" name="Admissions" />
-                          <Bar dataKey="discharges" fill="#10B981" name="Discharges" />
-                          <Bar dataKey="transfers" fill="#F59E0B" name="Transfers" />
+                          <Bar
+                            dataKey="admissions"
+                            fill="#8B5CF6"
+                            name="Admissions"
+                          />
+                          <Bar
+                            dataKey="discharges"
+                            fill="#10B981"
+                            name="Discharges"
+                          />
+                          <Bar
+                            dataKey="transfers"
+                            fill="#F59E0B"
+                            name="Transfers"
+                          />
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
@@ -463,7 +506,7 @@ export default function Dashboard() {
                           key={dept.name}
                           className="flex items-center justify-between hover:bg-gray-50 p-2 rounded transition-all duration-300"
                           style={{
-                            animationDelay: `${index * 100}ms`
+                            animationDelay: `${index * 100}ms`,
                           }}
                         >
                           <div className="flex items-center space-x-3">
@@ -471,7 +514,9 @@ export default function Dashboard() {
                               className="w-4 h-4 rounded"
                               style={{ backgroundColor: dept.color }}
                             />
-                            <span className="text-sm text-gray-700">{dept.name}</span>
+                            <span className="text-sm text-gray-700">
+                              {dept.name}
+                            </span>
                           </div>
                           <div className="flex items-center space-x-2">
                             <div className="w-20 bg-gray-200 rounded-full h-2">
@@ -509,7 +554,7 @@ export default function Dashboard() {
                           key={index}
                           className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105"
                           style={{
-                            animationDelay: `${index * 200}ms`
+                            animationDelay: `${index * 200}ms`,
                           }}
                         >
                           <div>

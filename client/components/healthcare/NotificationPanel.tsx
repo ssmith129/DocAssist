@@ -3,17 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
-import { 
-  Bell, 
-  AlertTriangle, 
-  Clock, 
-  CheckCircle, 
-  X, 
+import {
+  Bell,
+  AlertTriangle,
+  Clock,
+  CheckCircle,
+  X,
   Eye,
   ChevronRight,
   Filter,
   Trash2,
-  MoreVertical
+  MoreVertical,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -41,7 +41,8 @@ const notifications: Notification[] = [
   {
     id: "1",
     title: "Critical Lab Result",
-    message: "Patient John Doe has abnormal blood glucose levels requiring immediate attention.",
+    message:
+      "Patient John Doe has abnormal blood glucose levels requiring immediate attention.",
     type: "critical",
     timestamp: "2 minutes ago",
     read: false,
@@ -49,13 +50,14 @@ const notifications: Notification[] = [
     department: "Laboratory",
     action: {
       label: "Review",
-      onClick: () => console.log("Reviewing critical lab result")
-    }
+      onClick: () => console.log("Reviewing critical lab result"),
+    },
   },
   {
     id: "2",
     title: "Medication Reminder",
-    message: "Patient Sarah Johnson is due for scheduled medication at 3:00 PM.",
+    message:
+      "Patient Sarah Johnson is due for scheduled medication at 3:00 PM.",
     type: "warning",
     timestamp: "15 minutes ago",
     read: false,
@@ -65,7 +67,8 @@ const notifications: Notification[] = [
   {
     id: "3",
     title: "Discharge Ready",
-    message: "Patient Michael Chen has completed all requirements and is ready for discharge.",
+    message:
+      "Patient Michael Chen has completed all requirements and is ready for discharge.",
     type: "success",
     timestamp: "1 hour ago",
     read: true,
@@ -75,7 +78,8 @@ const notifications: Notification[] = [
   {
     id: "4",
     title: "Appointment Reminder",
-    message: "Dr. Smith has a consultation scheduled in 30 minutes with Emma Davis.",
+    message:
+      "Dr. Smith has a consultation scheduled in 30 minutes with Emma Davis.",
     type: "info",
     timestamp: "2 hours ago",
     read: true,
@@ -102,7 +106,7 @@ export function NotificationPanel() {
         bgColor: "bg-red-50",
         borderColor: "border-red-200",
         badgeColor: "bg-red-500",
-        pulse: true
+        pulse: true,
       },
       warning: {
         icon: Clock,
@@ -110,7 +114,7 @@ export function NotificationPanel() {
         bgColor: "bg-yellow-50",
         borderColor: "border-yellow-200",
         badgeColor: "bg-yellow-500",
-        pulse: false
+        pulse: false,
       },
       success: {
         icon: CheckCircle,
@@ -118,7 +122,7 @@ export function NotificationPanel() {
         bgColor: "bg-green-50",
         borderColor: "border-green-200",
         badgeColor: "bg-green-500",
-        pulse: false
+        pulse: false,
       },
       info: {
         icon: Bell,
@@ -126,25 +130,23 @@ export function NotificationPanel() {
         bgColor: "bg-blue-50",
         borderColor: "border-blue-200",
         badgeColor: "bg-blue-500",
-        pulse: false
-      }
+        pulse: false,
+      },
     };
     return configs[type as keyof typeof configs];
   };
 
   const markAsRead = (id: string) => {
-    setNotificationList(prev => 
-      prev.map(notif => 
-        notif.id === id ? { ...notif, read: true } : notif
-      )
+    setNotificationList((prev) =>
+      prev.map((notif) => (notif.id === id ? { ...notif, read: true } : notif)),
     );
   };
 
   const deleteNotification = (id: string) => {
-    setNotificationList(prev => prev.filter(notif => notif.id !== id));
+    setNotificationList((prev) => prev.filter((notif) => notif.id !== id));
   };
 
-  const filteredNotifications = notificationList.filter(notif => {
+  const filteredNotifications = notificationList.filter((notif) => {
     switch (filter) {
       case "unread":
         return !notif.read;
@@ -155,14 +157,18 @@ export function NotificationPanel() {
     }
   });
 
-  const unreadCount = notificationList.filter(n => !n.read).length;
-  const criticalCount = notificationList.filter(n => n.type === "critical").length;
+  const unreadCount = notificationList.filter((n) => !n.read).length;
+  const criticalCount = notificationList.filter(
+    (n) => n.type === "critical",
+  ).length;
 
   return (
-    <Card className={cn(
-      "shadow-lg hover:shadow-xl transition-all duration-500",
-      animateIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-    )}>
+    <Card
+      className={cn(
+        "shadow-lg hover:shadow-xl transition-all duration-500",
+        animateIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+      )}
+    >
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -170,7 +176,9 @@ export function NotificationPanel() {
               <Bell className="w-5 h-5 text-violet-600" />
               {unreadCount > 0 && (
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
-                  <span className="text-xs text-white font-bold">{unreadCount}</span>
+                  <span className="text-xs text-white font-bold">
+                    {unreadCount}
+                  </span>
                 </div>
               )}
             </div>
@@ -178,15 +186,26 @@ export function NotificationPanel() {
               Notifications
             </CardTitle>
           </div>
-          
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="hover:bg-violet-50 transition-colors">
+              <Button
+                variant="outline"
+                size="sm"
+                className="hover:bg-violet-50 transition-colors"
+              >
                 <Filter className="w-4 h-4 mr-2" />
-                {filter === "all" ? "All" : filter === "unread" ? "Unread" : "Critical"}
+                {filter === "all"
+                  ? "All"
+                  : filter === "unread"
+                    ? "Unread"
+                    : "Critical"}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="animate-in slide-in-from-top-2">
+            <DropdownMenuContent
+              align="end"
+              className="animate-in slide-in-from-top-2"
+            >
               <DropdownMenuItem onClick={() => setFilter("all")}>
                 All Notifications
               </DropdownMenuItem>
@@ -200,7 +219,7 @@ export function NotificationPanel() {
           </DropdownMenu>
         </div>
       </CardHeader>
-      
+
       <CardContent className="space-y-3 max-h-96 overflow-y-auto">
         {filteredNotifications.length === 0 ? (
           <div className="text-center py-8 text-gray-500">
@@ -211,7 +230,7 @@ export function NotificationPanel() {
           filteredNotifications.map((notification, index) => {
             const config = getTypeConfig(notification.type);
             const IconComponent = config.icon;
-            
+
             return (
               <div
                 key={notification.id}
@@ -220,39 +239,45 @@ export function NotificationPanel() {
                   config.bgColor,
                   config.borderColor,
                   !notification.read && "ring-2 ring-violet-200",
-                  hoveredId === notification.id && "scale-102 shadow-md"
+                  hoveredId === notification.id && "scale-102 shadow-md",
                 )}
                 style={{
-                  animationDelay: `${index * 100}ms`
+                  animationDelay: `${index * 100}ms`,
                 }}
                 onMouseEnter={() => setHoveredId(notification.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                onClick={() => !notification.read && markAsRead(notification.id)}
+                onClick={() =>
+                  !notification.read && markAsRead(notification.id)
+                }
               >
                 {/* Pulse indicator for critical notifications */}
                 {config.pulse && !notification.read && (
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping" />
                 )}
-                
+
                 <div className="flex items-start space-x-3">
-                  <div className={cn(
-                    "p-2 rounded-full transition-all duration-300",
-                    config.bgColor,
-                    hoveredId === notification.id && "scale-110"
-                  )}>
+                  <div
+                    className={cn(
+                      "p-2 rounded-full transition-all duration-300",
+                      config.bgColor,
+                      hoveredId === notification.id && "scale-110",
+                    )}
+                  >
                     <IconComponent className={cn("w-4 h-4", config.color)} />
                   </div>
-                  
+
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <h4 className={cn(
-                          "font-medium text-gray-900 transition-all duration-300",
-                          !notification.read && "font-semibold"
-                        )}>
+                        <h4
+                          className={cn(
+                            "font-medium text-gray-900 transition-all duration-300",
+                            !notification.read && "font-semibold",
+                          )}
+                        >
                           {notification.title}
                         </h4>
-                        
+
                         {notification.patient && (
                           <div className="flex items-center space-x-2 mt-1">
                             <Badge variant="outline" className="text-xs">
@@ -265,16 +290,16 @@ export function NotificationPanel() {
                             )}
                           </div>
                         )}
-                        
+
                         <p className="text-sm text-gray-600 mt-2 line-clamp-2">
                           {notification.message}
                         </p>
-                        
+
                         <div className="flex items-center justify-between mt-3">
                           <span className="text-xs text-gray-500">
                             {notification.timestamp}
                           </span>
-                          
+
                           {notification.action && (
                             <Button
                               size="sm"
@@ -291,12 +316,17 @@ export function NotificationPanel() {
                           )}
                         </div>
                       </div>
-                      
+
                       <div className="ml-2 flex items-center space-x-1">
                         {!notification.read && (
-                          <div className={cn("w-2 h-2 rounded-full", config.badgeColor)} />
+                          <div
+                            className={cn(
+                              "w-2 h-2 rounded-full",
+                              config.badgeColor,
+                            )}
+                          />
                         )}
-                        
+
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
                             <Button
@@ -308,15 +338,22 @@ export function NotificationPanel() {
                               <MoreVertical className="w-4 h-4" />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end" className="animate-in slide-in-from-top-2">
+                          <DropdownMenuContent
+                            align="end"
+                            className="animate-in slide-in-from-top-2"
+                          >
                             {!notification.read && (
-                              <DropdownMenuItem onClick={() => markAsRead(notification.id)}>
+                              <DropdownMenuItem
+                                onClick={() => markAsRead(notification.id)}
+                              >
                                 <Eye className="w-4 h-4 mr-2" />
                                 Mark as Read
                               </DropdownMenuItem>
                             )}
-                            <DropdownMenuItem 
-                              onClick={() => deleteNotification(notification.id)}
+                            <DropdownMenuItem
+                              onClick={() =>
+                                deleteNotification(notification.id)
+                              }
                               className="text-red-600 hover:text-red-700"
                             >
                               <Trash2 className="w-4 h-4 mr-2" />
@@ -328,22 +365,24 @@ export function NotificationPanel() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Hover indicator */}
-                <div className={cn(
-                  "absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-violet-500 to-blue-500 transition-all duration-300",
-                  hoveredId === notification.id ? "w-full" : "w-0"
-                )} />
+                <div
+                  className={cn(
+                    "absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-violet-500 to-blue-500 transition-all duration-300",
+                    hoveredId === notification.id ? "w-full" : "w-0",
+                  )}
+                />
               </div>
             );
           })
         )}
-        
+
         {filteredNotifications.length > 0 && (
           <div className="text-center pt-4">
-            <Button 
-              variant="outline" 
-              size="sm" 
+            <Button
+              variant="outline"
+              size="sm"
               className="w-full hover:bg-violet-50 transition-all duration-300 hover:scale-102"
             >
               View All Notifications
