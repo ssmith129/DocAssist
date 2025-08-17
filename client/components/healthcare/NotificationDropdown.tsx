@@ -248,7 +248,6 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
           size="sm"
           className={cn(
             "relative hover:bg-gray-100/80 focus:ring-2 focus:ring-violet-200 transition-all duration-200 rounded-lg",
-            animateNewNotifications && "animate-bounce",
             className
           )}
           aria-label={`Notifications - ${unreadCount} unread`}
