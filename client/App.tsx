@@ -88,7 +88,7 @@ const App = () => (
           <Route path="/messages/portal" element={<Messages />} />
 
           {/* System Items */}
-          <Route path="/reports" element={<Analytics />} />
+          <Route path="/reports" element={<Reports />} />
           <Route path="/admin" element={<Settings />} />
           <Route path="/billing" element={<Settings />} />
           <Route path="/files" element={<Settings />} />
