@@ -52,14 +52,14 @@ export function Sidebar() {
                   "flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium transition-colors",
                   isActive
                     ? "bg-violet-50 text-gray-900"
-                    : "text-gray-700 hover:bg-gray-50"
+                    : "text-gray-700 hover:bg-gray-50",
                 )}
               >
-                <item.icon 
+                <item.icon
                   className={cn(
                     "w-6 h-6",
-                    isActive ? "text-violet-600" : "text-violet-600"
-                  )} 
+                    isActive ? "text-violet-600" : "text-violet-600",
+                  )}
                 />
                 <span>{item.name}</span>
               </Link>
@@ -82,14 +82,14 @@ export function Sidebar() {
                   "flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium transition-colors",
                   isActive
                     ? "bg-violet-50 text-gray-900"
-                    : "text-gray-700 hover:bg-gray-50"
+                    : "text-gray-700 hover:bg-gray-50",
                 )}
               >
-                <item.icon 
+                <item.icon
                   className={cn(
                     "w-6 h-6",
-                    isActive ? "text-violet-600" : "text-gray-600"
-                  )} 
+                    isActive ? "text-violet-600" : "text-gray-600",
+                  )}
                 />
                 <span>{item.name}</span>
               </Link>
