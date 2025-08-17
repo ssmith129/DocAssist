@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 import {
   LayoutDashboard,
   Calendar,
@@ -10,30 +11,173 @@ import {
   Shield,
   Wrench,
   Settings,
+  ChevronDown,
+  ChevronRight,
+  Stethoscope,
+  Activity,
+  TestTube,
+  Pill,
+  Scan,
+  BarChart3,
+  UserCog,
+  CreditCard,
+  ClipboardList,
+  Heart,
+  Brain,
+  Eye,
+  Thermometer,
+  FileSignature,
+  AlertTriangle,
+  Clock,
+  Archive,
+  Database
 } from "lucide-react";
 
-const navigationItems = [
-  { name: "Overview", href: "/", icon: LayoutDashboard },
-  { name: "Appointments", href: "/schedule", icon: Calendar },
-  { name: "Patients", href: "/patients", icon: Users },
-  { name: "Rooms", href: "/rooms", icon: Building2 },
-  { name: "Messages", href: "/messages", icon: MessageSquare },
-  { name: "Files", href: "/files", icon: FileText },
+interface MenuItem {
+  name: string;
+  href: string;
+  icon: React.ElementType;
+  badge?: string;
+}
+
+interface MenuSection {
+  name: string;
+  icon: React.ElementType;
+  items: MenuItem[];
+  defaultOpen?: boolean;
+}
+
+const menuSections: MenuSection[] = [
+  {
+    name: "Dashboard",
+    icon: LayoutDashboard,
+    defaultOpen: true,
+    items: [
+      { name: "Overview", href: "/", icon: LayoutDashboard },
+      { name: "Analytics", href: "/analytics", icon: BarChart3 },
+    ]
+  },
+  {
+    name: "Patient Management",
+    icon: Users,
+    defaultOpen: true,
+    items: [
+      { name: "Patient List", href: "/patients", icon: Users },
+      { name: "Patient Registration", href: "/patients/register", icon: UserCog },
+      { name: "Patient Search", href: "/patients/search", icon: FileText },
+      { name: "Medical Records", href: "/patients/records", icon: Archive },
+    ]
+  },
+  {
+    name: "Clinical Care",
+    icon: Stethoscope,
+    defaultOpen: false,
+    items: [
+      { name: "Clinical Notes", href: "/clinical", icon: Stethoscope },
+      { name: "Progress Notes", href: "/clinical/progress", icon: FileSignature },
+      { name: "Assessments", href: "/clinical/assessments", icon: ClipboardList },
+      { name: "Care Plans", href: "/clinical/care-plans", icon: Heart },
+      { name: "Procedures", href: "/clinical/procedures", icon: Activity },
+      { name: "Vital Signs", href: "/clinical/vitals", icon: Thermometer },
+    ]
+  },
+  {
+    name: "Laboratory",
+    icon: TestTube,
+    defaultOpen: false,
+    items: [
+      { name: "Lab Orders", href: "/laboratory/orders", icon: TestTube },
+      { name: "Lab Results", href: "/laboratory/results", icon: Activity },
+      { name: "Microbiology", href: "/laboratory/microbiology", icon: Eye },
+      { name: "Pathology", href: "/laboratory/pathology", icon: Brain },
+      { name: "Blood Bank", href: "/laboratory/blood", icon: Thermometer },
+    ]
+  },
+  {
+    name: "Pharmacy",
+    icon: Pill,
+    defaultOpen: false,
+    items: [
+      { name: "Medications", href: "/pharmacy/medications", icon: Pill },
+      { name: "Prescriptions", href: "/pharmacy/prescriptions", icon: FileSignature },
+      { name: "Drug Interactions", href: "/pharmacy/interactions", icon: AlertTriangle },
+      { name: "Inventory", href: "/pharmacy/inventory", icon: Database },
+    ]
+  },
+  {
+    name: "Imaging & Diagnostics",
+    icon: Scan,
+    defaultOpen: false,
+    items: [
+      { name: "Radiology Orders", href: "/imaging/orders", icon: Scan },
+      { name: "Imaging Results", href: "/imaging/results", icon: FileText },
+      { name: "PACS Viewer", href: "/imaging/viewer", icon: Eye },
+      { name: "Reports", href: "/imaging/reports", icon: Archive },
+    ]
+  },
+  {
+    name: "Scheduling",
+    icon: Calendar,
+    defaultOpen: false,
+    items: [
+      { name: "Appointments", href: "/schedule", icon: Calendar },
+      { name: "Calendar View", href: "/schedule/calendar", icon: Calendar },
+      { name: "Resource Booking", href: "/schedule/resources", icon: Building2 },
+      { name: "Waitlist", href: "/schedule/waitlist", icon: Clock },
+    ]
+  },
+  {
+    name: "Communication",
+    icon: MessageSquare,
+    defaultOpen: false,
+    items: [
+      { name: "Messages", href: "/messages", icon: MessageSquare },
+      { name: "Consultations", href: "/messages/consultations", icon: Stethoscope },
+      { name: "Patient Portal", href: "/messages/portal", icon: Users },
+    ]
+  },
 ];
 
-const bottomItems = [
-  { name: "Authentications", href: "/auth", icon: Shield },
-  { name: "Utility", href: "/utility", icon: Wrench },
+const systemItems: MenuItem[] = [
+  { name: "Reports", href: "/reports", icon: BarChart3 },
+  { name: "Administration", href: "/admin", icon: UserCog },
+  { name: "Billing", href: "/billing", icon: CreditCard },
+  { name: "Files & Documents", href: "/files", icon: FileText },
+  { name: "Rooms", href: "/rooms", icon: Building2 },
+];
+
+const bottomItems: MenuItem[] = [
+  { name: "Security", href: "/security", icon: Shield },
+  { name: "System Tools", href: "/tools", icon: Wrench },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
 
 export function Sidebar() {
   const location = useLocation();
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>(
+    Object.fromEntries(
+      menuSections.map(section => [section.name, section.defaultOpen || false])
+    )
+  );
+
+  const toggleSection = (sectionName: string) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [sectionName]: !prev[sectionName]
+    }));
+  };
+
+  const isItemActive = (href: string) => {
+    if (href === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(href);
+  };
 
   return (
-    <div className="flex flex-col w-[228px] h-screen bg-white shadow-lg">
+    <div className="flex flex-col w-[280px] h-screen bg-white shadow-lg border-r border-gray-200">
       {/* Logo */}
-      <div className="px-6 py-6">
+      <div className="px-6 py-6 border-b border-gray-100">
         <svg
           width="56"
           height="32"
@@ -51,73 +195,109 @@ export function Sidebar() {
       </div>
 
       {/* Navigation Menu */}
-      <div className="flex-1 px-6">
-        <div className="space-y-2">
-          {navigationItems.map((item) => {
-            const isActive = location.pathname === item.href;
-            return (
+      <div className="flex-1 overflow-y-auto px-4 py-4">
+        <div className="space-y-1">
+          {/* Collapsible Sections */}
+          {menuSections.map((section) => (
+            <div key={section.name}>
+              <button
+                onClick={() => toggleSection(section.name)}
+                className="flex items-center justify-between w-full px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <div className="flex items-center space-x-2">
+                  <section.icon className="w-4 h-4 text-violet-600" />
+                  <span>{section.name}</span>
+                </div>
+                {openSections[section.name] ? (
+                  <ChevronDown className="w-4 h-4" />
+                ) : (
+                  <ChevronRight className="w-4 h-4" />
+                )}
+              </button>
+              
+              {openSections[section.name] && (
+                <div className="ml-6 mt-1 space-y-1">
+                  {section.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      className={cn(
+                        "flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors",
+                        isItemActive(item.href)
+                          ? "bg-violet-50 text-violet-700 font-medium"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      )}
+                    >
+                      <item.icon className="w-4 h-4" />
+                      <span>{item.name}</span>
+                      {item.badge && (
+                        <span className="ml-auto text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full">
+                          {item.badge}
+                        </span>
+                      )}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Divider */}
+          <div className="h-px bg-gray-200 my-4" />
+
+          {/* System Items */}
+          <div className="space-y-1">
+            <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              System
+            </div>
+            {systemItems.map((item) => (
               <Link
-                key={item.name}
+                key={item.href}
                 to={item.href}
                 className={cn(
-                  "flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium transition-colors",
-                  isActive
-                    ? "bg-violet-50 text-gray-900"
-                    : "text-gray-700 hover:bg-gray-50",
+                  "flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors",
+                  isItemActive(item.href)
+                    ? "bg-violet-50 text-violet-700 font-medium"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                 )}
               >
-                <item.icon
-                  className={cn(
-                    "w-6 h-6",
-                    isActive ? "text-violet-600" : "text-violet-600",
-                  )}
-                />
+                <item.icon className="w-4 h-4" />
                 <span>{item.name}</span>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Divider */}
-        <div className="h-px bg-gray-200 my-6" />
-
-        {/* Bottom navigation */}
-        <div className="space-y-2">
-          {bottomItems.map((item) => {
-            const isActive = location.pathname === item.href;
-            return (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={cn(
-                  "flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium transition-colors",
-                  isActive
-                    ? "bg-violet-50 text-gray-900"
-                    : "text-gray-700 hover:bg-gray-50",
+                {item.badge && (
+                  <span className="ml-auto text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full">
+                    {item.badge}
+                  </span>
                 )}
-              >
-                <item.icon
-                  className={cn(
-                    "w-6 h-6",
-                    isActive ? "text-violet-600" : "text-gray-600",
-                  )}
-                />
-                <span>{item.name}</span>
               </Link>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Settings at bottom */}
-      <div className="p-6">
-        <Link
-          to="/settings"
-          className="flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-        >
-          <Settings className="w-6 h-6 text-violet-600" />
-          <span>Settings</span>
-        </Link>
+      {/* Bottom Items */}
+      <div className="border-t border-gray-200 p-4">
+        <div className="space-y-1">
+          {bottomItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              className={cn(
+                "flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors",
+                isItemActive(item.href)
+                  ? "bg-violet-50 text-violet-700 font-medium"
+                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+              )}
+            >
+              <item.icon className="w-4 h-4" />
+              <span>{item.name}</span>
+              {item.badge && (
+                <span className="ml-auto text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full">
+                  {item.badge}
+                </span>
+              )}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
