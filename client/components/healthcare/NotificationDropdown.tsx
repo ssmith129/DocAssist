@@ -25,9 +25,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
   DropdownMenuLabel,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu";
 
 interface Notification {
@@ -127,6 +124,7 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
   const [notificationList, setNotificationList] = useState(notifications);
   const [filter, setFilter] = useState<"all" | "unread" | "critical" | "starred">("all");
   const [open, setOpen] = useState(false);
+  const [showActions, setShowActions] = useState(false);
 
   const unreadCount = notificationList.filter(n => !n.read).length;
   const criticalCount = notificationList.filter(n => n.type === "critical" && !n.read).length;
@@ -271,38 +269,14 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
               </p>
             </div>
             <div className="flex items-center space-x-2">
-              {/* Filter Menu */}
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger asChild>
-                  <Button variant="ghost" size="sm" className="h-8 px-2">
-                    <Filter className="w-4 h-4" />
-                  </Button>
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
-                  <DropdownMenuLabel>Filter by</DropdownMenuLabel>
-                  <DropdownMenuItem onClick={() => setFilter("all")}>
-                    All ({notificationList.length})
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setFilter("unread")}>
-                    Unread ({unreadCount})
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setFilter("critical")}>
-                    Critical ({criticalCount})
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setFilter("starred")}>
-                    Starred ({starredCount})
-                  </DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-
-              {/* Settings Menu */}
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger asChild>
+              {/* Actions Menu */}
+              <DropdownMenu open={showActions} onOpenChange={setShowActions}>
+                <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm" className="h-8 px-2">
                     <MoreVertical className="w-4 h-4" />
                   </Button>
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Actions</DropdownMenuLabel>
                   <DropdownMenuItem onClick={markAllAsRead}>
                     <Eye className="w-4 h-4 mr-2" />
@@ -317,25 +291,40 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                     <Settings className="w-4 h-4 mr-2" />
                     Notification settings
                   </DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
 
           {/* Filter Pills */}
           <div className="flex items-center space-x-2 mt-3">
-            {["all", "unread", "critical", "starred"].map((filterType) => (
+            {[
+              { key: "all", label: "All", count: notificationList.length },
+              { key: "unread", label: "Unread", count: unreadCount },
+              { key: "critical", label: "Critical", count: criticalCount },
+              { key: "starred", label: "Starred", count: starredCount }
+            ].map((filterOption) => (
               <button
-                key={filterType}
-                onClick={() => setFilter(filterType as any)}
+                key={filterOption.key}
+                onClick={() => setFilter(filterOption.key as any)}
                 className={cn(
-                  "px-2 py-1 text-xs rounded-full transition-all duration-200 capitalize",
-                  filter === filterType
+                  "px-3 py-1 text-xs rounded-full transition-all duration-200 flex items-center space-x-1",
+                  filter === filterOption.key
                     ? "bg-violet-600 text-white shadow-sm"
                     : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
                 )}
               >
-                {filterType}
+                <span>{filterOption.label}</span>
+                {filterOption.count > 0 && (
+                  <span className={cn(
+                    "text-xs px-1.5 py-0.5 rounded-full",
+                    filter === filterOption.key
+                      ? "bg-white/20 text-white"
+                      : "bg-gray-200 text-gray-600"
+                  )}>
+                    {filterOption.count}
+                  </span>
+                )}
               </button>
             ))}
           </div>
