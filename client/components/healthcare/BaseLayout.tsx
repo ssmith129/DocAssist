@@ -155,7 +155,7 @@ export function BaseLayout({ children, title }: BaseLayoutProps) {
                   type="search"
                   placeholder="Search patients, appointments..."
                   className={`
-                    pl-10 pr-4 w-80 h-10 bg-gray-50 border-2 rounded-lg text-sm
+                    pl-10 pr-4 w-auto self-stretch max-w-[500px] h-10 bg-gray-50 border-2 rounded-lg text-sm
                     placeholder:text-gray-500 transition-all duration-200
                     focus:border-violet-500 focus:ring-2 focus:ring-violet-200 focus:outline-none
                     focus:bg-white
