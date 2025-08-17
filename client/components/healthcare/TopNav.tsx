@@ -23,8 +23,8 @@ export function TopNav() {
         {/* Notifications */}
         <Button variant="ghost" size="sm" className="relative w-10 h-10 p-0">
           <Bell className="w-5 h-5 text-gray-700 stroke-[1.5]" />
-          <div className="absolute -top-1 -right-1 w-[15px] h-[15px] bg-red-400 rounded-full flex items-center justify-center">
-            <span className="text-xs text-gray-900 font-medium">3</span>
+          <div className="absolute -top-1 -right-1 w-[18px] h-[18px] bg-healthcare-critical rounded-full flex items-center justify-center">
+            <span className="text-sm text-white font-bold">3</span>
           </div>
         </Button>
 
