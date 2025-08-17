@@ -432,10 +432,10 @@ export default function Dashboard() {
                               </Badge>
                             )}
                           </div>
-                          <h4 className={`font-semibold mb-2 ${action.color}`}>
+                          <h4 className={`hc-text-medical-data mb-2 ${action.color}`}>
                             {action.title}
                           </h4>
-                          <p className="text-sm text-gray-600 mb-3">
+                          <p className="hc-text-secondary text-gray-600 mb-3">
                             {action.description}
                           </p>
                           <div className="flex items-center justify-end">
