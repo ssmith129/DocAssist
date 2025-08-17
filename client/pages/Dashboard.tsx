@@ -255,7 +255,7 @@ export default function Dashboard() {
             animateCards ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <div className="transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+          <div className="transition-all duration-300">
             <StatsCard
               title="New Patients Today"
               value="15"
@@ -268,7 +268,7 @@ export default function Dashboard() {
               }
             />
           </div>
-          <div className="transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+          <div className="transition-all duration-300">
             <StatsCard
               title="Total Active Patients"
               value="1,247"
@@ -280,7 +280,7 @@ export default function Dashboard() {
               }
             />
           </div>
-          <div className="transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+          <div className="transition-all duration-300">
             <StatsCard
               title="Bed Occupancy"
               value="87%"
@@ -292,7 +292,7 @@ export default function Dashboard() {
               }
             />
           </div>
-          <div className="transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+          <div className="transition-all duration-300">
             <StatsCard
               title="Patient Satisfaction"
               value="4.7/5"
