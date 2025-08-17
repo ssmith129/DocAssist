@@ -4,18 +4,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { 
-  TestTube, 
-  Plus, 
-  Search, 
-  Filter, 
-  Clock, 
-  CheckCircle, 
+import {
+  TestTube,
+  Plus,
+  Search,
+  Filter,
+  Clock,
+  CheckCircle,
   AlertTriangle,
   Calendar,
   User,
   FileText,
-  Eye
+  Eye,
 } from "lucide-react";
 
 // Mock lab orders data
@@ -30,7 +30,7 @@ const labOrders = [
     status: "pending",
     orderDate: "2024-01-21",
     expectedDate: "2024-01-22",
-    room: "Room 302-A"
+    room: "Room 302-A",
   },
   {
     id: "LAB-2024-002",
@@ -42,7 +42,7 @@ const labOrders = [
     status: "in-progress",
     orderDate: "2024-01-21",
     expectedDate: "2024-01-21",
-    room: "ICU 101"
+    room: "ICU 101",
   },
   {
     id: "LAB-2024-003",
@@ -54,7 +54,7 @@ const labOrders = [
     status: "completed",
     orderDate: "2024-01-20",
     expectedDate: "2024-01-21",
-    room: "Room 405-C"
+    room: "Room 405-C",
   },
   {
     id: "LAB-2024-004",
@@ -66,21 +66,21 @@ const labOrders = [
     status: "pending",
     orderDate: "2024-01-21",
     expectedDate: "2024-01-21",
-    room: "ICU 101"
-  }
+    room: "ICU 101",
+  },
 ];
 
 const statusColors = {
-  pending: 'bg-yellow-100 text-yellow-800',
-  'in-progress': 'bg-blue-100 text-blue-800',
-  completed: 'bg-green-100 text-green-800',
-  cancelled: 'bg-gray-100 text-gray-800'
+  pending: "bg-yellow-100 text-yellow-800",
+  "in-progress": "bg-blue-100 text-blue-800",
+  completed: "bg-green-100 text-green-800",
+  cancelled: "bg-gray-100 text-gray-800",
 };
 
 const priorityColors = {
-  routine: 'bg-gray-100 text-gray-800',
-  urgent: 'bg-orange-100 text-orange-800',
-  critical: 'bg-red-100 text-red-800'
+  routine: "bg-gray-100 text-gray-800",
+  urgent: "bg-orange-100 text-orange-800",
+  critical: "bg-red-100 text-red-800",
 };
 
 export default function LabOrders() {
@@ -146,12 +146,21 @@ export default function LabOrders() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="text-lg font-bold text-gray-700">
-              Laboratory Orders <span className="text-gray-400 font-normal">({labOrders.length} orders)</span>
+              Laboratory Orders{" "}
+              <span className="text-gray-400 font-normal">
+                ({labOrders.length} orders)
+              </span>
             </CardTitle>
             <div className="flex space-x-2">
-              <Button size="sm" variant="outline">Today</Button>
-              <Button size="sm" className="bg-violet-600 text-white">This Week</Button>
-              <Button size="sm" variant="outline">This Month</Button>
+              <Button size="sm" variant="outline">
+                Today
+              </Button>
+              <Button size="sm" className="bg-violet-600 text-white">
+                This Week
+              </Button>
+              <Button size="sm" variant="outline">
+                This Month
+              </Button>
             </div>
           </div>
         </CardHeader>
@@ -160,66 +169,121 @@ export default function LabOrders() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Order ID</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Patient</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Tests Ordered</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Priority</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Status</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Physician</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Expected</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Actions</th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Order ID
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Patient
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Tests Ordered
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Priority
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Status
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Physician
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Expected
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {labOrders.map((order) => (
-                  <tr key={order.id} className="border-b border-gray-100 hover:bg-gray-50">
+                  <tr
+                    key={order.id}
+                    className="border-b border-gray-100 hover:bg-gray-50"
+                  >
                     <td className="py-4 px-4">
                       <div>
                         <p className="font-medium text-gray-900">{order.id}</p>
-                        <p className="text-sm text-gray-500">{order.orderDate}</p>
+                        <p className="text-sm text-gray-500">
+                          {order.orderDate}
+                        </p>
                       </div>
                     </td>
                     <td className="py-4 px-4">
                       <div>
-                        <p className="font-medium text-gray-900">{order.patient}</p>
-                        <p className="text-sm text-gray-500">{order.mrn} • {order.room}</p>
+                        <p className="font-medium text-gray-900">
+                          {order.patient}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {order.mrn} • {order.room}
+                        </p>
                       </div>
                     </td>
                     <td className="py-4 px-4">
                       <div className="space-y-1">
                         {order.tests.slice(0, 2).map((test, index) => (
-                          <div key={index} className="text-sm text-gray-900">{test}</div>
+                          <div key={index} className="text-sm text-gray-900">
+                            {test}
+                          </div>
                         ))}
                         {order.tests.length > 2 && (
-                          <div className="text-sm text-gray-500">+{order.tests.length - 2} more</div>
+                          <div className="text-sm text-gray-500">
+                            +{order.tests.length - 2} more
+                          </div>
                         )}
                       </div>
                     </td>
                     <td className="py-4 px-4">
-                      <Badge className={priorityColors[order.priority as keyof typeof priorityColors]}>
+                      <Badge
+                        className={
+                          priorityColors[
+                            order.priority as keyof typeof priorityColors
+                          ]
+                        }
+                      >
                         {order.priority}
                       </Badge>
                     </td>
                     <td className="py-4 px-4">
-                      <Badge className={statusColors[order.status as keyof typeof statusColors]}>
-                        {order.status.replace('-', ' ')}
+                      <Badge
+                        className={
+                          statusColors[
+                            order.status as keyof typeof statusColors
+                          ]
+                        }
+                      >
+                        {order.status.replace("-", " ")}
                       </Badge>
                     </td>
                     <td className="py-4 px-4">
                       <p className="text-sm text-gray-900">{order.physician}</p>
                     </td>
                     <td className="py-4 px-4">
-                      <p className="text-sm text-gray-900">{order.expectedDate}</p>
+                      <p className="text-sm text-gray-900">
+                        {order.expectedDate}
+                      </p>
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center space-x-2">
-                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="h-8 w-8 p-0"
+                        >
                           <Eye className="w-4 h-4" />
                         </Button>
-                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="h-8 w-8 p-0"
+                        >
                           <FileText className="w-4 h-4" />
                         </Button>
-                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="h-8 w-8 p-0"
+                        >
                           <User className="w-4 h-4" />
                         </Button>
                       </div>
@@ -236,11 +300,21 @@ export default function LabOrders() {
               Showing 1 to {labOrders.length} of 156 orders
             </p>
             <div className="flex space-x-2">
-              <Button variant="outline" size="sm">Previous</Button>
-              <Button size="sm" className="bg-violet-600 text-white">1</Button>
-              <Button variant="outline" size="sm">2</Button>
-              <Button variant="outline" size="sm">3</Button>
-              <Button variant="outline" size="sm">Next</Button>
+              <Button variant="outline" size="sm">
+                Previous
+              </Button>
+              <Button size="sm" className="bg-violet-600 text-white">
+                1
+              </Button>
+              <Button variant="outline" size="sm">
+                2
+              </Button>
+              <Button variant="outline" size="sm">
+                3
+              </Button>
+              <Button variant="outline" size="sm">
+                Next
+              </Button>
             </div>
           </div>
         </CardContent>

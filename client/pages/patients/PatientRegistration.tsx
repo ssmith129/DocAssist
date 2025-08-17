@@ -5,17 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { 
-  UserPlus, 
-  Save, 
-  Camera, 
-  Phone, 
-  Mail, 
+import {
+  UserPlus,
+  Save,
+  Camera,
+  Phone,
+  Mail,
   MapPin,
   Calendar,
   User,
   Heart,
-  AlertTriangle
+  AlertTriangle,
 } from "lucide-react";
 
 export default function PatientRegistration() {
@@ -51,7 +51,9 @@ export default function PatientRegistration() {
         <div className="col-span-8">
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">New Patient Registration</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                New Patient Registration
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Patient Photo */}
@@ -64,42 +66,60 @@ export default function PatientRegistration() {
                     <Camera className="w-4 h-4 mr-2" />
                     Upload Photo
                   </Button>
-                  <p className="text-sm text-gray-500">Optional patient photo for identification</p>
+                  <p className="text-sm text-gray-500">
+                    Optional patient photo for identification
+                  </p>
                 </div>
               </div>
 
               {/* Personal Information */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Personal Information</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Personal Information
+                </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      First Name *
+                    </label>
                     <Input placeholder="Enter first name" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Last Name *
+                    </label>
                     <Input placeholder="Enter last name" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Date of Birth *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Date of Birth *
+                    </label>
                     <Input type="date" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Gender *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Gender *
+                    </label>
                     <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500">
                       <option value="">Select gender</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                       <option value="other">Other</option>
-                      <option value="prefer-not-to-say">Prefer not to say</option>
+                      <option value="prefer-not-to-say">
+                        Prefer not to say
+                      </option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Social Security Number</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Social Security Number
+                    </label>
                     <Input placeholder="XXX-XX-XXXX" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Marital Status</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Marital Status
+                    </label>
                     <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500">
                       <option value="">Select status</option>
                       <option value="single">Single</option>
@@ -113,26 +133,38 @@ export default function PatientRegistration() {
 
               {/* Contact Information */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Contact Information
+                </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Phone Number *
+                    </label>
                     <Input placeholder="(555) 123-4567" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Email Address
+                    </label>
                     <Input type="email" placeholder="patient@email.com" />
                   </div>
                   <div className="col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Address *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Address *
+                    </label>
                     <Input placeholder="Street address" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">City *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      City *
+                    </label>
                     <Input placeholder="City" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">State *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      State *
+                    </label>
                     <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500">
                       <option value="">Select state</option>
                       <option value="AL">Alabama</option>
@@ -143,7 +175,9 @@ export default function PatientRegistration() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">ZIP Code *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      ZIP Code *
+                    </label>
                     <Input placeholder="12345" />
                   </div>
                 </div>
@@ -151,14 +185,20 @@ export default function PatientRegistration() {
 
               {/* Emergency Contact */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Emergency Contact</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Emergency Contact
+                </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Contact Name *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Contact Name *
+                    </label>
                     <Input placeholder="Emergency contact full name" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Relationship *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Relationship *
+                    </label>
                     <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500">
                       <option value="">Select relationship</option>
                       <option value="spouse">Spouse</option>
@@ -170,11 +210,15 @@ export default function PatientRegistration() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Phone Number *
+                    </label>
                     <Input placeholder="(555) 123-4567" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Email
+                    </label>
                     <Input type="email" placeholder="contact@email.com" />
                   </div>
                 </div>
@@ -182,10 +226,14 @@ export default function PatientRegistration() {
 
               {/* Medical Information */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Medical Information</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Medical Information
+                </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Blood Type</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Blood Type
+                    </label>
                     <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500">
                       <option value="">Select blood type</option>
                       <option value="A+">A+</option>
@@ -199,26 +247,34 @@ export default function PatientRegistration() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Primary Care Physician</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Primary Care Physician
+                    </label>
                     <Input placeholder="Dr. Smith" />
                   </div>
                   <div className="col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Known Allergies</label>
-                    <Textarea 
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Known Allergies
+                    </label>
+                    <Textarea
                       placeholder="List any known allergies, medications, foods, environmental factors..."
                       rows={3}
                     />
                   </div>
                   <div className="col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Current Medications</label>
-                    <Textarea 
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Current Medications
+                    </label>
+                    <Textarea
                       placeholder="List current medications and dosages..."
                       rows={3}
                     />
                   </div>
                   <div className="col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Medical History</label>
-                    <Textarea 
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Medical History
+                    </label>
+                    <Textarea
                       placeholder="Brief medical history, chronic conditions, previous surgeries..."
                       rows={4}
                     />
@@ -244,11 +300,15 @@ export default function PatientRegistration() {
           {/* Insurance Information */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">Insurance Information</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                Insurance Information
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Insurance Provider</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Insurance Provider
+                </label>
                 <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500">
                   <option value="">Select provider</option>
                   <option value="aetna">Aetna</option>
@@ -260,22 +320,28 @@ export default function PatientRegistration() {
                   <option value="other">Other</option>
                 </select>
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Policy Number</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Policy Number
+                </label>
                 <Input placeholder="Policy number" />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Group Number</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Group Number
+                </label>
                 <Input placeholder="Group number" />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Subscriber Name</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Subscriber Name
+                </label>
                 <Input placeholder="If different from patient" />
               </div>
-              
+
               <Button variant="outline" className="w-full">
                 Verify Insurance Coverage
               </Button>
@@ -285,24 +351,26 @@ export default function PatientRegistration() {
           {/* Quick Actions */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">Quick Actions</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                Quick Actions
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <Button variant="outline" className="w-full justify-start">
                 <Calendar className="w-4 h-4 mr-2" />
                 Schedule First Appointment
               </Button>
-              
+
               <Button variant="outline" className="w-full justify-start">
                 <Heart className="w-4 h-4 mr-2" />
                 Health Assessment Form
               </Button>
-              
+
               <Button variant="outline" className="w-full justify-start">
                 <Phone className="w-4 h-4 mr-2" />
                 Send Welcome Call
               </Button>
-              
+
               <Button variant="outline" className="w-full justify-start">
                 <Mail className="w-4 h-4 mr-2" />
                 Email Patient Portal Access
@@ -313,21 +381,29 @@ export default function PatientRegistration() {
           {/* Recent Registrations */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">Recent Registrations</CardTitle>
+              <CardTitle className="text-lg font-bold text-gray-700">
+                Recent Registrations
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-900">Sarah Johnson</span>
-                  <Badge className="bg-green-100 text-green-800">Verified</Badge>
+                  <Badge className="bg-green-100 text-green-800">
+                    Verified
+                  </Badge>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-900">Michael Chen</span>
-                  <Badge className="bg-yellow-100 text-yellow-800">Pending</Badge>
+                  <Badge className="bg-yellow-100 text-yellow-800">
+                    Pending
+                  </Badge>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-900">Emma Davis</span>
-                  <Badge className="bg-green-100 text-green-800">Verified</Badge>
+                  <Badge className="bg-green-100 text-green-800">
+                    Verified
+                  </Badge>
                 </div>
               </div>
             </CardContent>

@@ -30,7 +30,7 @@ import {
   AlertTriangle,
   Clock,
   Archive,
-  Database
+  Database,
 } from "lucide-react";
 
 interface MenuItem {
@@ -55,7 +55,7 @@ const menuSections: MenuSection[] = [
     items: [
       { name: "Overview", href: "/", icon: LayoutDashboard },
       { name: "Analytics", href: "/analytics", icon: BarChart3 },
-    ]
+    ],
   },
   {
     name: "Patient Management",
@@ -63,10 +63,14 @@ const menuSections: MenuSection[] = [
     defaultOpen: true,
     items: [
       { name: "Patient List", href: "/patients", icon: Users },
-      { name: "Patient Registration", href: "/patients/register", icon: UserCog },
+      {
+        name: "Patient Registration",
+        href: "/patients/register",
+        icon: UserCog,
+      },
       { name: "Patient Search", href: "/patients/search", icon: FileText },
       { name: "Medical Records", href: "/patients/records", icon: Archive },
-    ]
+    ],
   },
   {
     name: "Clinical Care",
@@ -74,12 +78,20 @@ const menuSections: MenuSection[] = [
     defaultOpen: false,
     items: [
       { name: "Clinical Notes", href: "/clinical", icon: Stethoscope },
-      { name: "Progress Notes", href: "/clinical/progress", icon: FileSignature },
-      { name: "Assessments", href: "/clinical/assessments", icon: ClipboardList },
+      {
+        name: "Progress Notes",
+        href: "/clinical/progress",
+        icon: FileSignature,
+      },
+      {
+        name: "Assessments",
+        href: "/clinical/assessments",
+        icon: ClipboardList,
+      },
       { name: "Care Plans", href: "/clinical/care-plans", icon: Heart },
       { name: "Procedures", href: "/clinical/procedures", icon: Activity },
       { name: "Vital Signs", href: "/clinical/vitals", icon: Thermometer },
-    ]
+    ],
   },
   {
     name: "Laboratory",
@@ -91,7 +103,7 @@ const menuSections: MenuSection[] = [
       { name: "Microbiology", href: "/laboratory/microbiology", icon: Eye },
       { name: "Pathology", href: "/laboratory/pathology", icon: Brain },
       { name: "Blood Bank", href: "/laboratory/blood", icon: Thermometer },
-    ]
+    ],
   },
   {
     name: "Pharmacy",
@@ -99,10 +111,18 @@ const menuSections: MenuSection[] = [
     defaultOpen: false,
     items: [
       { name: "Medications", href: "/pharmacy/medications", icon: Pill },
-      { name: "Prescriptions", href: "/pharmacy/prescriptions", icon: FileSignature },
-      { name: "Drug Interactions", href: "/pharmacy/interactions", icon: AlertTriangle },
+      {
+        name: "Prescriptions",
+        href: "/pharmacy/prescriptions",
+        icon: FileSignature,
+      },
+      {
+        name: "Drug Interactions",
+        href: "/pharmacy/interactions",
+        icon: AlertTriangle,
+      },
       { name: "Inventory", href: "/pharmacy/inventory", icon: Database },
-    ]
+    ],
   },
   {
     name: "Imaging & Diagnostics",
@@ -113,7 +133,7 @@ const menuSections: MenuSection[] = [
       { name: "Imaging Results", href: "/imaging/results", icon: FileText },
       { name: "PACS Viewer", href: "/imaging/viewer", icon: Eye },
       { name: "Reports", href: "/imaging/reports", icon: Archive },
-    ]
+    ],
   },
   {
     name: "Scheduling",
@@ -122,9 +142,13 @@ const menuSections: MenuSection[] = [
     items: [
       { name: "Appointments", href: "/schedule", icon: Calendar },
       { name: "Calendar View", href: "/schedule/calendar", icon: Calendar },
-      { name: "Resource Booking", href: "/schedule/resources", icon: Building2 },
+      {
+        name: "Resource Booking",
+        href: "/schedule/resources",
+        icon: Building2,
+      },
       { name: "Waitlist", href: "/schedule/waitlist", icon: Clock },
-    ]
+    ],
   },
   {
     name: "Communication",
@@ -132,9 +156,13 @@ const menuSections: MenuSection[] = [
     defaultOpen: false,
     items: [
       { name: "Messages", href: "/messages", icon: MessageSquare },
-      { name: "Consultations", href: "/messages/consultations", icon: Stethoscope },
+      {
+        name: "Consultations",
+        href: "/messages/consultations",
+        icon: Stethoscope,
+      },
       { name: "Patient Portal", href: "/messages/portal", icon: Users },
-    ]
+    ],
   },
 ];
 
@@ -156,14 +184,17 @@ export function Sidebar() {
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(
     Object.fromEntries(
-      menuSections.map(section => [section.name, section.defaultOpen || false])
-    )
+      menuSections.map((section) => [
+        section.name,
+        section.defaultOpen || false,
+      ]),
+    ),
   );
 
   const toggleSection = (sectionName: string) => {
-    setOpenSections(prev => ({
+    setOpenSections((prev) => ({
       ...prev,
-      [sectionName]: !prev[sectionName]
+      [sectionName]: !prev[sectionName],
     }));
   };
 
@@ -214,7 +245,7 @@ export function Sidebar() {
                   <ChevronRight className="w-4 h-4" />
                 )}
               </button>
-              
+
               {openSections[section.name] && (
                 <div className="ml-6 mt-1 space-y-1">
                   {section.items.map((item) => (
@@ -225,7 +256,7 @@ export function Sidebar() {
                         "flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors",
                         isItemActive(item.href)
                           ? "bg-violet-50 text-violet-700 font-medium"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                       )}
                     >
                       <item.icon className="w-4 h-4" />
@@ -258,7 +289,7 @@ export function Sidebar() {
                   "flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors",
                   isItemActive(item.href)
                     ? "bg-violet-50 text-violet-700 font-medium"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                 )}
               >
                 <item.icon className="w-4 h-4" />
@@ -285,7 +316,7 @@ export function Sidebar() {
                 "flex items-center space-x-2 px-3 py-2 text-sm rounded-lg transition-colors",
                 isItemActive(item.href)
                   ? "bg-violet-50 text-violet-700 font-medium"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
               )}
             >
               <item.icon className="w-4 h-4" />
