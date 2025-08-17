@@ -174,11 +174,11 @@
 ### 👨‍⚕️ **Common User Workflows**
 
 ```
-Doctor Login → Dashboard (/) → Patient Search (/patients) → Patient Record (/patients/12345) → Clinical Notes (/clinical/progress)
+Doctor Login → Dashboard (/dashboard-home) → Patient Search (/patients) → Patient Record (/patients/12345) → Clinical Notes (/clinical/progress)
 
-Nurse Login → Dashboard (/) → Schedule (/schedule) → Patient Care (/patients) → Medication Admin (/pharmacy/medications)
+Nurse Login → Dashboard (/dashboard-home) → Schedule (/schedule) → Patient Care (/patients) → Medication Admin (/pharmacy/medications)
 
-Admin Login → Dashboard (/) → Reports (/reports) → Analytics (/analytics) → Settings (/settings)
+Admin Login → Dashboard (/dashboard-home) → Reports (/reports) → Analytics (/analytics) → Settings (/settings)
 ```
 
 ### 🔗 **Direct Access URLs**

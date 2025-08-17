@@ -20,5 +20,11 @@
       "src": "^/(?!api/).*",
       "dest": "/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/Dashboard",
+      "destination": "/dashboard-home"
+    }
   ]
 }
