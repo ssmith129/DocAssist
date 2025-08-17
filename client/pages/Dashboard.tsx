@@ -246,14 +246,8 @@ export default function Dashboard() {
   return (
     <BaseLayout title="Dashboard">
       <div className="space-y-6">
-        {/* Enhanced Stats Cards with animations */}
-        <div
-          className={`grid grid-cols-4 gap-6 transition-all duration-700 ${
-            animateCards
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
-          }`}
-        >
+        {/* Enhanced Stats Cards */}
+        <div className="grid grid-cols-4 gap-6">
           <div className="transition-all duration-300">
             <StatsCard
               title="New Patients Today"
