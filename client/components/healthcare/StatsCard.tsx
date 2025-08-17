@@ -140,15 +140,15 @@ export function StatsCard({
           <div className="flex-1">
             {/* Title */}
             <p className={cn(
-              "text-sm font-medium transition-all duration-300",
+              "hc-text-label transition-all duration-300",
               variant === "primary" ? "text-white/80" : "text-gray-600"
             )}>
               {title}
             </p>
-            
+
             {/* Value */}
             <p className={cn(
-              "text-3xl font-bold mt-2 transition-all duration-500",
+              "text-4xl font-bold mt-2 transition-all duration-500 leading-tight",
               variant === "primary" ? "text-white" : "text-gray-900"
             )}>
               {animatedValue}
