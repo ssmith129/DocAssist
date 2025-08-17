@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Main pages
 import Dashboard from "./pages/Dashboard"; // New unified dashboard
@@ -45,6 +45,9 @@ const App = () => (
         <Routes>
           {/* Main Dashboard - Unified Overview and Analytics */}
           <Route path="/" element={<Dashboard />} />
+
+          {/* Dashboard redirect - handle /Dashboard route */}
+          <Route path="/Dashboard" element={<Navigate to="/" replace />} />
 
           {/* Legacy Analytics Route - Redirect to main dashboard with analytics tab */}
           <Route path="/analytics" element={<Analytics />} />
