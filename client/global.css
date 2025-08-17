@@ -2,6 +2,217 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Enhanced healthcare-specific CSS variables and utilities */
+@layer base {
+  /* Healthcare color palette */
+  :root {
+    --hc-blue-primary: #23408e;
+    --hc-blue-secondary: #385399;
+    --hc-green-healing: #28a745;
+    --hc-green-mint: #20c997;
+    --hc-red-critical: #dc3545;
+    --hc-yellow-warning: #ffc107;
+    --hc-orange-attention: #fd7e14;
+  }
+
+  /* Smooth scrolling for all elements */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced focus indicators for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--hc-blue-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* Healthcare-specific utility classes */
+@layer utilities {
+  /* Microinteraction utilities */
+  .scale-102 {
+    transform: scale(1.02);
+  }
+
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .interactive-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .interactive-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Pulse animations for critical alerts */
+  .pulse-critical {
+    animation: pulse-critical 2s infinite;
+  }
+
+  @keyframes pulse-critical {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Shimmer loading effect */
+  .shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 37%, #f0f0f0 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Status indicator animations */
+  .status-dot {
+    position: relative;
+  }
+
+  .status-dot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: status-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    opacity: 0.75;
+  }
+
+  .status-dot.critical::after {
+    background-color: var(--hc-red-critical);
+  }
+
+  .status-dot.warning::after {
+    background-color: var(--hc-yellow-warning);
+  }
+
+  .status-dot.success::after {
+    background-color: var(--hc-green-healing);
+  }
+
+  @keyframes status-ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  /* Smooth fade-in animations */
+  .fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @keyframes fade-in-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Staggered animation delays */
+  .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+  .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
+  .fade-in-up:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Glass morphism effect for modern cards */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+
+  /* Loading skeleton styles */
+  .skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 37%, #f0f0f0 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+  }
+
+  /* Enhanced button hover effects */
+  .btn-enhanced {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-enhanced:hover::before {
+    left: 100%;
+  }
+
+  /* Healthcare priority indicators */
+  .priority-high {
+    border-left: 4px solid var(--hc-red-critical);
+  }
+
+  .priority-medium {
+    border-left: 4px solid var(--hc-yellow-warning);
+  }
+
+  .priority-low {
+    border-left: 4px solid var(--hc-green-healing);
+  }
+}
+
 @layer base {
   /**
    * Tailwind CSS theme
