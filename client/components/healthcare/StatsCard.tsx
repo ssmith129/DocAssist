@@ -121,7 +121,7 @@ export function StatsCard({
           ? "bg-gradient-to-br from-violet-600 to-blue-600 text-white shadow-lg" 
           : "bg-white shadow-sm hover:shadow-lg",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-        isHovered && "scale-105"
+        ""
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -182,7 +182,7 @@ export function StatsCard({
           {icon && (
             <div className={cn(
               "transition-all duration-500 ease-out",
-              isHovered ? "scale-110 rotate-12" : "scale-100 rotate-0"
+              "scale-100 rotate-0"
             )}>
               <div className={cn(
                 "p-3 rounded-2xl transition-all duration-300",

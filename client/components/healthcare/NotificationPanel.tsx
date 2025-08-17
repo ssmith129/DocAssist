@@ -239,7 +239,7 @@ export function NotificationPanel() {
                   config.bgColor,
                   config.borderColor,
                   !notification.read && "ring-2 ring-violet-200",
-                  hoveredId === notification.id && "scale-102 shadow-md",
+                  hoveredId === notification.id && "shadow-md",
                 )}
                 style={{
                   animationDelay: `${index * 100}ms`,
@@ -260,7 +260,7 @@ export function NotificationPanel() {
                     className={cn(
                       "p-2 rounded-full transition-all duration-300",
                       config.bgColor,
-                      hoveredId === notification.id && "scale-110",
+                      "",
                     )}
                   >
                     <IconComponent className={cn("w-4 h-4", config.color)} />
