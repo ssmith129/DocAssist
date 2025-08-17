@@ -206,12 +206,6 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   const [refreshing, setRefreshing] = useState(false);
   const [compactView, setCompactView] = useState(false);
-  const [animateCards, setAnimateCards] = useState(false);
-
-  // Trigger animation on mount
-  useEffect(() => {
-    setAnimateCards(true);
-  }, []);
 
   const handleRefresh = async () => {
     setRefreshing(true);
