@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 export function TopNav() {
   return (
     <div className="bg-gray-50 h-[72px] flex items-center justify-between px-7">
-      <h1 className="text-[28px] font-bold text-gray-900 leading-[34px] tracking-[-0.4px]">
+      <h1 className="hc-heading-1">
         Overview
       </h1>
 
