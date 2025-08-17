@@ -57,16 +57,9 @@ const menuSections: MenuSection[] = [
   {
     name: "Dashboard",
     icon: LayoutDashboard,
-    defaultOpen: true,
+    defaultOpen: false,
     priority: 'high',
-    items: [
-      { 
-        name: "Overview", 
-        href: "/", 
-        icon: LayoutDashboard,
-        description: "Main dashboard and overview"
-      },
-    ],
+    items: [],
   },
   {
     name: "Patient Care",
