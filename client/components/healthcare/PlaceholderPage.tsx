@@ -34,7 +34,7 @@ export function PlaceholderPage({ title, description, icon }: PlaceholderPagePro
               
               <div className="flex items-center justify-center space-x-4">
                 <Button asChild variant="outline">
-                  <Link to="/">
+                  <Link to="/dashboard-home">
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Dashboard
                   </Link>
