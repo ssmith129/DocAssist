@@ -1,20 +1,27 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Legend } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 
 const chartData = [
-  { day: 'M', men: 18, women: 15 },
-  { day: 'T', men: 25, women: 20 },
-  { day: 'W', men: 32, women: 12 },
-  { day: 'T', men: 15, women: 8 },
-  { day: 'F', men: 28, women: 22 },
-  { day: 'S', men: 35, women: 28 },
-  { day: 'S', men: 30, women: 18 }
+  { day: "M", men: 18, women: 15 },
+  { day: "T", men: 25, women: 20 },
+  { day: "W", men: 32, women: 12 },
+  { day: "T", men: 15, women: 8 },
+  { day: "F", men: 28, women: 22 },
+  { day: "S", men: 35, women: 28 },
+  { day: "S", men: 30, women: 18 },
 ];
 
 const patientTypes = [
-  { label: 'Outpatient', count: 34, color: '#C4B5FD' },
-  { label: 'Inpatient', count: 12, color: '#8B5CF6' },
-  { label: 'Emergency', count: 65, color: '#6EE7B7' }
+  { label: "Outpatient", count: 34, color: "#C4B5FD" },
+  { label: "Inpatient", count: 12, color: "#8B5CF6" },
+  { label: "Emergency", count: 65, color: "#6EE7B7" },
 ];
 
 export function PatientChart() {
@@ -32,17 +39,20 @@ export function PatientChart() {
       <CardContent className="pt-2">
         <div className="h-44">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData} margin={{ top: 5, right: 30, left: 30, bottom: 20 }}>
+            <BarChart
+              data={chartData}
+              margin={{ top: 5, right: 30, left: 30, bottom: 20 }}
+            >
               <XAxis
                 dataKey="day"
-                axisLine={{ stroke: '#6B7280' }}
-                tickLine={{ stroke: '#6B7280' }}
-                tick={{ fontSize: 12, fill: '#6B7280' }}
+                axisLine={{ stroke: "#6B7280" }}
+                tickLine={{ stroke: "#6B7280" }}
+                tick={{ fontSize: 12, fill: "#6B7280" }}
               />
               <YAxis
-                axisLine={{ stroke: '#6B7280' }}
-                tickLine={{ stroke: '#6B7280' }}
-                tick={{ fontSize: 12, fill: '#6B7280' }}
+                axisLine={{ stroke: "#6B7280" }}
+                tickLine={{ stroke: "#6B7280" }}
+                tick={{ fontSize: 12, fill: "#6B7280" }}
                 domain={[0, 36]}
                 ticks={[0, 9, 18, 27, 36]}
               />
@@ -71,12 +81,12 @@ export function PatientTypeChart() {
     <Card className="shadow-lg w-60">
       <CardContent className="pt-6">
         <p className="text-sm text-gray-600 mb-4">Patient type</p>
-        
+
         <div className="flex justify-between items-start mb-6">
           <div className="space-y-1">
             {patientTypes.map((type, index) => (
               <div key={index} className="flex items-center space-x-2">
-                <div 
+                <div
                   className="w-2 h-2 rounded-full"
                   style={{ backgroundColor: type.color }}
                 />
@@ -95,7 +105,10 @@ export function PatientTypeChart() {
 
         {/* Donut Chart */}
         <div className="relative w-28 h-28 mx-auto">
-          <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+          <svg
+            className="w-full h-full transform -rotate-90"
+            viewBox="0 0 100 100"
+          >
             <circle
               cx="50"
               cy="50"
