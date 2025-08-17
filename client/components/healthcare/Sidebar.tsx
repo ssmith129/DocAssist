@@ -484,7 +484,7 @@ export function Sidebar() {
                             "flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-all duration-300 group",
                             isItemActive(item.href)
                               ? "bg-violet-100 text-violet-800 font-medium shadow-sm border-l-2 border-violet-600"
-                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-1",
+                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                           )}
                           onMouseEnter={() => setHoveredItem(item.href)}
                           onMouseLeave={() => setHoveredItem(null)}
