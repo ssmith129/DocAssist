@@ -177,23 +177,6 @@ const bottomItems: MenuItem[] = [
   },
 ];
 
-// Quick access items for frequent actions
-const quickAccessItems: MenuItem[] = [
-  {
-    name: "Emergency",
-    href: "/emergency",
-    icon: AlertTriangle,
-    badge: "2",
-    description: "Emergency alerts",
-  },
-  {
-    name: "Notifications",
-    href: "/notifications",
-    icon: Bell,
-    badge: "5",
-    description: "System notifications",
-  },
-];
 
 export function Sidebar() {
   const location = useLocation();
