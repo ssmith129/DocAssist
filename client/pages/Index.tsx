@@ -8,7 +8,7 @@ export default function Index() {
 
   useEffect(() => {
     // Redirect to the main dashboard
-    navigate("/", { replace: true });
+    navigate("/dashboard-home", { replace: true });
   }, [navigate]);
 
   return null;
