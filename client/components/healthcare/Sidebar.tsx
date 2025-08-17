@@ -356,7 +356,7 @@ export function Sidebar() {
                       {section.priority === "high" && (
                         <div className="w-2 h-2 bg-violet-500 rounded-full" />
                       )}
-                      {isItemActive("/") && (
+                      {isItemActive(section.href || "/") && (
                         <div className="w-2 h-2 bg-violet-600 rounded-full animate-pulse" />
                       )}
                     </div>
