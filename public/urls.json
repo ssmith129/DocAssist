@@ -1,6 +1,6 @@
 {
   "production": {
-    "base": "https://yourapp.vercel.app",
+    "base": "https://yourapp.example.com",
     "pages": {
       "dashboard": "/dashboard-home",
       "patients": "/patients",

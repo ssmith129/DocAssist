@@ -24,7 +24,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yourapp.vercel.app/patients/register</loc>
+    <loc>https://yourapp.example.com/patients/register</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -32,25 +32,25 @@
   
   <!-- Clinical Care -->
   <url>
-    <loc>https://yourapp.vercel.app/clinical</loc>
+    <loc>https://yourapp.example.com/clinical</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yourapp.vercel.app/clinical/progress</loc>
+    <loc>https://yourapp.example.com/clinical/progress</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yourapp.vercel.app/clinical/assessments</loc>
+    <loc>https://yourapp.example.com/clinical/assessments</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yourapp.vercel.app/clinical/care-plans</loc>
+    <loc>https://yourapp.example.com/clinical/care-plans</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -58,13 +58,13 @@
   
   <!-- Laboratory -->
   <url>
-    <loc>https://yourapp.vercel.app/laboratory/orders</loc>
+    <loc>https://yourapp.example.com/laboratory/orders</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yourapp.vercel.app/laboratory/results</loc>
+    <loc>https://yourapp.example.com/laboratory/results</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -72,13 +72,13 @@
   
   <!-- Pharmacy -->
   <url>
-    <loc>https://yourapp.vercel.app/pharmacy/medications</loc>
+    <loc>https://yourapp.example.com/pharmacy/medications</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yourapp.vercel.app/pharmacy/prescriptions</loc>
+    <loc>https://yourapp.example.com/pharmacy/prescriptions</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -86,7 +86,7 @@
   
   <!-- Scheduling -->
   <url>
-    <loc>https://yourapp.vercel.app/schedule</loc>
+    <loc>https://yourapp.example.com/schedule</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -94,7 +94,7 @@
   
   <!-- Communication -->
   <url>
-    <loc>https://yourapp.vercel.app/messages</loc>
+    <loc>https://yourapp.example.com/messages</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -102,13 +102,13 @@
   
   <!-- Reports & Analytics -->
   <url>
-    <loc>https://yourapp.vercel.app/analytics</loc>
+    <loc>https://yourapp.example.com/analytics</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yourapp.vercel.app/reports</loc>
+    <loc>https://yourapp.example.com/reports</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -116,7 +116,7 @@
   
   <!-- Settings -->
   <url>
-    <loc>https://yourapp.vercel.app/settings</loc>
+    <loc>https://yourapp.example.com/settings</loc>
     <lastmod>2024-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
