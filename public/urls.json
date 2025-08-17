@@ -4,7 +4,7 @@
     "pages": {
       "dashboard": "/",
       "patients": "/patients",
-      "clinical": "/clinical", 
+      "clinical": "/clinical",
       "schedule": "/schedule",
       "pharmacy": "/pharmacy/medications",
       "laboratory": "/laboratory/orders",
@@ -36,10 +36,7 @@
       "/settings",
       "/security"
     ],
-    "api": [
-      "/api/ping",
-      "/api/demo"
-    ]
+    "api": ["/api/ping", "/api/demo"]
   },
   "redirects": {
     "/Dashboard": "/"
