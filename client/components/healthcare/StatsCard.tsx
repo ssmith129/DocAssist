@@ -141,8 +141,7 @@ export function StatsCard({
             {/* Title */}
             <p className={cn(
               "text-sm font-medium transition-all duration-300",
-              variant === "primary" ? "text-white/80" : "text-gray-600",
-              isHovered && "transform translate-x-1"
+              variant === "primary" ? "text-white/80" : "text-gray-600"
             )}>
               {title}
             </p>
@@ -159,8 +158,7 @@ export function StatsCard({
             {/* Change Indicator */}
             {change && (
               <div className={cn(
-                "flex items-center space-x-1 mt-3 transition-all duration-300",
-                isHovered && "transform translate-x-1"
+                "flex items-center space-x-1 mt-3 transition-all duration-300"
               )}>
                 {getTrendIcon()}
                 <span className={cn(
