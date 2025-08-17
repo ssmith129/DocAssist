@@ -140,26 +140,8 @@ const menuSections: MenuSection[] = [
     icon: Calendar,
     defaultOpen: false,
     priority: "medium",
-    items: [
-      {
-        name: "Appointments",
-        href: "/schedule",
-        icon: Calendar,
-        description: "Manage appointments",
-      },
-      {
-        name: "Calendar View",
-        href: "/schedule/calendar",
-        icon: Calendar,
-        description: "Calendar interface",
-      },
-      {
-        name: "Waitlist",
-        href: "/schedule/waitlist",
-        icon: Clock,
-        description: "Patient waitlist",
-      },
-    ],
+    items: [],
+    href: "/schedule",
   },
 ];
 
