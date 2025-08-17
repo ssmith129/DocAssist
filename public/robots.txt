@@ -1,14 +1,27 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
+# Allow public landing pages
 Allow: /
+Allow: /patients$
+Allow: /clinical$
+Allow: /pharmacy$
+Allow: /schedule$
+Allow: /analytics$
+Allow: /reports$
+
+# Disallow sensitive healthcare data and API endpoints
+Disallow: /api/
+Disallow: /patients/*/
+Disallow: /clinical/*/
+Disallow: /pharmacy/*/
+Disallow: /laboratory/*/
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /security/
+Disallow: /emergency/
+Disallow: /billing/
+
+# Sitemap location
+Sitemap: https://yourapp.vercel.app/sitemap.xml
+
+# Crawl delay for healthcare data protection
+Crawl-delay: 10

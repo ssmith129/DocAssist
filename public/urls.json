@@ -1,0 +1,47 @@
+{
+  "production": {
+    "base": "https://yourapp.vercel.app",
+    "pages": {
+      "dashboard": "/",
+      "patients": "/patients",
+      "clinical": "/clinical", 
+      "schedule": "/schedule",
+      "pharmacy": "/pharmacy/medications",
+      "laboratory": "/laboratory/orders",
+      "messages": "/messages",
+      "reports": "/reports",
+      "settings": "/settings"
+    },
+    "api": {
+      "base": "/api",
+      "health": "/api/ping",
+      "demo": "/api/demo"
+    }
+  },
+  "routes": {
+    "public": [
+      "/",
+      "/patients",
+      "/clinical",
+      "/schedule",
+      "/analytics",
+      "/reports"
+    ],
+    "protected": [
+      "/patients/:id",
+      "/clinical/progress",
+      "/pharmacy/medications",
+      "/laboratory/orders",
+      "/admin",
+      "/settings",
+      "/security"
+    ],
+    "api": [
+      "/api/ping",
+      "/api/demo"
+    ]
+  },
+  "redirects": {
+    "/Dashboard": "/"
+  }
+}
