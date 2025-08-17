@@ -16,6 +16,7 @@ import Analytics from "./pages/Analytics";
 import Messages from "./pages/Messages";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import Reports from "./pages/Reports";
 
 // Patient Management pages
 import PatientRegistration from "./pages/patients/PatientRegistration";
@@ -25,6 +26,9 @@ import LabOrders from "./pages/laboratory/LabOrders";
 
 // Pharmacy pages
 import Medications from "./pages/pharmacy/Medications";
+
+// Clinical pages
+import ProgressNotes from "./pages/clinical/ProgressNotes";
 
 const queryClient = new QueryClient();
 
