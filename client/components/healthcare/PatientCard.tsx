@@ -93,8 +93,8 @@ export function PatientCard({ patient, size = 'standard', showVitalSigns = true 
             <div className="flex-1">
               <div className="flex items-center space-x-2">
                 <h3 className={cn(
-                  "font-semibold text-hc-text-primary",
-                  isCompact ? "text-sm" : "text-lg"
+                  "hc-text-patient-id",
+                  isCompact ? "text-base font-semibold" : "text-lg font-bold"
                 )}>
                   {patient.name}
                 </h3>
