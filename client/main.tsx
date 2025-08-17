@@ -7,10 +7,6 @@ if (!container) {
   throw new Error("Root element not found");
 }
 
-// Check if root already exists to prevent double mounting
-let root: ReturnType<typeof createRoot>;
-
-if (!container.hasChildNodes()) {
-  root = createRoot(container);
-  root.render(<App />);
-}
+// Create root only once to prevent double mounting warnings
+const root = createRoot(container);
+root.render(<App />);
