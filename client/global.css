@@ -263,17 +263,185 @@
     left: 100%;
   }
 
-  /* Healthcare priority indicators */
+  /* WCAG AA Compliant Text Colors */
+  .text-hc-primary { color: var(--hc-blue-primary); }
+  .text-hc-success { color: var(--hc-green-success); }
+  .text-hc-error { color: var(--hc-red-error); }
+  .text-hc-warning { color: var(--hc-yellow-caution); }
+  .text-hc-emergency { color: var(--hc-emergency); }
+
+  /* Background Colors with proper contrast */
+  .bg-hc-primary {
+    background-color: var(--hc-blue-primary);
+    color: white;
+  }
+  .bg-hc-success {
+    background-color: var(--hc-green-success);
+    color: white;
+  }
+  .bg-hc-error {
+    background-color: var(--hc-red-error);
+    color: white;
+  }
+  .bg-hc-warning {
+    background-color: var(--hc-yellow-caution);
+    color: white;
+  }
+
+  /* Light Background Variants */
+  .bg-hc-primary-light {
+    background-color: var(--hc-blue-light);
+    color: var(--hc-blue-primary);
+  }
+  .bg-hc-success-light {
+    background-color: var(--hc-green-light);
+    color: var(--hc-green-success);
+  }
+  .bg-hc-error-light {
+    background-color: var(--hc-red-light);
+    color: var(--hc-red-error);
+  }
+  .bg-hc-warning-light {
+    background-color: var(--hc-yellow-light);
+    color: var(--hc-yellow-caution);
+  }
+
+  /* Enhanced focus states for accessibility */
+  .focus-hc {
+    @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
+    --tw-ring-color: var(--hc-focus-ring);
+    border-color: var(--hc-focus);
+  }
+
+  .focus-hc-error {
+    @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
+    --tw-ring-color: rgba(196, 48, 48, 0.3);
+    border-color: var(--hc-red-critical);
+  }
+
+  /* High Contrast Borders */
+  .border-hc { border-color: var(--hc-gray-600); }
+  .border-hc-light { border-color: var(--hc-gray-300); }
+  .border-hc-error { border-color: var(--hc-red-critical); }
+  .border-hc-success { border-color: var(--hc-green-success); }
+  .border-hc-warning { border-color: var(--hc-yellow-warning); }
+
+  /* Patient Status Indicators */
+  .status-critical {
+    @apply bg-hc-error text-white border-l-4;
+    border-left-color: var(--hc-emergency);
+  }
+
+  .status-stable {
+    @apply bg-hc-success-light text-hc-success border-l-4;
+    border-left-color: var(--hc-stable);
+  }
+
+  .status-monitoring {
+    @apply bg-hc-warning-light text-hc-warning border-l-4;
+    border-left-color: var(--hc-monitoring);
+  }
+
+  /* Interactive Elements */
+  .interactive-hc {
+    @apply transition-all duration-200 ease-in-out;
+    @apply hover:scale-105 focus:scale-105;
+    @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
+    --tw-ring-color: var(--hc-focus-ring);
+  }
+
+  /* WCAG Compliant Buttons */
+  .button-hc-primary {
+    @apply bg-hc-primary text-white font-medium px-4 py-2 rounded-md;
+    @apply hover:opacity-90 transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
+    --tw-ring-color: var(--hc-focus-ring);
+  }
+
+  .button-hc-secondary {
+    background-color: transparent;
+    color: var(--hc-blue-primary);
+    border: 2px solid var(--hc-blue-primary);
+    @apply font-medium px-4 py-2 rounded-md transition-all duration-200;
+    @apply hover:bg-hc-primary hover:text-white;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
+    --tw-ring-color: var(--hc-focus-ring);
+  }
+
+  .button-hc-danger {
+    @apply bg-hc-error text-white font-medium px-4 py-2 rounded-md;
+    @apply hover:opacity-90 transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
+    --tw-ring-color: rgba(196, 48, 48, 0.3);
+  }
+
+  /* WCAG Compliant Form Elements */
+  .input-hc {
+    @apply w-full px-3 py-2 border-2 rounded-md text-base transition-all duration-200;
+    @apply border-hc-light bg-white text-hc-primary;
+    @apply focus:border-hc-primary focus:ring-4 focus:ring-offset-2;
+    @apply disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed;
+    @apply placeholder:text-gray-500;
+    --tw-ring-color: var(--hc-focus-ring);
+  }
+
+  .input-hc-error {
+    @apply input-hc border-hc-error;
+    @apply focus:border-hc-error;
+    --tw-ring-color: rgba(196, 48, 48, 0.3);
+  }
+
+  .input-hc-success {
+    @apply input-hc border-hc-success;
+    @apply focus:border-hc-success;
+    --tw-ring-color: rgba(34, 84, 61, 0.3);
+  }
+
+  /* Accessibility Helper Classes */
+  .sr-only-focusable {
+    @apply sr-only;
+  }
+  .sr-only-focusable:focus {
+    @apply not-sr-only absolute top-0 left-0 z-50;
+    @apply bg-white p-2 border-2 border-black rounded;
+  }
+
+  /* Required Field Indicator */
+  .required-field::after {
+    content: ' *';
+    color: var(--hc-red-critical);
+    font-weight: bold;
+    margin-left: 0.25rem;
+  }
+
+  /* Error and Success Messages */
+  .error-message {
+    @apply text-hc-error text-sm mt-1;
+    @apply flex items-center space-x-1;
+  }
+
+  .success-message {
+    @apply text-hc-success text-sm mt-1;
+    @apply flex items-center space-x-1;
+  }
+
+  /* Healthcare priority indicators - Updated with compliant colors */
   .priority-high {
-    border-left: 4px solid var(--hc-red-critical);
+    border-left: 4px solid var(--hc-emergency);
+    @apply bg-hc-error-light;
   }
 
   .priority-medium {
-    border-left: 4px solid var(--hc-yellow-warning);
+    border-left: 4px solid var(--hc-monitoring);
+    @apply bg-hc-warning-light;
   }
 
   .priority-low {
-    border-left: 4px solid var(--hc-green-healing);
+    border-left: 4px solid var(--hc-stable);
+    @apply bg-hc-success-light;
   }
 }
 
