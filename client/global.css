@@ -310,12 +310,18 @@
   .focus-hc {
     @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
     --tw-ring-color: var(--hc-focus-ring);
+  }
+
+  .focus-hc:focus {
     border-color: var(--hc-focus);
   }
 
   .focus-hc-error {
     @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
     --tw-ring-color: rgba(196, 48, 48, 0.3);
+  }
+
+  .focus-hc-error:focus {
     border-color: var(--hc-red-critical);
   }
 
@@ -328,18 +334,21 @@
 
   /* Patient Status Indicators */
   .status-critical {
-    @apply bg-hc-error text-white border-l-4;
-    border-left-color: var(--hc-emergency);
+    background-color: var(--hc-red-error);
+    color: white;
+    border-left: 4px solid var(--hc-emergency);
   }
 
   .status-stable {
-    @apply bg-hc-success-light text-hc-success border-l-4;
-    border-left-color: var(--hc-stable);
+    background-color: var(--hc-green-light);
+    color: var(--hc-green-success);
+    border-left: 4px solid var(--hc-stable);
   }
 
   .status-monitoring {
-    @apply bg-hc-warning-light text-hc-warning border-l-4;
-    border-left-color: var(--hc-monitoring);
+    background-color: var(--hc-yellow-light);
+    color: var(--hc-yellow-caution);
+    border-left: 4px solid var(--hc-monitoring);
   }
 
   /* Interactive Elements */
@@ -352,7 +361,9 @@
 
   /* WCAG Compliant Buttons */
   .button-hc-primary {
-    @apply bg-hc-primary text-white font-medium px-4 py-2 rounded-md;
+    background-color: var(--hc-blue-primary);
+    color: white;
+    @apply font-medium px-4 py-2 rounded-md;
     @apply hover:opacity-90 transition-all duration-200;
     @apply disabled:opacity-50 disabled:cursor-not-allowed;
     @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
@@ -364,14 +375,20 @@
     color: var(--hc-blue-primary);
     border: 2px solid var(--hc-blue-primary);
     @apply font-medium px-4 py-2 rounded-md transition-all duration-200;
-    @apply hover:bg-hc-primary hover:text-white;
     @apply disabled:opacity-50 disabled:cursor-not-allowed;
     @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
     --tw-ring-color: var(--hc-focus-ring);
   }
 
+  .button-hc-secondary:hover {
+    background-color: var(--hc-blue-primary);
+    color: white;
+  }
+
   .button-hc-danger {
-    @apply bg-hc-error text-white font-medium px-4 py-2 rounded-md;
+    background-color: var(--hc-red-error);
+    color: white;
+    @apply font-medium px-4 py-2 rounded-md;
     @apply hover:opacity-90 transition-all duration-200;
     @apply disabled:opacity-50 disabled:cursor-not-allowed;
     @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
@@ -381,23 +398,47 @@
   /* WCAG Compliant Form Elements */
   .input-hc {
     @apply w-full px-3 py-2 border-2 rounded-md text-base transition-all duration-200;
-    @apply border-hc-light bg-white text-hc-primary;
-    @apply focus:border-hc-primary focus:ring-4 focus:ring-offset-2;
+    border-color: var(--hc-gray-300);
+    background-color: white;
+    color: var(--hc-blue-primary);
     @apply disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed;
     @apply placeholder:text-gray-500;
+    @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
     --tw-ring-color: var(--hc-focus-ring);
   }
 
+  .input-hc:focus {
+    border-color: var(--hc-blue-primary);
+  }
+
   .input-hc-error {
-    @apply input-hc border-hc-error;
-    @apply focus:border-hc-error;
+    @apply w-full px-3 py-2 border-2 rounded-md text-base transition-all duration-200;
+    border-color: var(--hc-red-critical);
+    background-color: white;
+    color: var(--hc-blue-primary);
+    @apply disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed;
+    @apply placeholder:text-gray-500;
+    @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
     --tw-ring-color: rgba(196, 48, 48, 0.3);
   }
 
+  .input-hc-error:focus {
+    border-color: var(--hc-red-critical);
+  }
+
   .input-hc-success {
-    @apply input-hc border-hc-success;
-    @apply focus:border-hc-success;
+    @apply w-full px-3 py-2 border-2 rounded-md text-base transition-all duration-200;
+    border-color: var(--hc-green-success);
+    background-color: white;
+    color: var(--hc-blue-primary);
+    @apply disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed;
+    @apply placeholder:text-gray-500;
+    @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
     --tw-ring-color: rgba(34, 84, 61, 0.3);
+  }
+
+  .input-hc-success:focus {
+    border-color: var(--hc-green-success);
   }
 
   /* Accessibility Helper Classes */
@@ -419,13 +460,13 @@
 
   /* Error and Success Messages */
   .error-message {
-    @apply text-hc-error text-sm mt-1;
-    @apply flex items-center space-x-1;
+    color: var(--hc-red-error);
+    @apply text-sm mt-1 flex items-center space-x-1;
   }
 
   .success-message {
-    @apply text-hc-success text-sm mt-1;
-    @apply flex items-center space-x-1;
+    color: var(--hc-green-success);
+    @apply text-sm mt-1 flex items-center space-x-1;
   }
 
   /* Healthcare priority indicators - Updated with compliant colors */
