@@ -40,7 +40,7 @@ import {
   Minus,
   Target,
   Zap,
-  TrendingFlat,
+  TrendingUp,
 } from "lucide-react";
 import {
   BarChart,
