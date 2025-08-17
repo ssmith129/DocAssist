@@ -51,7 +51,7 @@ export function PatientsTable() {
       <CardContent>
         <div className="space-y-4">
           {/* Table Headers */}
-          <div className="grid grid-cols-3 gap-4 text-sm font-medium text-gray-700 border-b pb-2">
+          <div className="grid grid-cols-3 gap-4 hc-text-label border-b pb-2">
             <div>Name</div>
             <div>Diagnosis</div>
             <div>Blood type</div>
