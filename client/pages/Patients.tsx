@@ -4,17 +4,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Search, 
-  Filter, 
-  Plus, 
-  Users, 
-  UserCheck, 
+import {
+  Search,
+  Filter,
+  Plus,
+  Users,
+  UserCheck,
   AlertTriangle,
   Calendar,
   Phone,
   FileText,
-  Eye
+  Eye,
 } from "lucide-react";
 
 // Mock patients data
@@ -33,7 +33,8 @@ const mockPatients = [
     bloodType: "A+",
     alerts: [],
     allergies: ["Penicillin", "Shellfish"],
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/94725adbbe1b8f9e7ac623d88dc44cfe413a9fad?width=64"
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/94725adbbe1b8f9e7ac623d88dc44cfe413a9fad?width=64",
   },
   {
     id: "2",
@@ -48,7 +49,7 @@ const mockPatients = [
     lastVisit: "2024-01-19",
     bloodType: "O-",
     alerts: ["High BP", "Elevated temp"],
-    allergies: ["Latex"]
+    allergies: ["Latex"],
   },
   {
     id: "3",
@@ -64,7 +65,8 @@ const mockPatients = [
     bloodType: "AB+",
     alerts: [],
     allergies: [],
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/989b6d028e8c0fe9641a68d350118eed89ecc59f?width=64"
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/989b6d028e8c0fe9641a68d350118eed89ecc59f?width=64",
   },
   {
     id: "4",
@@ -79,7 +81,7 @@ const mockPatients = [
     lastVisit: "2024-01-21",
     bloodType: "B+",
     alerts: ["Critical BP", "Low oxygen", "Arrhythmia"],
-    allergies: ["Aspirin"]
+    allergies: ["Aspirin"],
   },
   {
     id: "5",
@@ -94,7 +96,7 @@ const mockPatients = [
     lastVisit: "2024-01-20",
     bloodType: "A-",
     alerts: [],
-    allergies: ["Nuts"]
+    allergies: ["Nuts"],
   },
   {
     id: "6",
@@ -109,15 +111,15 @@ const mockPatients = [
     lastVisit: "2024-01-21",
     bloodType: "O+",
     alerts: ["Elevated creatinine"],
-    allergies: ["Iodine"]
-  }
+    allergies: ["Iodine"],
+  },
 ];
 
 const statusColors = {
-  stable: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-  caution: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-  critical: 'bg-red-100 text-red-800 border-red-200',
-  inactive: 'bg-gray-100 text-gray-800 border-gray-200'
+  stable: "bg-emerald-100 text-emerald-800 border-emerald-200",
+  caution: "bg-yellow-100 text-yellow-800 border-yellow-200",
+  critical: "bg-red-100 text-red-800 border-red-200",
+  inactive: "bg-gray-100 text-gray-800 border-gray-200",
 };
 
 export default function Patients() {
@@ -177,7 +179,10 @@ export default function Patients() {
       <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="text-lg font-bold text-gray-700">
-            Patient List <span className="text-gray-400 font-normal">({mockPatients.length} patients)</span>
+            Patient List{" "}
+            <span className="text-gray-400 font-normal">
+              ({mockPatients.length} patients)
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -185,22 +190,39 @@ export default function Patients() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Patient</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Condition</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Status</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Location</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Physician</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Last Visit</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-700">Actions</th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Patient
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Condition
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Status
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Location
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Physician
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Last Visit
+                  </th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {mockPatients.map((patient, index) => (
-                  <tr key={patient.id} className="border-b border-gray-100 hover:bg-gray-50">
+                  <tr
+                    key={patient.id}
+                    className="border-b border-gray-100 hover:bg-gray-50"
+                  >
                     <td className="py-4 px-4">
                       <div className="flex items-center space-x-3">
                         {patient.avatar ? (
-                          <img 
+                          <img
                             src={patient.avatar}
                             alt={patient.name}
                             className="w-10 h-10 rounded-full object-cover"
@@ -208,20 +230,31 @@ export default function Patients() {
                         ) : (
                           <div className="w-10 h-10 bg-violet-100 rounded-full flex items-center justify-center">
                             <span className="text-violet-600 font-medium text-sm">
-                              {patient.name.split(' ').map(n => n[0]).join('')}
+                              {patient.name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
                             </span>
                           </div>
                         )}
                         <div>
-                          <p className="font-medium text-gray-900">{patient.name}</p>
-                          <p className="text-sm text-gray-500">{patient.mrn} • Age {patient.age}</p>
+                          <p className="font-medium text-gray-900">
+                            {patient.name}
+                          </p>
+                          <p className="text-sm text-gray-500">
+                            {patient.mrn} • Age {patient.age}
+                          </p>
                         </div>
                       </div>
                     </td>
                     <td className="py-4 px-4">
-                      <p className="text-sm text-gray-900">{patient.primaryCondition}</p>
+                      <p className="text-sm text-gray-900">
+                        {patient.primaryCondition}
+                      </p>
                       {patient.bloodType && (
-                        <p className="text-xs text-gray-500">Blood Type: {patient.bloodType}</p>
+                        <p className="text-xs text-gray-500">
+                          Blood Type: {patient.bloodType}
+                        </p>
                       )}
                     </td>
                     <td className="py-4 px-4">
@@ -232,32 +265,56 @@ export default function Patients() {
                         {patient.alerts.length > 0 && (
                           <div className="flex items-center space-x-1">
                             <AlertTriangle className="w-4 h-4 text-red-500" />
-                            <span className="text-xs text-red-600">{patient.alerts.length}</span>
+                            <span className="text-xs text-red-600">
+                              {patient.alerts.length}
+                            </span>
                           </div>
                         )}
                       </div>
                     </td>
                     <td className="py-4 px-4">
-                      <p className="text-sm text-gray-900">{patient.location}</p>
+                      <p className="text-sm text-gray-900">
+                        {patient.location}
+                      </p>
                     </td>
                     <td className="py-4 px-4">
-                      <p className="text-sm text-gray-900">{patient.attendingPhysician}</p>
+                      <p className="text-sm text-gray-900">
+                        {patient.attendingPhysician}
+                      </p>
                     </td>
                     <td className="py-4 px-4">
-                      <p className="text-sm text-gray-600">{patient.lastVisit}</p>
+                      <p className="text-sm text-gray-600">
+                        {patient.lastVisit}
+                      </p>
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center space-x-2">
-                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="h-8 w-8 p-0"
+                        >
                           <Eye className="w-4 h-4" />
                         </Button>
-                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="h-8 w-8 p-0"
+                        >
                           <FileText className="w-4 h-4" />
                         </Button>
-                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="h-8 w-8 p-0"
+                        >
                           <Calendar className="w-4 h-4" />
                         </Button>
-                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="h-8 w-8 p-0"
+                        >
                           <Phone className="w-4 h-4" />
                         </Button>
                       </div>
@@ -274,11 +331,21 @@ export default function Patients() {
               Showing 1 to {mockPatients.length} of 247 patients
             </p>
             <div className="flex space-x-2">
-              <Button variant="outline" size="sm">Previous</Button>
-              <Button size="sm" className="bg-violet-600 text-white">1</Button>
-              <Button variant="outline" size="sm">2</Button>
-              <Button variant="outline" size="sm">3</Button>
-              <Button variant="outline" size="sm">Next</Button>
+              <Button variant="outline" size="sm">
+                Previous
+              </Button>
+              <Button size="sm" className="bg-violet-600 text-white">
+                1
+              </Button>
+              <Button variant="outline" size="sm">
+                2
+              </Button>
+              <Button variant="outline" size="sm">
+                3
+              </Button>
+              <Button variant="outline" size="sm">
+                Next
+              </Button>
             </div>
           </div>
         </CardContent>
