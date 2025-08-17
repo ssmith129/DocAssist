@@ -270,11 +270,11 @@ export function Sidebar() {
               {/* Direct link sections */}
               {section.name === "Dashboard" || section.href ? (
                 <Link
-                  to={section.href || "/"}
+                  to={section.href || "/dashboard-home"}
                   className={cn(
                     "flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 group",
                     "hover:bg-violet-50 hover:text-violet-700",
-                    isItemActive(section.href || "/")
+                    isItemActive(section.href || "/dashboard-home")
                       ? "bg-violet-100 text-violet-800 shadow-sm border-l-2 border-violet-600"
                       : "text-gray-700",
                     isCollapsed ? "justify-center" : "",

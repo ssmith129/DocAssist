@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 
 const navigationItems = [
-  { name: "Dashboard", href: "/", icon: Activity },
+  { name: "Dashboard", href: "/dashboard-home", icon: Activity },
   { name: "Patients", href: "/patients", icon: Users },
   { name: "Clinical", href: "/clinical", icon: Stethoscope },
   { name: "Schedule", href: "/schedule", icon: Calendar },
