@@ -150,7 +150,7 @@ export function PatientCard({ patient, size = 'standard', showVitalSigns = true 
                   <span className="text-hc-text-secondary">HR</span>
                 </div>
                 <div className="flex items-center space-x-1">
-                  <span className="font-medium">{patient.vitalSigns.heartRate}</span>
+                  <span className="hc-text-vital-signs text-base">{patient.vitalSigns.heartRate}</span>
                   <TrendIcon trend={patient.vitalSigns.trends.heartRate} />
                 </div>
               </div>
