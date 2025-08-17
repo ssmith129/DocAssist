@@ -17,8 +17,18 @@
   ],
   "routes": [
     {
-      "src": "^/dashboard-home$",
-      "dest": "/index.html"
+      "src": "^/dashboard-home/?$",
+      "dest": "/index.html",
+      "headers": {
+        "cache-control": "public, max-age=300"
+      }
+    },
+    {
+      "src": "^/$",
+      "dest": "/index.html",
+      "headers": {
+        "cache-control": "public, max-age=86400"
+      }
     },
     {
       "src": "^/(?!api/).*",
