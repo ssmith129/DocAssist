@@ -142,8 +142,8 @@ export function PatientCard({ patient, size = 'standard', showVitalSigns = true 
         {/* Vital Signs */}
         {showVitalSigns && (
           <div className="bg-gray-50 rounded-lg p-3">
-            <h4 className="text-sm font-medium text-hc-text-primary mb-3">Latest Vital Signs</h4>
-            <div className="grid grid-cols-2 gap-3 text-sm">
+            <h4 className="hc-text-label mb-3">Latest Vital Signs</h4>
+            <div className="grid grid-cols-2 gap-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <Heart className="w-4 h-4 text-red-500" />
