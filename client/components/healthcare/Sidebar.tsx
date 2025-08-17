@@ -378,78 +378,119 @@ export function Sidebar() {
           {/* Main Menu Sections */}
           {menuSections.map((section) => (
             <div key={section.name} className="mb-1">
-              <button
-                onClick={() => !isCollapsed && toggleSection(section.name)}
-                className={cn(
-                  "flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 group",
-                  "hover:bg-violet-50 hover:text-violet-700",
-                  openSections[section.name] && !isCollapsed ? "bg-violet-50 text-violet-700" : "text-gray-700",
-                  isCollapsed ? "justify-center" : ""
-                )}
-                onMouseEnter={() => setHoveredItem(section.name)}
-                onMouseLeave={() => setHoveredItem(null)}
-              >
-                <div className="flex items-center space-x-3">
-                  <section.icon className={cn("w-5 h-5 transition-colors", getPriorityColor(section.priority))} />
-                  {!isCollapsed && <span className="font-medium">{section.name}</span>}
-                </div>
-                {!isCollapsed && (
-                  <div className="flex items-center space-x-1">
-                    {section.priority === 'high' && (
-                      <div className="w-2 h-2 bg-violet-500 rounded-full" />
-                    )}
-                    {openSections[section.name] ? (
-                      <ChevronDown className="w-4 h-4 transition-transform duration-300" />
-                    ) : (
-                      <ChevronRight className="w-4 h-4 transition-transform duration-300" />
-                    )}
+              {/* Dashboard as direct link, others as expandable sections */}
+              {section.name === "Dashboard" ? (
+                <Link
+                  to="/"
+                  className={cn(
+                    "flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 group",
+                    "hover:bg-violet-50 hover:text-violet-700",
+                    isItemActive("/") ? "bg-violet-100 text-violet-800 shadow-sm border-l-2 border-violet-600" : "text-gray-700",
+                    isCollapsed ? "justify-center" : ""
+                  )}
+                  onMouseEnter={() => setHoveredItem(section.name)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                  aria-label="Main Dashboard"
+                >
+                  <div className="flex items-center space-x-3">
+                    <section.icon className={cn("w-5 h-5 transition-colors", getPriorityColor(section.priority))} />
+                    {!isCollapsed && <span className="font-medium">{section.name}</span>}
                   </div>
-                )}
-                {isCollapsed && hoveredItem === section.name && (
-                  <div className="absolute left-full ml-2 px-3 py-2 bg-gray-800 text-white text-sm rounded whitespace-nowrap z-50">
-                    {section.name}
-                  </div>
-                )}
-              </button>
+                  {!isCollapsed && (
+                    <div className="flex items-center space-x-1">
+                      {section.priority === 'high' && (
+                        <div className="w-2 h-2 bg-violet-500 rounded-full" />
+                      )}
+                      {isItemActive("/") && (
+                        <div className="w-2 h-2 bg-violet-600 rounded-full animate-pulse" />
+                      )}
+                    </div>
+                  )}
+                  {isCollapsed && hoveredItem === section.name && (
+                    <div className="absolute left-full ml-2 px-3 py-2 bg-gray-800 text-white text-sm rounded whitespace-nowrap z-50">
+                      {section.name}
+                    </div>
+                  )}
+                </Link>
+              ) : (
+                <>
+                  <button
+                    onClick={() => !isCollapsed && toggleSection(section.name)}
+                    className={cn(
+                      "flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 group",
+                      "hover:bg-violet-50 hover:text-violet-700",
+                      openSections[section.name] && !isCollapsed ? "bg-violet-50 text-violet-700" : "text-gray-700",
+                      isCollapsed ? "justify-center" : ""
+                    )}
+                    onMouseEnter={() => setHoveredItem(section.name)}
+                    onMouseLeave={() => setHoveredItem(null)}
+                    aria-expanded={openSections[section.name]}
+                    aria-label={`${section.name} section`}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <section.icon className={cn("w-5 h-5 transition-colors", getPriorityColor(section.priority))} />
+                      {!isCollapsed && <span className="font-medium">{section.name}</span>}
+                    </div>
+                    {!isCollapsed && (
+                      <div className="flex items-center space-x-1">
+                        {section.priority === 'high' && (
+                          <div className="w-2 h-2 bg-violet-500 rounded-full" />
+                        )}
+                        {openSections[section.name] ? (
+                          <ChevronDown className="w-4 h-4 transition-transform duration-300" />
+                        ) : (
+                          <ChevronRight className="w-4 h-4 transition-transform duration-300" />
+                        )}
+                      </div>
+                    )}
+                    {isCollapsed && hoveredItem === section.name && (
+                      <div className="absolute left-full ml-2 px-3 py-2 bg-gray-800 text-white text-sm rounded whitespace-nowrap z-50">
+                        {section.name}
+                      </div>
+                    )}
+                  </button>
 
-              {/* Section Items */}
-              {openSections[section.name] && !isCollapsed && (
-                <div className="ml-8 mt-1 space-y-1 animate-in slide-in-from-top-2 duration-300">
-                  {section.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      className={cn(
-                        "flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-all duration-300 group",
-                        isItemActive(item.href)
-                          ? "bg-violet-100 text-violet-800 font-medium shadow-sm border-l-2 border-violet-600"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-1"
-                      )}
-                      onMouseEnter={() => setHoveredItem(item.href)}
-                      onMouseLeave={() => setHoveredItem(null)}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <item.icon className="w-4 h-4" />
-                        <span>{item.name}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        {item.badge && (
-                          <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full animate-pulse">
-                            {item.badge}
-                          </span>
-                        )}
-                        {isItemActive(item.href) && (
-                          <div className="w-2 h-2 bg-violet-600 rounded-full animate-pulse" />
-                        )}
-                      </div>
-                      {hoveredItem === item.href && (
-                        <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap z-50">
-                          {item.description}
-                        </div>
-                      )}
-                    </Link>
-                  ))}
-                </div>
+                  {/* Section Items */}
+                  {openSections[section.name] && !isCollapsed && (
+                    <div className="ml-8 mt-1 space-y-1 animate-in slide-in-from-top-2 duration-300">
+                      {section.items.map((item) => (
+                        <Link
+                          key={item.href}
+                          to={item.href}
+                          className={cn(
+                            "flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-all duration-300 group",
+                            isItemActive(item.href)
+                              ? "bg-violet-100 text-violet-800 font-medium shadow-sm border-l-2 border-violet-600"
+                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:translate-x-1"
+                          )}
+                          onMouseEnter={() => setHoveredItem(item.href)}
+                          onMouseLeave={() => setHoveredItem(null)}
+                          aria-label={`${item.name} - ${item.description}`}
+                        >
+                          <div className="flex items-center space-x-3">
+                            <item.icon className="w-4 h-4" aria-hidden="true" />
+                            <span>{item.name}</span>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            {item.badge && (
+                              <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full animate-pulse" aria-label={`${item.badge} notifications`}>
+                                {item.badge}
+                              </span>
+                            )}
+                            {isItemActive(item.href) && (
+                              <div className="w-2 h-2 bg-violet-600 rounded-full animate-pulse" aria-hidden="true" />
+                            )}
+                          </div>
+                          {hoveredItem === item.href && (
+                            <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap z-50" role="tooltip">
+                              {item.description}
+                            </div>
+                          )}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
               )}
             </div>
           ))}
