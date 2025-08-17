@@ -17,6 +17,10 @@
   ],
   "routes": [
     {
+      "src": "^/dashboard-home$",
+      "dest": "/index.html"
+    },
+    {
       "src": "^/(?!api/).*",
       "dest": "/index.html"
     }
