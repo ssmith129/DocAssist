@@ -387,9 +387,9 @@ export default function Dashboard() {
                   <CardHeader className="pb-4">
                     <div className="flex items-center justify-between">
                       <CardTitle className="hc-card-title flex items-center">
-                      <Zap className="w-5 h-5 mr-2 text-violet-600" />
-                      Quick Actions & Priority Items
-                    </CardTitle>
+                        <Zap className="w-5 h-5 mr-2 text-violet-600" />
+                        Quick Actions & Priority Items
+                      </CardTitle>
                       <Badge
                         variant="secondary"
                         className="bg-violet-100 text-violet-700"
@@ -432,7 +432,9 @@ export default function Dashboard() {
                               </Badge>
                             )}
                           </div>
-                          <h4 className={`hc-text-medical-data mb-2 ${action.color}`}>
+                          <h4
+                            className={`hc-text-medical-data mb-2 ${action.color}`}
+                          >
                             {action.title}
                           </h4>
                           <p className="hc-text-secondary text-gray-600 mb-3">

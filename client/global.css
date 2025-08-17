@@ -7,49 +7,49 @@
   /* WCAG AA Compliant Healthcare Color Palette */
   :root {
     /* Primary Healthcare Colors - All meet 4.5:1 contrast ratio on white */
-    --hc-blue-primary: #1a365d;        /* 7.1:1 contrast ratio */
-    --hc-blue-secondary: #2c5282;      /* 5.3:1 contrast ratio */
-    --hc-blue-light: #ebf8ff;          /* Light background variant */
+    --hc-blue-primary: #1a365d; /* 7.1:1 contrast ratio */
+    --hc-blue-secondary: #2c5282; /* 5.3:1 contrast ratio */
+    --hc-blue-light: #ebf8ff; /* Light background variant */
 
     /* Status Colors - WCAG AA Compliant */
-    --hc-green-success: #22543d;       /* 7.8:1 contrast ratio */
-    --hc-green-healing: #2f855a;       /* 5.1:1 contrast ratio */
-    --hc-green-light: #f0fff4;         /* Light background variant */
+    --hc-green-success: #22543d; /* 7.8:1 contrast ratio */
+    --hc-green-healing: #2f855a; /* 5.1:1 contrast ratio */
+    --hc-green-light: #f0fff4; /* Light background variant */
 
-    --hc-red-critical: #c53030;        /* 5.5:1 contrast ratio */
-    --hc-red-error: #9b2c2c;           /* 7.2:1 contrast ratio */
-    --hc-red-light: #fed7d7;           /* Light background variant */
+    --hc-red-critical: #c53030; /* 5.5:1 contrast ratio */
+    --hc-red-error: #9b2c2c; /* 7.2:1 contrast ratio */
+    --hc-red-light: #fed7d7; /* Light background variant */
 
-    --hc-yellow-warning: #b7791f;      /* 4.6:1 contrast ratio */
-    --hc-yellow-caution: #975a16;      /* 6.1:1 contrast ratio */
-    --hc-yellow-light: #fffff0;        /* Light background variant */
+    --hc-yellow-warning: #b7791f; /* 4.6:1 contrast ratio */
+    --hc-yellow-caution: #975a16; /* 6.1:1 contrast ratio */
+    --hc-yellow-light: #fffff0; /* Light background variant */
 
-    --hc-orange-attention: #c05621;    /* 5.2:1 contrast ratio */
-    --hc-orange-alert: #9c4221;        /* 6.8:1 contrast ratio */
-    --hc-orange-light: #fef5e7;        /* Light background variant */
+    --hc-orange-attention: #c05621; /* 5.2:1 contrast ratio */
+    --hc-orange-alert: #9c4221; /* 6.8:1 contrast ratio */
+    --hc-orange-light: #fef5e7; /* Light background variant */
 
     /* Neutral Colors - High Contrast */
-    --hc-gray-900: #1a202c;            /* 15.3:1 contrast ratio */
-    --hc-gray-800: #2d3748;            /* 11.9:1 contrast ratio */
-    --hc-gray-700: #4a5568;            /* 7.7:1 contrast ratio */
-    --hc-gray-600: #718096;            /* 4.8:1 contrast ratio */
-    --hc-gray-500: #a0aec0;            /* 3.1:1 contrast ratio (decorative only) */
-    --hc-gray-400: #cbd5e0;            /* 2.3:1 contrast ratio (decorative only) */
-    --hc-gray-300: #e2e8f0;            /* 1.8:1 contrast ratio (decorative only) */
-    --hc-gray-200: #edf2f7;            /* 1.4:1 contrast ratio (decorative only) */
-    --hc-gray-100: #f7fafc;            /* 1.1:1 contrast ratio (decorative only) */
-    --hc-gray-50: #fafbfc;             /* Background variant */
+    --hc-gray-900: #1a202c; /* 15.3:1 contrast ratio */
+    --hc-gray-800: #2d3748; /* 11.9:1 contrast ratio */
+    --hc-gray-700: #4a5568; /* 7.7:1 contrast ratio */
+    --hc-gray-600: #718096; /* 4.8:1 contrast ratio */
+    --hc-gray-500: #a0aec0; /* 3.1:1 contrast ratio (decorative only) */
+    --hc-gray-400: #cbd5e0; /* 2.3:1 contrast ratio (decorative only) */
+    --hc-gray-300: #e2e8f0; /* 1.8:1 contrast ratio (decorative only) */
+    --hc-gray-200: #edf2f7; /* 1.4:1 contrast ratio (decorative only) */
+    --hc-gray-100: #f7fafc; /* 1.1:1 contrast ratio (decorative only) */
+    --hc-gray-50: #fafbfc; /* Background variant */
 
     /* Healthcare-Specific Semantic Colors */
-    --hc-emergency: #9b2c2c;           /* Emergency/Critical situations */
-    --hc-stable: #22543d;              /* Patient stable condition */
-    --hc-monitoring: #b7791f;          /* Requires monitoring */
-    --hc-medication: #553c9a;          /* Medication-related (4.5:1 contrast) */
-    --hc-lab: #2c5282;                 /* Laboratory-related */
-    --hc-imaging: #553c9a;             /* Imaging/Radiology */
+    --hc-emergency: #9b2c2c; /* Emergency/Critical situations */
+    --hc-stable: #22543d; /* Patient stable condition */
+    --hc-monitoring: #b7791f; /* Requires monitoring */
+    --hc-medication: #553c9a; /* Medication-related (4.5:1 contrast) */
+    --hc-lab: #2c5282; /* Laboratory-related */
+    --hc-imaging: #553c9a; /* Imaging/Radiology */
 
     /* Focus and Interaction Colors */
-    --hc-focus: #4299e1;               /* Focus indicator color */
+    --hc-focus: #4299e1; /* Focus indicator color */
     --hc-focus-ring: rgba(66, 153, 225, 0.3); /* Focus ring color */
 
     /* High Contrast Mode Support */
@@ -72,7 +72,9 @@
 
   /* Reduced Motion Support */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -123,7 +125,8 @@
   }
 
   @keyframes pulse-critical {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
       transform: scale(1);
     }
@@ -155,7 +158,7 @@
   }
 
   .status-dot::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -179,7 +182,8 @@
   }
 
   @keyframes status-ping {
-    75%, 100% {
+    75%,
+    100% {
       transform: scale(2);
       opacity: 0;
     }
@@ -200,11 +204,21 @@
   }
 
   /* Staggered animation delays */
-  .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
-  .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
-  .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
-  .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
-  .fade-in-up:nth-child(5) { animation-delay: 0.5s; }
+  .fade-in-up:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .fade-in-up:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .fade-in-up:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .fade-in-up:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .fade-in-up:nth-child(5) {
+    animation-delay: 0.5s;
+  }
 
   /* Glass morphism effect for modern cards */
   .glass-card {
@@ -256,13 +270,18 @@
   }
 
   .btn-enhanced::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: left 0.5s;
   }
 
@@ -271,11 +290,21 @@
   }
 
   /* WCAG AA Compliant Text Colors */
-  .text-hc-primary { color: var(--hc-blue-primary); }
-  .text-hc-success { color: var(--hc-green-success); }
-  .text-hc-error { color: var(--hc-red-error); }
-  .text-hc-warning { color: var(--hc-yellow-caution); }
-  .text-hc-emergency { color: var(--hc-emergency); }
+  .text-hc-primary {
+    color: var(--hc-blue-primary);
+  }
+  .text-hc-success {
+    color: var(--hc-green-success);
+  }
+  .text-hc-error {
+    color: var(--hc-red-error);
+  }
+  .text-hc-warning {
+    color: var(--hc-yellow-caution);
+  }
+  .text-hc-emergency {
+    color: var(--hc-emergency);
+  }
 
   /* Background Colors with proper contrast */
   .bg-hc-primary {
@@ -333,11 +362,21 @@
   }
 
   /* High Contrast Borders */
-  .border-hc { border-color: var(--hc-gray-600); }
-  .border-hc-light { border-color: var(--hc-gray-300); }
-  .border-hc-error { border-color: var(--hc-red-critical); }
-  .border-hc-success { border-color: var(--hc-green-success); }
-  .border-hc-warning { border-color: var(--hc-yellow-warning); }
+  .border-hc {
+    border-color: var(--hc-gray-600);
+  }
+  .border-hc-light {
+    border-color: var(--hc-gray-300);
+  }
+  .border-hc-error {
+    border-color: var(--hc-red-critical);
+  }
+  .border-hc-success {
+    border-color: var(--hc-green-success);
+  }
+  .border-hc-warning {
+    border-color: var(--hc-yellow-warning);
+  }
 
   /* Patient Status Indicators */
   .status-critical {
@@ -459,7 +498,7 @@
 
   /* Required Field Indicator */
   .required-field::after {
-    content: ' *';
+    content: " *";
     color: var(--hc-red-critical);
     font-weight: bold;
     margin-left: 0.25rem;

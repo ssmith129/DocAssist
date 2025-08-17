@@ -78,10 +78,16 @@ export function PatientsTable() {
                       </span>
                     </div>
                   )}
-                  <span className="hc-text-medical-data text-healthcare-primary">{patient.name}</span>
+                  <span className="hc-text-medical-data text-healthcare-primary">
+                    {patient.name}
+                  </span>
                 </div>
-                <div className="hc-text-medical-data text-gray-700">{patient.diagnosis}</div>
-                <div className="hc-text-medical-data text-gray-700 font-semibold">{patient.bloodType}</div>
+                <div className="hc-text-medical-data text-gray-700">
+                  {patient.diagnosis}
+                </div>
+                <div className="hc-text-medical-data text-gray-700 font-semibold">
+                  {patient.bloodType}
+                </div>
               </div>
             ))}
           </div>

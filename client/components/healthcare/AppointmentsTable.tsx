@@ -48,7 +48,9 @@ export function AppointmentsTable() {
               <CalendarDays className="w-5 h-5 text-emerald-600" />
             </div>
             <CardTitle className="hc-card-title">
-              <span className="text-healthcare-primary">Today's Appointments </span>
+              <span className="text-healthcare-primary">
+                Today's Appointments{" "}
+              </span>
               <span className="text-gray-500">(15)</span>
             </CardTitle>
           </div>
