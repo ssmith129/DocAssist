@@ -50,6 +50,7 @@ interface MenuSection {
   items: MenuItem[];
   defaultOpen?: boolean;
   priority?: "high" | "medium" | "low";
+  href?: string;
 }
 
 // Reorganized and simplified menu structure
