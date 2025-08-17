@@ -472,17 +472,20 @@
   /* Healthcare priority indicators - Updated with compliant colors */
   .priority-high {
     border-left: 4px solid var(--hc-emergency);
-    @apply bg-hc-error-light;
+    background-color: var(--hc-red-light);
+    color: var(--hc-red-error);
   }
 
   .priority-medium {
     border-left: 4px solid var(--hc-monitoring);
-    @apply bg-hc-warning-light;
+    background-color: var(--hc-yellow-light);
+    color: var(--hc-yellow-caution);
   }
 
   .priority-low {
     border-left: 4px solid var(--hc-stable);
-    @apply bg-hc-success-light;
+    background-color: var(--hc-green-light);
+    color: var(--hc-green-success);
   }
 }
 
