@@ -465,6 +465,116 @@
     margin-left: 0.25rem;
   }
 
+  /* Healthcare Typography Utilities */
+  .hc-text-critical {
+    @apply text-base font-semibold leading-relaxed;
+    color: var(--hc-blue-primary);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hc-text-patient-id {
+    @apply text-lg font-bold leading-relaxed;
+    color: var(--hc-blue-primary);
+    letter-spacing: 0.025em;
+  }
+
+  .hc-text-medical-data {
+    @apply text-base font-medium leading-relaxed;
+    color: var(--hc-gray-800);
+    min-height: 24px;
+  }
+
+  .hc-text-vital-signs {
+    @apply text-lg font-bold leading-relaxed;
+    color: var(--hc-blue-primary);
+    text-align: center;
+    min-height: 28px;
+  }
+
+  .hc-text-label {
+    @apply text-sm font-medium leading-relaxed;
+    color: var(--hc-gray-700);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hc-text-status {
+    @apply text-base font-semibold leading-relaxed;
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hc-text-alert {
+    @apply text-base font-bold leading-relaxed;
+    color: var(--hc-red-error);
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hc-text-documentation {
+    @apply text-base leading-relaxed;
+    color: var(--hc-gray-800);
+    line-height: 1.6;
+  }
+
+  .hc-text-secondary {
+    @apply text-sm leading-relaxed;
+    color: var(--hc-gray-600);
+    line-height: 1.5;
+  }
+
+  /* Healthcare Typography Hierarchy */
+  .hc-heading-1 {
+    @apply text-3xl font-bold leading-tight;
+    color: var(--hc-blue-primary);
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+
+  .hc-heading-2 {
+    @apply text-2xl font-semibold leading-tight;
+    color: var(--hc-blue-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hc-heading-3 {
+    @apply text-xl font-semibold leading-snug;
+    color: var(--hc-gray-800);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .hc-heading-4 {
+    @apply text-lg font-medium leading-snug;
+    color: var(--hc-gray-800);
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+
+  /* Healthcare Card Typography */
+  .hc-card-title {
+    @apply text-lg font-bold leading-snug;
+    color: var(--hc-blue-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .hc-card-content {
+    @apply text-base leading-relaxed;
+    color: var(--hc-gray-800);
+    line-height: 1.5;
+  }
+
+  .hc-card-meta {
+    @apply text-sm leading-relaxed;
+    color: var(--hc-gray-600);
+    line-height: 1.4;
+  }
+
   /* Error and Success Messages */
   .error-message {
     color: var(--hc-red-error);
