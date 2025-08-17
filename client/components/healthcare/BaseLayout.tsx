@@ -141,7 +141,7 @@ export function BaseLayout({ children, title }: BaseLayoutProps) {
               aria-label="Header actions"
             >
               {/* Search */}
-              <div className="relative hidden sm:block">
+              <div className="relative hidden sm:flex flex-col">
                 <label htmlFor="global-search" className="sr-only">
                   Search patients, appointments, or clinical data
                 </label>
