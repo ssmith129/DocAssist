@@ -400,10 +400,14 @@ export function Sidebar() {
                         {section.priority === "high" && (
                           <div className="w-2 h-2 bg-violet-500 rounded-full" />
                         )}
-                        {openSections[section.name] ? (
-                          <ChevronDown className="w-4 h-4 transition-transform duration-300" />
-                        ) : (
-                          <ChevronRight className="w-4 h-4 transition-transform duration-300" />
+                        {section.items.length > 0 && (
+                          <>
+                            {openSections[section.name] ? (
+                              <ChevronDown className="w-4 h-4 transition-transform duration-300" />
+                            ) : (
+                              <ChevronRight className="w-4 h-4 transition-transform duration-300" />
+                            )}
+                          </>
                         )}
                       </div>
                     )}
