@@ -262,44 +262,6 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Quick Access Bar */}
-      {!isCollapsed && (
-        <div className="px-4 py-3 bg-gray-50 border-b border-gray-100">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Quick Access
-            </h3>
-          </div>
-          <div className="flex space-x-2 mt-2">
-            {quickAccessItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={cn(
-                  "relative flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 group",
-                  isItemActive(item.href)
-                    ? "bg-violet-600 text-white shadow-lg"
-                    : "bg-white text-gray-600 hover:bg-violet-50 hover:text-violet-600 shadow-sm",
-                )}
-                onMouseEnter={() => setHoveredItem(item.href)}
-                onMouseLeave={() => setHoveredItem(null)}
-              >
-                <item.icon className="w-5 h-5" />
-                {item.badge && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse">
-                    {item.badge}
-                  </span>
-                )}
-                {hoveredItem === item.href && (
-                  <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap z-50">
-                    {item.description}
-                  </div>
-                )}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* Navigation Menu */}
       <div className="flex-1 overflow-y-auto px-4 py-4">
