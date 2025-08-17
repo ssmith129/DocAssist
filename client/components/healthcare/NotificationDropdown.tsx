@@ -349,7 +349,7 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                   <div
                     key={notification.id}
                     className={cn(
-                      "relative p-3 rounded-lg border transition-all duration-200 cursor-pointer group hover:shadow-md",
+                      "relative p-3 rounded-lg border transition-all duration-200 cursor-pointer group",
                       config.bgColor,
                       config.borderColor,
                       !notification.read && "ring-1 ring-violet-200 bg-opacity-80",
@@ -366,7 +366,7 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                       <div className={cn(
                         "p-1.5 rounded-full transition-all duration-200",
                         config.bgColor,
-                        "group-hover:scale-110"
+                        ""
                       )}>
                         <IconComponent className={cn("w-4 h-4", config.color)} />
                       </div>
@@ -410,7 +410,7 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
                                 <Button
                                   size="sm"
                                   variant="outline"
-                                  className="h-6 text-xs px-2 hover:bg-violet-50 transition-all duration-200 hover:scale-105"
+                                  className="h-6 text-xs px-2 hover:bg-violet-50 transition-all duration-200"
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     notification.action?.onClick();

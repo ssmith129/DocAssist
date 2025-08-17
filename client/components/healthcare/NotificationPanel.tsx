@@ -165,7 +165,7 @@ export function NotificationPanel() {
   return (
     <Card
       className={cn(
-        "shadow-lg hover:shadow-xl transition-all duration-500",
+        "shadow-lg transition-all duration-500",
         animateIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
       )}
     >
@@ -304,7 +304,7 @@ export function NotificationPanel() {
                             <Button
                               size="sm"
                               variant="outline"
-                              className="h-7 text-xs hover:bg-violet-50 transition-all duration-300 hover:scale-105"
+                              className="h-7 text-xs hover:bg-violet-50 transition-all duration-300"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 notification.action?.onClick();
@@ -383,7 +383,7 @@ export function NotificationPanel() {
             <Button
               variant="outline"
               size="sm"
-              className="w-full hover:bg-violet-50 transition-all duration-300 hover:scale-102"
+              className="w-full hover:bg-violet-50 transition-all duration-300"
             >
               View All Notifications
             </Button>

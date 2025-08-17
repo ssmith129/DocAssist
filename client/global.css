@@ -114,7 +114,6 @@
   }
 
   .interactive-card:hover {
-    transform: translateY(-4px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   }
 
@@ -130,7 +129,7 @@
     }
     50% {
       opacity: 0.8;
-      transform: scale(1.05);
+      opacity: 0.9;
     }
   }
 
@@ -354,7 +353,7 @@
   /* Interactive Elements */
   .interactive-hc {
     @apply transition-all duration-200 ease-in-out;
-    @apply hover:scale-105 focus:scale-105;
+    @apply focus:outline-2;
     @apply focus:outline-none focus:ring-4 focus:ring-offset-2;
     --tw-ring-color: var(--hc-focus-ring);
   }
