@@ -26,47 +26,8 @@ export function StatsCard({
   loading = false,
   animated = true,
 }: StatsCardProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [animatedValue, setAnimatedValue] = useState("0");
+  const [isVisible, setIsVisible] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-
-  // Animate the value when it changes
-  useEffect(() => {
-    if (!animated) {
-      setAnimatedValue(value);
-      return;
-    }
-
-    const timer = setTimeout(() => setIsVisible(true), 100);
-
-    // Simple animation for numeric values
-    const numericValue = parseFloat(value.replace(/[^0-9.]/g, ""));
-    if (!isNaN(numericValue)) {
-      let currentValue = 0;
-      const increment = numericValue / 30; // 30 frames
-      const animationTimer = setInterval(() => {
-        currentValue += increment;
-        if (currentValue >= numericValue) {
-          currentValue = numericValue;
-          clearInterval(animationTimer);
-        }
-
-        // Preserve the original format
-        const suffix = value.replace(/[0-9.]/g, "");
-        const animatedNum = Math.round(currentValue * 10) / 10;
-        setAnimatedValue(animatedNum + suffix.replace(/[^a-zA-Z%]/g, ""));
-      }, 50);
-
-      return () => {
-        clearTimeout(timer);
-        clearInterval(animationTimer);
-      };
-    } else {
-      setAnimatedValue(value);
-    }
-
-    return () => clearTimeout(timer);
-  }, [value, animated]);
 
   const getTrendIcon = () => {
     if (!change) return null;
