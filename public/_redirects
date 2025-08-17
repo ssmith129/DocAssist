@@ -1,0 +1,12 @@
+# Netlify/Vercel redirects file
+# Ensure dashboard-home is the primary landing page
+
+# Redirect root to dashboard-home (primary landing page)
+/  /dashboard-home  301
+
+# Dashboard variations redirect to primary
+/Dashboard  /dashboard-home  301
+/dashboard  /dashboard-home  301
+
+# SPA fallback for all other routes
+/*  /index.html  200

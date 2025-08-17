@@ -1,5 +1,6 @@
 User-agent: *
-# Allow public landing pages
+# Allow public landing pages (dashboard-home is primary)
+Allow: /dashboard-home$
 Allow: /
 Allow: /patients$
 Allow: /clinical$
