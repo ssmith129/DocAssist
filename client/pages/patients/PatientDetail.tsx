@@ -3,21 +3,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  User, 
-  Heart, 
-  Activity, 
-  Pill, 
-  TestTube, 
-  Calendar, 
-  Phone, 
+import {
+  User,
+  Heart,
+  Activity,
+  Pill,
+  TestTube,
+  Calendar,
+  Phone,
   Mail,
   Edit,
   FileText,
   AlertTriangle,
   Clock,
   Thermometer,
-  Droplets
+  Droplets,
 } from "lucide-react";
 
 // Mock patient data
@@ -40,12 +40,12 @@ const patient = {
   emergencyContact: {
     name: "John Johnson",
     relationship: "Spouse",
-    phone: "(555) 123-4568"
+    phone: "(555) 123-4568",
   },
   insurance: {
     provider: "Blue Cross Blue Shield",
     policyNumber: "BC123456789",
-    groupNumber: "GRP001"
+    groupNumber: "GRP001",
   },
   allergies: ["Penicillin", "Shellfish"],
   vitalSigns: {
@@ -57,8 +57,8 @@ const patient = {
     weight: "165 lbs",
     height: "5'6\"",
     bmi: "26.6",
-    timestamp: "2024-01-21 10:30 AM"
-  }
+    timestamp: "2024-01-21 10:30 AM",
+  },
 };
 
 const recentNotes = [
@@ -67,15 +67,15 @@ const recentNotes = [
     time: "10:30 AM",
     physician: "Dr. Smith",
     type: "Progress Note",
-    summary: "Patient responding well to treatment. Blood pressure stable."
+    summary: "Patient responding well to treatment. Blood pressure stable.",
   },
   {
     date: "2024-01-20",
     time: "2:15 PM",
     physician: "Dr. Rodriguez",
     type: "Consultation",
-    summary: "Cardiology consultation for hypertension management."
-  }
+    summary: "Cardiology consultation for hypertension management.",
+  },
 ];
 
 const medications = [
@@ -84,15 +84,15 @@ const medications = [
     dosage: "10mg",
     frequency: "Once daily",
     startDate: "2024-01-15",
-    prescriber: "Dr. Smith"
+    prescriber: "Dr. Smith",
   },
   {
     name: "Metformin",
     dosage: "500mg",
     frequency: "Twice daily",
     startDate: "2024-01-10",
-    prescriber: "Dr. Smith"
-  }
+    prescriber: "Dr. Smith",
+  },
 ];
 
 const labResults = [
@@ -101,22 +101,22 @@ const labResults = [
     value: "7.2%",
     normalRange: "<7.0%",
     status: "high",
-    date: "2024-01-20"
+    date: "2024-01-20",
   },
   {
     test: "Total Cholesterol",
     value: "185 mg/dL",
     normalRange: "<200 mg/dL",
     status: "normal",
-    date: "2024-01-20"
+    date: "2024-01-20",
   },
   {
     test: "Creatinine",
     value: "0.9 mg/dL",
     normalRange: "0.6-1.2 mg/dL",
     status: "normal",
-    date: "2024-01-20"
-  }
+    date: "2024-01-20",
+  },
 ];
 
 const appointments = [
@@ -125,29 +125,29 @@ const appointments = [
     time: "2:00 PM",
     physician: "Dr. Smith",
     type: "Follow-up",
-    status: "scheduled"
+    status: "scheduled",
   },
   {
     date: "2024-02-15",
     time: "10:00 AM",
     physician: "Dr. Rodriguez",
     type: "Cardiology",
-    status: "scheduled"
-  }
+    status: "scheduled",
+  },
 ];
 
 const statusColors = {
-  stable: 'bg-emerald-100 text-emerald-800',
-  caution: 'bg-yellow-100 text-yellow-800',
-  critical: 'bg-red-100 text-red-800',
-  inactive: 'bg-gray-100 text-gray-800'
+  stable: "bg-emerald-100 text-emerald-800",
+  caution: "bg-yellow-100 text-yellow-800",
+  critical: "bg-red-100 text-red-800",
+  inactive: "bg-gray-100 text-gray-800",
 };
 
 const resultColors = {
-  normal: 'bg-emerald-100 text-emerald-800',
-  high: 'bg-red-100 text-red-800',
-  low: 'bg-blue-100 text-blue-800',
-  critical: 'bg-red-200 text-red-900'
+  normal: "bg-emerald-100 text-emerald-800",
+  high: "bg-red-100 text-red-800",
+  low: "bg-blue-100 text-blue-800",
+  critical: "bg-red-200 text-red-900",
 };
 
 export default function PatientDetail() {
@@ -161,12 +161,18 @@ export default function PatientDetail() {
             <div className="w-24 h-24 bg-violet-100 rounded-full flex items-center justify-center">
               <User className="w-12 h-12 text-violet-600" />
             </div>
-            
+
             {/* Patient Info */}
             <div className="flex-1">
               <div className="flex items-center space-x-4 mb-2">
-                <h1 className="text-2xl font-bold text-gray-900">{patient.name}</h1>
-                <Badge className={statusColors[patient.status as keyof typeof statusColors]}>
+                <h1 className="text-2xl font-bold text-gray-900">
+                  {patient.name}
+                </h1>
+                <Badge
+                  className={
+                    statusColors[patient.status as keyof typeof statusColors]
+                  }
+                >
                   {patient.status}
                 </Badge>
                 {patient.allergies.length > 0 && (
@@ -176,7 +182,7 @@ export default function PatientDetail() {
                   </Badge>
                 )}
               </div>
-              
+
               <div className="grid grid-cols-4 gap-4 text-sm">
                 <div>
                   <span className="text-gray-500">MRN:</span>
@@ -212,7 +218,7 @@ export default function PatientDetail() {
                 </div>
               </div>
             </div>
-            
+
             {/* Quick Actions */}
             <div className="flex space-x-2">
               <Button variant="outline">
@@ -246,8 +252,12 @@ export default function PatientDetail() {
             <div className="col-span-6">
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-lg font-bold text-gray-700">Current Vital Signs</CardTitle>
-                  <p className="text-sm text-gray-500">Last updated: {patient.vitalSigns.timestamp}</p>
+                  <CardTitle className="text-lg font-bold text-gray-700">
+                    Current Vital Signs
+                  </CardTitle>
+                  <p className="text-sm text-gray-500">
+                    Last updated: {patient.vitalSigns.timestamp}
+                  </p>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
@@ -255,28 +265,36 @@ export default function PatientDetail() {
                       <Heart className="w-8 h-8 text-red-500" />
                       <div>
                         <p className="text-sm text-gray-600">Heart Rate</p>
-                        <p className="text-xl font-bold">{patient.vitalSigns.heartRate} bpm</p>
+                        <p className="text-xl font-bold">
+                          {patient.vitalSigns.heartRate} bpm
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                       <Activity className="w-8 h-8 text-blue-500" />
                       <div>
                         <p className="text-sm text-gray-600">Blood Pressure</p>
-                        <p className="text-xl font-bold">{patient.vitalSigns.bloodPressure} mmHg</p>
+                        <p className="text-xl font-bold">
+                          {patient.vitalSigns.bloodPressure} mmHg
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                       <Thermometer className="w-8 h-8 text-orange-500" />
                       <div>
                         <p className="text-sm text-gray-600">Temperature</p>
-                        <p className="text-xl font-bold">{patient.vitalSigns.temperature}°F</p>
+                        <p className="text-xl font-bold">
+                          {patient.vitalSigns.temperature}°F
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                       <Droplets className="w-8 h-8 text-green-500" />
                       <div>
                         <p className="text-sm text-gray-600">Oxygen Sat</p>
-                        <p className="text-xl font-bold">{patient.vitalSigns.oxygenSaturation}%</p>
+                        <p className="text-xl font-bold">
+                          {patient.vitalSigns.oxygenSaturation}%
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -288,7 +306,9 @@ export default function PatientDetail() {
             <div className="col-span-6">
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-lg font-bold text-gray-700">Contact Information</CardTitle>
+                  <CardTitle className="text-lg font-bold text-gray-700">
+                    Contact Information
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
@@ -300,14 +320,27 @@ export default function PatientDetail() {
                     <span>{patient.email}</span>
                   </div>
                   <div className="pt-4 border-t">
-                    <h4 className="font-medium text-gray-900 mb-2">Emergency Contact</h4>
-                    <p className="text-sm text-gray-600">{patient.emergencyContact.name} ({patient.emergencyContact.relationship})</p>
-                    <p className="text-sm text-gray-600">{patient.emergencyContact.phone}</p>
+                    <h4 className="font-medium text-gray-900 mb-2">
+                      Emergency Contact
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      {patient.emergencyContact.name} (
+                      {patient.emergencyContact.relationship})
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {patient.emergencyContact.phone}
+                    </p>
                   </div>
                   <div className="pt-4 border-t">
-                    <h4 className="font-medium text-gray-900 mb-2">Insurance</h4>
-                    <p className="text-sm text-gray-600">{patient.insurance.provider}</p>
-                    <p className="text-sm text-gray-600">Policy: {patient.insurance.policyNumber}</p>
+                    <h4 className="font-medium text-gray-900 mb-2">
+                      Insurance
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      {patient.insurance.provider}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Policy: {patient.insurance.policyNumber}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -317,18 +350,29 @@ export default function PatientDetail() {
             <div className="col-span-8">
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-lg font-bold text-gray-700">Recent Clinical Notes</CardTitle>
+                  <CardTitle className="text-lg font-bold text-gray-700">
+                    Recent Clinical Notes
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     {recentNotes.map((note, index) => (
-                      <div key={index} className="border border-gray-200 rounded-lg p-3">
+                      <div
+                        key={index}
+                        className="border border-gray-200 rounded-lg p-3"
+                      >
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center space-x-2">
-                            <Badge className="bg-blue-100 text-blue-800">{note.type}</Badge>
-                            <span className="text-sm text-gray-600">{note.physician}</span>
+                            <Badge className="bg-blue-100 text-blue-800">
+                              {note.type}
+                            </Badge>
+                            <span className="text-sm text-gray-600">
+                              {note.physician}
+                            </span>
                           </div>
-                          <span className="text-sm text-gray-500">{note.date} {note.time}</span>
+                          <span className="text-sm text-gray-500">
+                            {note.date} {note.time}
+                          </span>
                         </div>
                         <p className="text-sm text-gray-700">{note.summary}</p>
                       </div>
@@ -350,8 +394,13 @@ export default function PatientDetail() {
                 <CardContent>
                   <div className="space-y-2">
                     {patient.allergies.map((allergy, index) => (
-                      <div key={index} className="p-2 bg-red-50 border border-red-200 rounded-lg">
-                        <p className="text-sm font-medium text-red-800">{allergy}</p>
+                      <div
+                        key={index}
+                        className="p-2 bg-red-50 border border-red-200 rounded-lg"
+                      >
+                        <p className="text-sm font-medium text-red-800">
+                          {allergy}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -368,7 +417,10 @@ export default function PatientDetail() {
               <CardTitle>Vital Signs History</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600">Detailed vital signs tracking and trends would be displayed here.</p>
+              <p className="text-gray-600">
+                Detailed vital signs tracking and trends would be displayed
+                here.
+              </p>
             </CardContent>
           </Card>
         </TabsContent>
@@ -381,12 +433,21 @@ export default function PatientDetail() {
             <CardContent>
               <div className="space-y-3">
                 {medications.map((med, index) => (
-                  <div key={index} className="border border-gray-200 rounded-lg p-4">
+                  <div
+                    key={index}
+                    className="border border-gray-200 rounded-lg p-4"
+                  >
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="font-medium text-gray-900">{med.name}</h3>
-                        <p className="text-sm text-gray-600">{med.dosage} - {med.frequency}</p>
-                        <p className="text-sm text-gray-500">Prescribed by {med.prescriber} on {med.startDate}</p>
+                        <h3 className="font-medium text-gray-900">
+                          {med.name}
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          {med.dosage} - {med.frequency}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          Prescribed by {med.prescriber} on {med.startDate}
+                        </p>
                       </div>
                       <Button size="sm" variant="outline">
                         <Edit className="w-4 h-4" />
@@ -421,9 +482,17 @@ export default function PatientDetail() {
                       <tr key={index} className="border-b">
                         <td className="py-2">{result.test}</td>
                         <td className="py-2 font-medium">{result.value}</td>
-                        <td className="py-2 text-gray-600">{result.normalRange}</td>
+                        <td className="py-2 text-gray-600">
+                          {result.normalRange}
+                        </td>
                         <td className="py-2">
-                          <Badge className={resultColors[result.status as keyof typeof resultColors]}>
+                          <Badge
+                            className={
+                              resultColors[
+                                result.status as keyof typeof resultColors
+                              ]
+                            }
+                          >
                             {result.status}
                           </Badge>
                         </td>
@@ -443,7 +512,10 @@ export default function PatientDetail() {
               <CardTitle>Clinical Notes</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600">Comprehensive clinical notes and documentation would be displayed here.</p>
+              <p className="text-gray-600">
+                Comprehensive clinical notes and documentation would be
+                displayed here.
+              </p>
             </CardContent>
           </Card>
         </TabsContent>
@@ -456,14 +528,25 @@ export default function PatientDetail() {
             <CardContent>
               <div className="space-y-3">
                 {appointments.map((apt, index) => (
-                  <div key={index} className="border border-gray-200 rounded-lg p-4">
+                  <div
+                    key={index}
+                    className="border border-gray-200 rounded-lg p-4"
+                  >
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="font-medium text-gray-900">{apt.type} Appointment</h3>
-                        <p className="text-sm text-gray-600">with {apt.physician}</p>
-                        <p className="text-sm text-gray-500">{apt.date} at {apt.time}</p>
+                        <h3 className="font-medium text-gray-900">
+                          {apt.type} Appointment
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          with {apt.physician}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {apt.date} at {apt.time}
+                        </p>
                       </div>
-                      <Badge className="bg-blue-100 text-blue-800">{apt.status}</Badge>
+                      <Badge className="bg-blue-100 text-blue-800">
+                        {apt.status}
+                      </Badge>
                     </div>
                   </div>
                 ))}
