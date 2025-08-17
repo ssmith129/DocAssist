@@ -177,7 +177,6 @@ const bottomItems: MenuItem[] = [
   },
 ];
 
-
 export function Sidebar() {
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(
@@ -262,7 +261,6 @@ export function Sidebar() {
         </div>
       </div>
 
-
       {/* Navigation Menu */}
       <div className="flex-1 overflow-y-auto px-4 py-4">
         <div className="space-y-2">
@@ -315,7 +313,11 @@ export function Sidebar() {
               ) : (
                 <>
                   <button
-                    onClick={() => !isCollapsed && section.items.length > 0 && toggleSection(section.name)}
+                    onClick={() =>
+                      !isCollapsed &&
+                      section.items.length > 0 &&
+                      toggleSection(section.name)
+                    }
                     className={cn(
                       "flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 group",
                       "hover:bg-violet-50 hover:text-violet-700",
