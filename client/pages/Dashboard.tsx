@@ -403,7 +403,7 @@ export default function Dashboard() {
                       {quickActions.map((action, index) => (
                         <div
                           key={action.id}
-                          className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
+                          className={`mb-1.5 px-4 pt-4 pb-0 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
                             action.urgent
                               ? `${action.borderColor} ${action.bgColor} ring-2 ring-red-200 animate-pulse`
                               : `${action.borderColor} ${action.bgColor} hover:shadow-lg`
