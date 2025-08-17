@@ -51,7 +51,7 @@ const App = () => (
 
           {/* Clinical Care */}
           <Route path="/clinical" element={<Clinical />} />
-          <Route path="/clinical/progress" element={<Clinical />} />
+          <Route path="/clinical/progress" element={<ProgressNotes />} />
           <Route path="/clinical/assessments" element={<Clinical />} />
           <Route path="/clinical/care-plans" element={<Clinical />} />
           <Route path="/clinical/procedures" element={<Clinical />} />
