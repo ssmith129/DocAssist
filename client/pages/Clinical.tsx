@@ -235,9 +235,9 @@ export default function Clinical() {
           {/* Lab Results */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-lg font-bold text-gray-700">
+              <CardTitle className="hc-card-title">
                 Lab Results{" "}
-                <span className="text-gray-400 font-normal">
+                <span className="text-gray-500 font-normal">
                   ({labResults.length} pending review)
                 </span>
               </CardTitle>
