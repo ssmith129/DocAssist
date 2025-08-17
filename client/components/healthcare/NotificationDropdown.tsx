@@ -266,8 +266,8 @@ export function NotificationDropdown({ className }: NotificationDropdownProps) {
               id="notification-count"
               className={cn(
                 "absolute -top-1 -right-1 min-w-5 h-5 px-1 text-white text-xs rounded-full flex items-center justify-center font-medium transition-all duration-300 shadow-sm",
-                criticalCount > 0 
-                  ? "bg-red-500 animate-pulse ring-2 ring-red-200" 
+                criticalCount > 0
+                  ? "bg-red-500 ring-2 ring-red-200"
                   : "bg-blue-500",
                 unreadCount > 99 && "px-0.5"
               )}
