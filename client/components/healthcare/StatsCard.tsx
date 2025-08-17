@@ -120,7 +120,7 @@ export function StatsCard({
                 variant === "primary" ? "text-white" : "text-gray-900",
               )}
             >
-              {animatedValue}
+              {value}
             </p>
 
             {/* Change Indicator */}
