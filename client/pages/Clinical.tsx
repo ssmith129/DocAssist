@@ -247,22 +247,22 @@ export default function Clinical() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-gray-200">
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                      <th className="text-left py-3 px-4 hc-text-label">
                         Patient
                       </th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                      <th className="text-left py-3 px-4 hc-text-label">
                         Test
                       </th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                      <th className="text-left py-3 px-4 hc-text-label">
                         Result
                       </th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                      <th className="text-left py-3 px-4 hc-text-label">
                         Value
                       </th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                      <th className="text-left py-3 px-4 hc-text-label">
                         Date
                       </th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700">
+                      <th className="text-left py-3 px-4 hc-text-label">
                         Actions
                       </th>
                     </tr>
